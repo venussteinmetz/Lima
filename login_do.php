@@ -12,6 +12,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
     <?php
 
+if (!isset($_POST["e-mail"]) or
+!isset($_POST["password"])) {
+
+    echo "Formular-Fehler";
+    die();
+}
+
 
 
 
@@ -27,7 +34,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     } else {
     echo "user falsch";
     }
-    header("Location: index.php");
+    header("Location: Index.php");
     ?>
 
 

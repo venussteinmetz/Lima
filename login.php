@@ -4,6 +4,16 @@
 <head>
     <meta charset="utf-8">
     <title>Login</title>
+    <style>
+        html {
+            background: url(Hintergrund.png) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+
+        }
+    </style>
 
 </head>
 <body>
@@ -11,8 +21,13 @@
 <form action="login_do.php" method="post">
 
     <input type="text" name="login" maxlength="100" placeholder="E-Mail"><br>
-    <input type="password" name="password" placeholder="Password">
-    <button style="font-family: 'PT Sans Caption'" type="submit">Anmelden</button>
+    <input type="password" name="password" placeholder="Password"> <br>
+    <button style="font-family: 'PT Sans Caption'" type="submit">Anmelden</button> <br>
+
 </form>
+
+<a href="register.php">
+    <button style="font-family: 'PT Sans Caption'" type="submit" >Registrieren</button>
+</a>
 </body>
 </html>
