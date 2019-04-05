@@ -22,13 +22,12 @@ if (isset($_POST['submit'])) {
                 header("Location: index.php?uploadseccess");
 
             } else {
-                echo "Your file is to big";
+                echo "Your file is to big!";
             }
     } else {
         echo "There was an error uploading your file!";
         }
     } else {
         echo "You cannot upload files of this type!";
-    }
 }
 
