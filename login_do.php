@@ -12,15 +12,11 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
     <?php
 
-    if (!isset($_POST["login"]) or
-    !isset($_POST["passwort"])) {
 
-    echo "Formular-Fehler";
-    die();
-    }
 
-    $statement=$pdo->prepare("SELECT * FROM nutzer WHERE login=? AND passwort=?");
-    $datensatz=array($_POST["login"],hash("sha256", $_POST["passwort"]));
+
+    $statement=$pdo->prepare("SELECT * FROM user WHERE e-mail=? AND password=?");
+    $datensatz=array($_POST["e-mail"], $_POST["password"]);
     $statement->execute($datensatz);
 
     if ($row=$statement->fetch()) {

@@ -11,7 +11,7 @@
 <form action="login_do.php" method="post">
 
     <input type="text" name="login" maxlength="100" placeholder="E-Mail"><br>
-    <input type="password" name="password" placeholder="Passwort">
+    <input type="password" name="password" placeholder="Password">
     <button style="font-family: 'PT Sans Caption'" type="submit">Anmelden</button>
 </form>
 </body>
