@@ -6,6 +6,7 @@ $user = $_SESSION["user_id"];
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         // Wenn man auf die Nachrichtenbox klickt, wird die Vorschau der ungelesenen Nachrichten ausgefahren, bzw. wieder eingefahren wenn man erneut draufklickt
@@ -17,52 +18,67 @@ $user = $_SESSION["user_id"];
     </script>
     <style>
         .notification {
-            background-color: black;
-            color: white;
+            background-color: white;
+            color: black;
             text-decoration: none;
             padding: 15px 26px;
-            position: relative;
+            position: absolute;
             display: inline-block;
-            border-radius: 2px;
-        }
+            margin-top: 10px;
+            right: 10px;
+            margin-right: 10px;
+            border-color: #cbcbcb;
+            border-style: solid;
 
+
+
+        }
         .notification:hover {
             background: grey;
         }
-
         .notification .badge {
             position: absolute;
-            top: -10px;
+            top: 0px;
             right: -10px;
             padding: 5px 10px;
             border-radius: 50%;
             background: lightcoral;
             color: white;
+
+
         }
         p {
             display: none;
             position: absolute;
-            top: 36px;
-            background-color: black;
+            top: 60px;
+            background-color: #FFF5EE ;
             color: #cbcbcb;
             padding: 5px;
             min-width: 100px;
             width: auto;
-            border-radius: 2px;
+            right: 10px;
+            margin-right: 10px;
+
+
         }
-        a {
-            color: inherit;
+        a:link {
+            color: black;
             text-decoration: inherit;
         }
         a:hover {
-            background-color: ;
+            background-color: lightpink;
         }
+
+
+
+
+
     </style>
 </head>
 <body>
 <div>
     <button id ="hide" class="notification">
-        <span>Inbox</span>
+        <span>Chats</span>
         <span class="badge">
 
             <!-- Hier wird die Anzahl der ungelesenen Nachrichten angezeigt -->
@@ -70,20 +86,18 @@ $user = $_SESSION["user_id"];
             $statementx = $pdo->prepare("SELECT * FROM notification WHERE user_id = $user");
             $statementx->execute();
             $result = $statementx->rowCount();
-
             if($result > 0) {
-                while ($rowx = $statementx->fetch()) {
-                    $number = $rowx["number_count"];
+                while ($row = $statementx->fetch()) {
+                    $number = $row["number_count"];
                     echo $number;
                 }
             } else {
                 echo 0;
-
             }
-
             ?>
         </span>
     </button>
+
     <p>
         <!-- Hier werden die ungelesenen Nachrichten in einer Vorschau (nur der Betreff) angezeigt -->
         <?php
@@ -94,11 +108,12 @@ $user = $_SESSION["user_id"];
                 $message_subject=$row['message_subject'];
                 $message_id = $row["message_id"]; ?>
 
-                <a href="show_message_do.php?id=<?php echo $message_id;?>">Betreff: <?php echo $message_subject;?></a><br>
-        <?php
+                <a href="show_message_do.php?id=<?php echo $message_id;?>">Betreff: <?php echo $message_subject;?></a><br> <br>
+                <?php
             }
         }
         ?>
+
     </p>
 </div>
 
