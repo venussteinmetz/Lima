@@ -1,8 +1,9 @@
 <?php
-include 'notification.php';
+include 'notifications.php';
 include 'search.php';
 include 'sidebar2.php';
 include 'files_all.php';
+include 'profilepicture.php';
 ?>
 <html>
 
