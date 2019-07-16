@@ -11,12 +11,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: 'Poppins', sans-serif;
         }
         .all {
             position: absolute;
-            top: 40%;
-            left: 50%;
-            width: 300px;
+            top: 50%;
+            left: 55%;
+            width: 400px;
             height: 200px;
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
@@ -25,12 +26,17 @@
             -ms-transform: translate(-50%, -50%);
         }
         button {
+            height: 25px;
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
         }
         button:hover {
             background-color: lightcoral;
+        }
+        input {
+            width: 173px;
+            height: 30px;
         }
 
     </style>
@@ -107,8 +113,8 @@ if($showForm):
     ?>
 
     <form action="?send=1" method="post">
-        E-Mail:<br>
-        <input type="email" name="email" value=""><br>
+
+        <input type="email" name="email"  placeholder="E-Mail"><br>
         <button  type="submit">Neues Passwort</button>
         <a href="login.php">Login</a>
     </form>
@@ -117,3 +123,4 @@ if($showForm):
 endif; //Endif von if($showForm)
 ?>
 </html>
+
