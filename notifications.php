@@ -54,17 +54,17 @@ $user = $_SESSION["user_id"];
             right: 10px;
             margin-right: 10px;
         }
-        .notifications a:link {
+        #notifi a:link {
             color: black;
             text-decoration: inherit;
         }
-        .notifications a:hover {
+        #notifi a:hover {
               background-color: lightpink;
           }
     </style>
 </head>
 <body>
-<div id="notifications">
+<div id="notifi">
     <button id ="hide" class="notification">
         <span>Chats</span>
         <span class="badge">

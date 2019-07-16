@@ -54,23 +54,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             z-index: 10;
         }
 
-
-
-
-        a[data-toggle="collapse"] {
-            position: relative;
-
-        }
-        .dropdown-toggle::after {
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            color: black;
-
-        }
-
         .profile-usertitle-name {
             font-size: 35px;
             padding-left: 30px;
@@ -83,6 +66,25 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             float: right;
             margin-right: 30px;
             margin-bottom: 40px;
+
+        }
+
+        #button {
+            background-color: darkgray;
+            font-size: medium;
+            font-family: 'Poppins', sans-serif;
+            border-radius:70px;
+            display:inline-block;
+            cursor:pointer;
+            color: black;
+            padding:9px 13px;
+            text-decoration:none;
+            float: right;
+            margin-right: 40px;
+
+
+
+        li: hover {background-color: lightcoral};
 
         }
     </style>
@@ -105,13 +107,17 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         }
         ?>
     </div>
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Meine Dateien</a>
+
+            <a href="index.php">Meine Dateien</a>
             <a href="#">Neuste</a>
             <a href="favorite.php">Favoriten</a>
-            <a href="#">Meine Nachrichten</a>
-            <a href="#">Meine Ordner</a>
-            <a href="#">Logout</a>
-    </ul>
+            <a href="show_message.php">Meine Nachrichten</a>
+            <a href="showfolder.php">Meine Ordner</a>
+            <a href="logout.php">Logout</a>
+
+    <a id="button" href="fileupload.php">Neue Datei hochladen</a>
+
+
 </div>
 
 
