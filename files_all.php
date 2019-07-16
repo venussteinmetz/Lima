@@ -1,83 +1,93 @@
 <?php
 session_start();
+
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
 
 <html>
 <head>
     <title>Lima</title>
+    <meta name="viewport" content="width=device-width">
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
     <style>
         #files {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin-top: 50px;
+            margin-right: 10px;
+            left:300px;
+            width:50%;
         }
-        #file-box {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            opacity: 50%;
-        }
-        html  {
-            background-image: url("Hintergrund.jpg");
-            max-width: 100%;
-            height: auto;
-            font-family: Avenir;
 
-        }
-        table {
-            width: 50%;
-            margin: 30px;
-            border-collapse: collapse;
-            text-align: left;
-        }
+
         tr {
             border-bottom: 1px solid #cbcbcb;
+            text-align: center;
+
+
         }
         th {
-            border: none;
-            height: 30px;
-            padding: 2px;
+            width: 10px;
+            text-align: center;
+
+        }
+        td {
+            width: 30px;
+            text-align: center;
         }
         tr:hover {
             background: #F5F5F5;
         }
-        .button {
-            background-color: lightpink;
-            border-radius:42px;
-            display:inline-block;
-            cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:12px;
-            padding:9px 13px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px lightcoral;
-        }
 
+
+        a:link {
+            color: lightpink;
+            text-decoration: none;
+        }
+        a:visited{
+            color: lightpink;
+        }
+        /*  Large Tablet */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            .container{
+                width: 70%;
+            }
+        }
+        /*  Small Tablet */
+        @media screen and (min-width: 569px) and (max-width: 767px) {
+            .container{
+                width: 70%;
+            }
+
+        }
     </style>
 </head>
 <body>
 
-<div id="file-box">
+
+
+<div class="container">
+
+    <!-- Tabelle: In der über eine SQL-Anfrage alle Dokumente angezeigt werden, die der Nutzer hochgeladen hat -->
 
     <table id="files">
         <tr>
             <th> Name </th>
             <th> Hochgeladen</th>
             <th> Dateiart</th>
-            <th> Download</th>
-            <th> Ordner </th>
-            <th> Löschen </th>
+            <th> Runterladen</th>
+            <th>Löschen</th>
             <th> Favorisieren </th>
         </tr>
 
+        <!-- SQL-Anfrage: Alle Dokumente in der 'file' Datenbank die die gleiche User ID hat, wie der Nutzer der gerade Online ist.
+             Die Inhalte der Datenbank werden in Variablen gespeichert und in der Tabelle ausgegeben.
+         -->
+
         <?php
+
+
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID");
         if($statement->execute()) {
@@ -87,25 +97,19 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 $upload_date=$row['upload_date'];
                 $mimetype=$row['mimetype'];
 
-?>
-                 <tr>
-                   <td><?php echo $filename ?></td>
-                   <td><?php echo$upload_date ?></td>
-                   <td><?php echo$mimetype ?></td>
-                   <td> <a class="button" href='download.php?fileid=<?php echo$fileid; ?>&filename=<?php echo $filename;?>'>Download</a></td>
-                   <td> <a class="button" href='addfiletofolder.php?filename=<?php echo $filename;?>&fileid=<?php echo $fileid;?>'>Verschieben</a></td>
-                   <td> <a class="button" href='delete_file.php?filename=<?php echo $filename;?>&fileid=<?php echo $fileid;?>'>Löschen</a></td>
-                   <td> <a class="button" href='favorite_do.php?fav=<?php echo $fileid;?>'>Favorisieren</a></td>
-                 </tr>
-        <?php
+
+                echo  "<tr>
+                    <td> $filename </td>
+                    <td>$upload_date</td>
+                    <td>$mimetype</td>
+                    <td> <a href='download_do.php?down=$fileid'>&#8595;</a></td>
+                    <td> <a href='files_all.php?del=$fileid'>&#128465;</a></td>
+                    <td> <a href='favorite_do.php?fav=$fileid'>&#128149;</a></td>
+                </tr>";
             }
         }
         ?>
     </table>
 </div>
-
 </body>
 </html>
-
-
-
