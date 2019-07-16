@@ -1,49 +1,46 @@
-<?php
-session_start();
-$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 
-?>
 <html>
-<head>
-</head>
-<link rel="stylesheet" href="stylesuche.css">
 
-<body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-</body>
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+        <!-- Font Awesome JS -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <style>
+            .col-lg-6 {
+                position: relative;
+                top: 10%;
+                left: 20%;
+                width: 10000px;
+                background-color: white;
+                padding-left: 40px;
+
+            }
+
+
+        </style>
+    </head>
+
+
+    <body>
+
+    <div class="col-lg-6">
+
+            <form action="search_do.php" method="post">
+                <input type="text" name="submit-search">
+                <input type="submit" value="Suchen">
+            </form>
+
+    </div>
+
+
+
+    </body>
+
 </html>
-
-<?php
-$userID =$_SESSION["user_id"];
-$search =$_POST['submit-search'];
-
-if (isset($search)) {
-    echo "<table id=\"files\">
-        <tr>
-            <th> Name </th>
-            <th> Hochgeladen</th>
-            <th> Dateiart</th>
-        </tr>";
-    $statement = $pdo->prepare ("SELECT * FROM file WHERE owner=$userID AND filename LIKE '%$search%'");
-    if ($statement->execute()){
-        while ($row = $statement->fetch()) {
-            $fileid = $row['file_id'];
-            $filename = $row['filename'];
-            $upload_date = $row['upload_date'];
-            $mimetype = $row['mimetype'];
-
-
-            echo
-            " <tr>
-                <td> $filename </td>
-                <td>$upload_date</td>
-                <td>$mimetype</td>
-              </tr>";
-
-        }
-    }
-    if (empty($search)){
-        echo "Es wurde nichts eingegenben";
-        exit();
-    }
-}
