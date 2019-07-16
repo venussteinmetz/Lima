@@ -29,9 +29,6 @@ $user = $_SESSION["user_id"];
             margin-right: 10px;
             border-color: #cbcbcb;
             border-style: solid;
-
-
-
         }
         .notification:hover {
             background: grey;
@@ -44,8 +41,6 @@ $user = $_SESSION["user_id"];
             border-radius: 50%;
             background: lightcoral;
             color: white;
-
-
         }
         p {
             display: none;
@@ -58,25 +53,18 @@ $user = $_SESSION["user_id"];
             width: auto;
             right: 10px;
             margin-right: 10px;
-
-
         }
-        a:link {
+        .notifications a:link {
             color: black;
             text-decoration: inherit;
         }
-        a:hover {
-            background-color: lightpink;
-        }
-
-
-
-
-
+        .notifications a:hover {
+              background-color: lightpink;
+          }
     </style>
 </head>
 <body>
-<div>
+<div id="notifications">
     <button id ="hide" class="notification">
         <span>Chats</span>
         <span class="badge">

@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
 
@@ -19,18 +18,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             left:300px;
             width:50%;
         }
-
-
         tr {
             border-bottom: 1px solid #cbcbcb;
             text-align: center;
-
-
         }
         th {
             width: 10px;
             text-align: center;
-
         }
         td {
             width: 30px;
@@ -40,14 +34,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             background: #F5F5F5;
         }
 
-
-        a:link {
-            color: lightpink;
-            text-decoration: none;
-        }
-        a:visited{
-            color: lightpink;
-        }
         /*  Large Tablet */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .container{
@@ -59,7 +45,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             .container{
                 width: 70%;
             }
-
         }
     </style>
 </head>
@@ -86,8 +71,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
          -->
 
         <?php
-
-
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID");
         if($statement->execute()) {
@@ -96,8 +79,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 $filename=$row['filename'];
                 $upload_date=$row['upload_date'];
                 $mimetype=$row['mimetype'];
-
-
                 echo  "<tr>
                     <td> $filename </td>
                     <td>$upload_date</td>
