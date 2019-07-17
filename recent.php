@@ -3,12 +3,18 @@ session_start();
 
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
+<?php
+include 'searchbar.php';
+include "sidebar2.php";
+include "notification.php";
+?>
 
 <html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    
     <style>
         #files {
             position: absolute;
