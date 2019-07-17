@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
 
@@ -11,29 +12,51 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <script src="js/general.js"></script>
     <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
     <style>
-        #files {
+        .trash {
+            height: 25px;
+            width: 25px;
+        }
+        .star {
+            height: 25px;
+            width: 25px;
+        }
+        .downloadicon {
+            height: 25px;
+            width: 25px;
+        }
+        .container {
+            overflow: auto;
+            max-height: 200px;
+            width: 50%;
+        }
+        #files_table {
             position: absolute;
             margin-top: 50px;
             margin-right: 10px;
             left:300px;
             width:50%;
+            height: 50%;
+            overflow-y: scroll;
         }
-        tr {
+        #tr_files {
             border-bottom: 1px solid #cbcbcb;
             text-align: center;
         }
-        th {
+        #th_files {
             width: 10px;
             text-align: center;
+
         }
-        td {
+        #td_files {
             width: 30px;
             text-align: center;
         }
-        tr:hover {
-            background: #F5F5F5;
+        a:link {
+            color: lightpink;
         }
-
+        a:visited{
+            color: lightpink;
+        }
         /*  Large Tablet */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .container{
@@ -45,25 +68,24 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             .container{
                 width: 70%;
             }
+
         }
     </style>
 </head>
 <body>
 
-
-
 <div class="container">
 
     <!-- Tabelle: In der über eine SQL-Anfrage alle Dokumente angezeigt werden, die der Nutzer hochgeladen hat -->
 
-    <table id="files">
-        <tr>
-            <th> Name </th>
-            <th> Hochgeladen</th>
-            <th> Dateiart</th>
-            <th> Runterladen</th>
-            <th>Löschen</th>
-            <th> Favorisieren </th>
+    <table id="files_table">
+        <tr id="tr_files">
+            <th id="th_files"> Name </th>
+            <th id="th_files"> Hochgeladen</th>
+            <th id="th_files"> Dateiart</th>
+            <th id="th_files"> Runterladen</th>
+            <th id="th_files">Löschen</th>
+            <th id="th_files"> Favorisieren </th>
         </tr>
 
         <!-- SQL-Anfrage: Alle Dokumente in der 'file' Datenbank die die gleiche User ID hat, wie der Nutzer der gerade Online ist.
@@ -71,6 +93,8 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
          -->
 
         <?php
+
+
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID");
         if($statement->execute()) {
@@ -79,13 +103,15 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 $filename=$row['filename'];
                 $upload_date=$row['upload_date'];
                 $mimetype=$row['mimetype'];
+
+
                 echo  "<tr>
-                    <td> $filename </td>
-                    <td>$upload_date</td>
-                    <td>$mimetype</td>
-                    <td> <a href='download_do.php?down=$fileid'>&#8595;</a></td>
-                    <td> <a href='files_all.php?del=$fileid'>&#128465;</a></td>
-                    <td> <a href='favorite_do.php?fav=$fileid'>&#128149;</a></td>
+                    <td id='td_files'> $filename </td>
+                    <td id='td_files'>$upload_date</td>
+                    <td id='td_files'>$mimetype</td>
+                    <td <a href='download_do.php?down=$fileid'><img class=downloadicon src='download1.png'></a></td>
+                    <td <a href='files_all.php?del=$fileid'><img class=trash src='muell.png'></a></td>
+                    <td <a href='favorite_do.php?fav=$fileid'><img class=star src='star2.png'></a></td>
                 </tr>";
             }
         }
