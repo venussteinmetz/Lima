@@ -14,8 +14,9 @@
     <style>
         .search-box {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            left: 300px;
+            
+          
         }
         .search-txt{
             height: 40px;
