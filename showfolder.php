@@ -6,28 +6,25 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 <head>
     <style>
         html  {
-            background-image: url("Hintergrund.jpg");
-            max-width: 100%;
-            height: auto;
             font-family: Avenir;
 
         }
-        .button {
+        .button-folder {
             background-color: lightpink;
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
             color:#ffffff;
-            font-family:Arial;
+            font-family:Avenir;
             font-size:12px;
             padding:9px 13px;
             text-decoration:none;
             text-shadow:0px 1px 0px lightcoral;
         }
-        .button:hover {
+        .button-folder:hover {
             background-color:lightcoral;
         }
-        .button:active {
+        .button-folder:active {
             position:relative;
             top:1px;
         }
@@ -36,23 +33,45 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-family: Arial;
-        }
-        h2 {
-            text-decoration: underline solid;
+            font-family: Avenir;
         }
 
-        #ordner {
+
+        #folder {
             font-size: 25px;
+        }
+        .button-create {
+            background-color: grey;
+            border-radius:42px;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Avenir;
+            font-size:12px;
+            padding:9px 13px;
+            text-decoration:none;
+            position: relative;
+            left: 300px;
+            top: 55px;
+        }
+        .button-create:hover {
+            background-color:lightcoral;
         }
 
     </style>
 </head>
 <body>
 <div id="text">
-    <h2>Deine Ordner:<br></h2>
-<div id="ordner">
+    <a class='button-create' href='createfolder.php'>Neuen Ordner erstellen</a>
 
+    <h2>Deine Ordner:<br></h2>
+<div id="folder">
+    <table id="folder-table">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
 
 <?php
 $owner=$_SESSION["user_id"];
@@ -61,14 +80,10 @@ $stmt ->execute();
 while ($row = $stmt->fetch()) {
     $foldername = $row["folder_name"];
     $folderid = $row["folder_id"];
-    echo $foldername;
-    ?>
-
-    <a class="button" href="showfilesinfolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>">Öffnen</a>
-    <a class="button" href="deletefolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>">Löschen</a><br>
-
-
-<?php
+    echo "<tr>
+          <td>$foldername</td>
+          <td><a class='button-folder' href='showfilesinfolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>'>Öffnen</a></td>
+          <td><a class='button-folder' href='deletefolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>'>Löschen</a><br></td>";
 
 }
 
