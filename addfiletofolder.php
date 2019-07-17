@@ -3,8 +3,8 @@ session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 
 $owner = $_SESSION["user_id"];
-$filename = $_GET["filename"];
-$fileid = $_GET["fileid"];
+$foldername = $_GET["folder_name"];
+$folderid = $_GET["folder_id"];
 
 ?>
 
@@ -39,23 +39,23 @@ $fileid = $_GET["fileid"];
 <div id="content">
     <div class="container">
         <div class="row">
-            <form action="addfiletofolder_do.php?filename=<?php echo $filename;?>&fileid=<?php echo $fileid?>" method="post"><br><br>
-                In welchen Ordner soll die Datei verschoben werden?<br>
-                <select name="folder" value="">
-                    <option value="">- Wähle den Ordner -
+            <form action="addfiletofolder_do.php?foldername=<?php echo $foldername;?>&folder_id=<?php echo $folderid?>" method="post"><br><br>
+                Welche Datei möchtest du hinzufügen?<br>
+                <select name="file" value="">
+                    <option value="">- Wähle die Datei -
                         <?php
-                        $statement = $pdo->prepare("SELECT * FROM folders WHERE owner = ?");
+                        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
                         $statement->execute(array($owner));
                         while ($row = $statement->fetch()) {
-                            $folder = $row["folder_name"];
-                            $folder_id = $row["folder_id"];
-                            echo "<option value=\"" . trim($folder) . "\">" . $folder . "\n";
+                            $file = $row["filename"];
+                            $file_id = $row["file_id"];
+                            echo "<option value=\"" . trim($file) . "\">" . $file . "\n";
                         }
 
                         ?>
 
                 </select>
-                <input type="submit" value="Verschieben">
+                <input type="submit" value="Hinzufügen">
             </form>
         </div>
     </div>

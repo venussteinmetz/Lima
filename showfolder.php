@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+include 'sidebar2.php';
 ?>
 <html>
 <head>
@@ -82,8 +83,8 @@ while ($row = $stmt->fetch()) {
     $folderid = $row["folder_id"];
     echo "<tr>
           <td>$foldername</td>
-          <td><a class='button-folder' href='showfilesinfolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>'>Öffnen</a></td>
-          <td><a class='button-folder' href='deletefolder.php?folder_name=<?php echo $foldername;?>&folderid=<?php echo $folderid;?>'>Löschen</a><br></td>";
+          <td><a class='button-folder' href='showfilesinfolder.php?folder_name=$foldername&folder_id=$folderid'>Öffnen</a></td>
+          <td><a class='button-folder' href='deletefolder.php?folder_name=$foldername&folder_id=$folderid'>Löschen</a><br></td>";
 
 }
 
