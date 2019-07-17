@@ -2,6 +2,7 @@
 session_start()
 ?>
 <?php
+include 'searchbar.php';
 include "sidebar2.php";
 include "notification.php";
 ?>
