@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
 
@@ -10,25 +9,22 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <meta name="viewport" content="width=device-width">
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    <!-- Das neueste kompilierte und minimierte CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optionales Theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Das neueste kompilierte und minimierte JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
     <style>
-        .trash {
-            height: 25px;
-            width: 25px;
+        .container{
+            height: 400px;
+            width: 1200px;
+            overflow-y: scroll;
         }
-        .star {
-            height: 25px;
-            width: 25px;
-        }
-        .downloadicon {
-            height: 25px;
-            width: 25px;
-        }
-        .container {
-            overflow: auto;
-            max-height: 200px;
-            width: 50%;
-        }
+
         #files_table {
             position: absolute;
             margin-top: 50px;
@@ -45,16 +41,16 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         #th_files {
             width: 10px;
             text-align: center;
-
         }
         #td_files {
             width: 30px;
             text-align: center;
         }
-        a:link {
+        .link-id:link {
             color: lightpink;
+            text-decoration: none;
         }
-        a:visited{
+        .link-id:visited{
             color: lightpink;
         }
         /*  Large Tablet */
@@ -68,11 +64,25 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             .container{
                 width: 70%;
             }
-
         }
+       .trash {
+           height: 25px;
+           width: 25px;
+       }
+        .star {
+            height: 25px;
+            width: 25px;
+        }
+        .downloadicon {
+            height: 25px;
+            width: 25px;
+        }
+
     </style>
 </head>
 <body>
+
+
 
 <div class="container">
 
@@ -93,30 +103,28 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
          -->
 
         <?php
-
-
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID");
         if($statement->execute()) {
             while ($row = $statement->fetch()) {
-                $fileid=$row['file_id'];
-                $filename=$row['filename'];
-                $upload_date=$row['upload_date'];
-                $mimetype=$row['mimetype'];
-
-
-                echo  "<tr>
+                $fileid = $row['file_id'];
+                $filename = $row['filename'];
+                $upload_date = $row['upload_date'];
+                $mimetype = $row['mimetype'];
+                echo "<tr>
                     <td id='td_files'> $filename </td>
-                    <td id='td_files'>$upload_date</td>
+                    <td id='td_files'> $upload_date</td>
                     <td id='td_files'>$mimetype</td>
-                    <td <a href='download_do.php?down=$fileid'><img class=downloadicon src='download1.png'></a></td>
-                    <td <a href='files_all.php?del=$fileid'><img class=trash src='muell.png'></a></td>
-                    <td <a href='favorite_do.php?fav=$fileid'><img class=star src='star2.png'></a></td>
-                </tr>";
-            }
+                    <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
+                    <td> <a class='link-id' href='delete_file.php?del=$fileid'><img class=trash src='muell.png'></a></td>
+                     <td><a class='link-id' href='favorite_do.php?fav=$fileid'><img class=star src='star2.png'></a></td></tr>";
+
+                }
         }
         ?>
     </table>
 </div>
 </body>
 </html>
+
+
