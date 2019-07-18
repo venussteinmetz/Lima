@@ -1,5 +1,9 @@
 
-
+<?php
+include 'searchbar.php';
+include "sidebar2.php";
+include "notification.php";
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -11,27 +15,59 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <style type="text/css">
         /*nur fuer Beispiel, um Hoehe des Containers zu simulieren*/
-        #textarea {
+        #nachricht {
+            position: absolute;
+            left: 300px;
+            top:80px;
+        }
+        h2 {
+            position: absolute;
+            left: 300px;
+            top:60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
 
-            border: 5px;
+        }
+
+        #textarea {
+            position: absolute;
+            left: 300px;
+            top:80px;
+            border: 1px;
             border-style: solid;
             padding: 10px;
-            width: 50%;
-            margin: 10px;
+            width: 400px;
+            margin-top: 30px;
         }
-        .button {
+        #answer_button {
+            outline: none;
+            position: absolute;
+            top: 110px;
+            right: 400px;
             background-color: lightpink;
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
+            color:black;
+            font-family: Avenir;
             font-size:12px;
             padding:9px 13px;
             text-decoration:none;
             text-shadow:0px 1px 0px lightcoral;
         }
+        #answer_button:hover {
+            background-color: lightcoral;
+        }
+        #answer_button:link {
+            color: black;
+        }
     </style>
+</head>
+<body>
+
+<br>
+<h2>Deine Nachricht: </h2>
+<br>
 
 <?php
 session_start();
@@ -58,7 +94,7 @@ $message = $_GET["id"];
         $statement2 = $pdo->prepare("SELECT * FROM user WHERE userID = ?");
         $statement2->execute(array($row['sender']));
         while ($row2 = $statement2->fetch()) {
-            $sender = $row2["firstName"] . " " . $row2["lastName"];
+            $sender= $row2["firstName"] . " " . $row2["lastName"];
         }
         $statement3 = $pdo->prepare("SELECT * FROM user WHERE userID = ?");
         $statement3->execute(array($row['receiver']));
@@ -68,35 +104,29 @@ $message = $_GET["id"];
     }
     ?>
 
-    <table id="nachricht">
-        <div class="row justify-content-between">
-            <div class="col-5">
-                <table class="table table-hover">
-                    <tr>
-                        <th>Deine Nachricht von: <?php echo $sender; ?> </th>
-                        <th><?php echo $sender; ?></th>
-                        <th>Gesendet um: <?php echo $row['message_date']; ?></th>
-                        <th>Betreff: <?php echo $row['message_subject']; ?></th>
-
-                    </tr>
-</table>
-
-                <div id="textarea">
-
-                    <?php echo $row['content']; ?>
 
 
 
+    <div id="textarea">
 
-                </div>
+
+   <?php echo $row['content']; ?>
+
+
+        <?php } ?>
+    </div>
+
+
 <p>
-    <a class="button" href="answer_message.php?id=<?php echo $row['message_id']; ?>">Auf diese Nachricht antworten</a>
+    <a id="answer_button" href="answer_message.php?id=<?php echo $row['message_id']; ?>">Auf diese Nachricht antworten</a>
     <?php
     $date = date('Y-m-d H:i:s');
     $statement4 = $pdo->prepare("UPDATE message SET message_read=:message_read WHERE message_id=:id");
     $statement4->bindParam(':message_read', $date);
     $statement4->bindParam(':id', $message);
     $statement4->execute();
-    }
     ?>
 </p>
+
+</table>
+</body>

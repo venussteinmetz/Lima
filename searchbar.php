@@ -1,4 +1,5 @@
 <?php
+
 ?>
 <html>
 <head>
@@ -15,28 +16,30 @@
         .search-box {
             position: absolute;
             left: 300px;
-            
-          
+            margin-top:15px;
+
+
         }
-        .search-txt{
+
+        .search-txt {
             height: 40px;
             border-radius: 40px;
             border-color: black;
             width: 500px;
             padding: 10px;
         }
+
         #search-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
-
     </style>
 </head>
 
 <body>
 <form class="search-box" action="search.php" method="post">
-    <input class="search-txt" type="text" name="submit-search" placeholder="Suche">
+    <input class="search-txt" type="text" name="submit-search" placeholder="Suche nach Datei">
     <button id="search-btn" type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span>
     </button>

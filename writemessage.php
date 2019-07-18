@@ -2,21 +2,35 @@
 
 session_start();
 ?>
+<?php
+include 'searchbar.php';
+include "sidebar2.php";
+include "notification.php";
+?>
+?>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <style>
     .textfeld {
         position: absolute;
-        top: 20%;
-        left: 40%;
+        top: 15%;
+        left: 300px;
         width: 300px;
         height: 100px;
 
     }
-</style>
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .textfeld {
+            width: 70%;
+        }
+        @media screen and (min-width: 569px) and (max-width: 767px) {
+            .textfeld{
+                width: 70%;
+            }
+        }
+        </style>
 </head>
 <body>
-<img src="Hintergrund.png" alt="Hintergrund" class="img-fluid" >
 <div class="textfeld">
     <form action="writemessage_do.php" method="post">
         <fieldset>
