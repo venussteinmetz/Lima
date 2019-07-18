@@ -13,7 +13,7 @@ include "sidebar2.php";
             font-family: 'Poppins', sans-serif;
             font-size: medium;
             position: absolute;
-            margin-top: 50px;
+            margin-top: 90px;
             margin-right: 10px;
             left:300px;
             width:50%;
