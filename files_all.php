@@ -24,7 +24,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             width: 1200px;
             overflow-y: scroll;
         }
-
         #files_table {
             position: absolute;
             margin-top: 50px;
@@ -65,10 +64,10 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 width: 70%;
             }
         }
-       .trash {
-           height: 25px;
-           width: 25px;
-       }
+        .trash {
+            height: 25px;
+            width: 25px;
+        }
         .star {
             height: 25px;
             width: 25px;
@@ -77,7 +76,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             height: 25px;
             width: 25px;
         }
-
     </style>
 </head>
 <body>
@@ -104,7 +102,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
         <?php
         $userID= $_SESSION["user_id"];
-        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID");
+        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID AND favorite ='0' ORDER BY filename ASC");
         if($statement->execute()) {
             while ($row = $statement->fetch()) {
                 $fileid = $row['file_id'];
@@ -118,13 +116,11 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                     <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
                     <td> <a class='link-id' href='delete_file.php?del=$fileid'><img class=trash src='muell.png'></a></td>
                      <td><a class='link-id' href='favorite_do.php?fav=$fileid'><img class=star src='star2.png'></a></td></tr>";
-
-                }
+            }
         }
         ?>
     </table>
 </div>
 </body>
 </html>
-
 
