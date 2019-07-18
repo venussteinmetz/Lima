@@ -45,7 +45,7 @@ include "notification.php";
             background-color: lightcoral;
         }
 
-   
+
     </style>
 
 </head>
