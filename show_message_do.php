@@ -1,4 +1,3 @@
-
 <?php
 include 'searchbar.php';
 include "sidebar2.php";
@@ -8,11 +7,11 @@ include "notification.php";
 <html lang="de">
 <head>
 
-<title>Bootstrap</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <style type="text/css">
         /*nur fuer Beispiel, um Hoehe des Containers zu simulieren*/
         #nachricht {
@@ -26,9 +25,7 @@ include "notification.php";
             top:60px;
             margin-top: 10px;
             margin-bottom: 10px;
-
         }
-
         #textarea {
             position: absolute;
             left: 300px;
@@ -63,11 +60,7 @@ include "notification.php";
         }
     </style>
 </head>
-<body>
 
-<br>
-<h2>Deine Nachricht: </h2>
-<br>
 
 <?php
 session_start();
@@ -75,6 +68,11 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 $user = $_SESSION["user_id"];
 $message = $_GET["id"];
 ?>
+<body>
+
+<br>
+<h2>Deine Nachricht: </h2>
+<br>
 <table id="nachricht">
     <?php
     $statement = $pdo->prepare("SELECT * FROM message WHERE message_id = ?");
@@ -110,23 +108,24 @@ $message = $_GET["id"];
     <div id="textarea">
 
 
-   <?php echo $row['content']; ?>
+        <?php echo $row['content']; ?>
 
 
         <?php } ?>
     </div>
 
 
-<p>
-    <a id="answer_button" href="answer_message.php?id=<?php echo $row['message_id']; ?>">Auf diese Nachricht antworten</a>
-    <?php
-    $date = date('Y-m-d H:i:s');
-    $statement4 = $pdo->prepare("UPDATE message SET message_read=:message_read WHERE message_id=:id");
-    $statement4->bindParam(':message_read', $date);
-    $statement4->bindParam(':id', $message);
-    $statement4->execute();
-    ?>
-</p>
+    <p>
+        <a id="answer_button" href="answer_message.php?id=<?php echo $message; ?>">Auf diese Nachricht antworten</a>
+        <?php
+        $date = date('Y-m-d H:i:s');
+        $statement4 = $pdo->prepare("UPDATE message SET message_read=:message_read WHERE message_id=:id");
+        $statement4->bindParam(':message_read', $date);
+        $statement4->bindParam(':id', $message);
+        $statement4->execute();
+        ?>
+    </p>
 
 </table>
 </body>
+</html>
