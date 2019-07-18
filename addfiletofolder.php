@@ -25,15 +25,27 @@ include "notification.php";
     <style>
         .row {
             position: absolute;
-            align-items: center;
-            justify-content: center;
-            height: 500px;
-            margin-top: 70px;
             left: 300px;
+            top:90px;
         }
+
+
         p {
             margin-top: 25px;
+
         }
+        #submit-share {
+            padding:5px 15px;
+            background:lightpink;
+            border:0 none;
+            cursor:pointer;
+            border-radius: 5px;
+        }
+        #submit-share:hover {
+            background-color: lightcoral;
+        }
+
+   
     </style>
 
 </head>
@@ -44,7 +56,7 @@ include "notification.php";
         <div class="row">
             <form action="addfiletofolder_do.php?foldername=<?php echo $foldername;?>&folder_id=<?php echo $folderid?>" method="post"><br><br>
                 Welche Datei möchtest du hinzufügen?<br>
-                <select name="file" value="">
+                <select  name="file" value="">
                     <option value="">- Wähle die Datei -
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
@@ -57,7 +69,7 @@ include "notification.php";
                         ?>
 
                 </select>
-                <input type="submit" value="Hinzufügen">
+                <input id="submit-share" type="submit" value="Hinzufügen">
             </form>
         </div>
     </div>
