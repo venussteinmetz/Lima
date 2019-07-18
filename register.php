@@ -122,7 +122,7 @@
         if (!$error) {
             if ($statement2->execute()) {
                 echo 'Registrierung erfolgreich!';
-                header("location: profilebar.php");
+                header("location: login.php");
             } else {
                 echo 'Datenbank-Fehler:';
                 echo $statement2->errorInfo()[2];
