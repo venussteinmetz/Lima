@@ -4,14 +4,23 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
 
 
-    $namearray= explode (".", $_FILES["uploadfile"]["name"]);
+    $namearray = explode(".", $_FILES["uploadfile"]["name"]);
+    $fileName = $_FILES["uploadfile"]["name"];
     $mimetype=$_FILES["uploadfile"]["type"];
     $fileSize=$_FILES["uploadfile"]["size"];
     $filePath= "mars.iuk.hdm-stuttgart.de/home/ab247/public_html/s19_lima/files"."$fileName";
     $owner=$_SESSION['user_id'];
     $favorite = "0";
+    $only_name = $namearray[0];
 
 
+            $statement = $pdo->prepare("SELECT * FROM file WHERE filename = :filename");
+            $statement->execute(array('filename' => $only_name));
+            $file = $statement->fetch();
+            if ($file !== false) {
+                echo 'Dieser Dateiname existiert bereits';
+                die();
+        }
 
 if (isset($namearray[2])){
     echo ("Ungültiger Dateiname, bitte keine Punkte im Dateiname.");
@@ -25,8 +34,6 @@ if($_FILES["uploadfile"]["name"]=="")
 }
 
 
-$fileName=$_FILES["uploadfile"]["name"];
-echo "FILENAME:".$namearray[0]."FILETYPE:".$namearray[1]."<br>";
 if ($_FILES["uploadfile"]["size"] > 25000000) {
     echo"Datei zu groß.";
     die();
