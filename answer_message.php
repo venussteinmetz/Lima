@@ -25,7 +25,7 @@ include "notification.php";
     </style>
 
 
-<body>
+
 
 
 <?php
@@ -41,6 +41,7 @@ while ($row2 = $statement2->fetch()) {
     $empfaenger = $row2["eMail"];
 }
 ?>
+<body>
 <div id="answermessage">
     <form action="writemessage_do.php" method="post">
         <fieldset>
@@ -56,3 +57,4 @@ while ($row2 = $statement2->fetch()) {
 </div>
 
 </body>
+</html>
