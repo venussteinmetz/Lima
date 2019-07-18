@@ -1,11 +1,14 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
 $owner = $_SESSION["user_id"];
 $foldername = $_GET["folder_name"];
 $folderid = $_GET["folder_id"];
-
+?>
+<?php
+include "searchbar.php";
+include "sidebar2.php";
+include "notification.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,16 +24,16 @@ $folderid = $_GET["folder_id"];
 
     <style>
         .row {
-            display: flex;
+            position: absolute;
             align-items: center;
             justify-content: center;
             height: 500px;
+            margin-top: 70px;
+            left: 300px;
         }
         p {
             margin-top: 25px;
         }
-
-
     </style>
 
 </head>
@@ -51,7 +54,6 @@ $folderid = $_GET["folder_id"];
                             $file_id = $row["file_id"];
                             echo "<option value=\"" . trim($file) . "\">" . $file . "\n";
                         }
-
                         ?>
 
                 </select>
