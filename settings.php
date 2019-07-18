@@ -1,6 +1,10 @@
 
 <?php
 session_start();
+include 'sidebar2.php';
+include 'searchbar.php';
+include 'notifications.php';
+include 'profilepicture.php';
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -8,56 +12,55 @@ session_start();
     <meta charset="UTF-8">
     <title>Bild Upload</title>
     <style>
-        form{
+
+        #heading-pp {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 50%;
-        }
-        div {
-            position: absolute;
-            top: 320px;
-            left: 700px;
-            transform: translate(-50%, -50%);
-            opacity: 50%;
+            top: 160px;
+            left: 600px;
         }
 
         html  {
-            background-image: url("Hintergrund.jpg");
-            max-width: 100%;
-            height: auto;
             font-family: Avenir;
 
         }
-        button {
+        #button-pp {
             position: absolute;
             background-color: lightpink;
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
             color:#ffffff;
-            font-family:Arial;
+            font-family:Avenir;
             font-size:12px;
             padding:9px 13px;
             text-decoration:none;
             text-shadow:0px 1px 0px lightcoral;
-            right: 35px;
+            left: 120px;
+            top:30px;
+
         }
-        button:hover {
+        #button-pp:hover {
             background-color: lightcoral;
         }
+#settings-pp {
+  position: relative;
+    top:200px;
+    left:600px;
 
+
+
+}
 
     </style>
 </head>
 <body>
-<div id="1" ><b>Lade dein neues Profilbild hoch</b></div>
-<form action="uploadpicture.php" method="post" enctype="multipart/form-data">
-    Bild auswählen:
+<div id="heading-pp" ><b>Lade dein neues Profilbild hoch</b></div>
+<div id="settings-pp">
+<form id="uploadpictureform" action="uploadpicture.php" method="post" enctype="multipart/form-data">
     <input type="file" name="file" id="uploadfile"><br>
-    <button type="submit" value="Bild hochladen" name="submit">Bild hochladen</button>
+    <button id="button-pp" type="submit" value="Bild hochladen" name="submit">Bild hochladen</button>
 </form>
+</div>
 
 
 </body>
