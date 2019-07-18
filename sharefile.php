@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,58 +14,63 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="dashboard3style.css" rel="stylesheet">
 
-    <style>
-        html {
-            position: absolute;
-            background-image: url("lima1.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .row {
+<style>
+    .row-share {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 500px;
+    }
+    #share2 {
+        margin-top: 25px;
+        font-size: 20px;
+        text-align: center;
+    }
+    .files-share {
+        width: 300px;
+        height: 40px;
+        padding-left: 10px;
+        color: grey;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+        border-radius: 3px;
+        outline: none;
+    }
+    .share-text{
+        font-size: 20px;
+        padding-bottom: 10px;
+    }
+    .field-share {
+        width: 200px;
+        border-radius: 4px;
 
-            position: absolute;
-            top: 25%;
-            right: 35%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 500px;
-        }
-        p {
-            margin-top: 25px;
-        }
+    }
+    .submit-share {
+        padding:5px 15px;
+        background:lightpink;
+        border:0 none;
+        cursor:pointer;
+        border-radius: 5px;
+    }
+    .submit-share:hover {
+    background-color: lightcoral;
+    }
 
-        .button {
-            background-color: lightpink;
-            border-radius:42px;
-            display:inline-block;
-            cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:12px;
-            padding:9px 13px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px lightcoral;
-        }
-    </style>
+</style>
 
 </head>
 
 <body>
 <div id="content">
     <div class="container">
-        <div class="row">
-            <form action="sharefile_do.php" method="post"><br><br>
-                <h3> Teile deine Datei mit anderen:</h3><br>
-                <select name="file" value="">
+        <div class="row-share">
+            <form action="sharefile_do.php" method="post">
+                <div class="share-text"> Teile deine Datei mit anderen:<br></div>
+                <select class="files-share "name="file" value="">
                     <option value="">- Wähle die Datei zur Freigabe -
                         <?php
+
                         $owner = $_SESSION["user_id"];
                         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
                         $statement->execute(array($owner));
@@ -73,14 +79,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                             $file_id = $row["file_id"];
                             echo "<option value=\"" . trim($file) . "\">" . $file . "\n";
                         }
-                        ?>
+
+                            ?>
 
                 </select>
-                <p id="share2"> <h4> Gib hier die E-Mail-Adresse des Nutzers ein: </h4></p><br>
-                <input type="text" name="user_email">
-
-                <input class="button" type="submit" value="Freigeben" </input>
-
+                <p id="share2">Gib hier die E-Mail-Adresse des Nutzers ein:</p>
+                <input class="field-share" type="text" name="user_email" placeholder="E-Mail">
+                <input class="submit-share" type="submit" value="Datei freigeben">
             </form>
         </div>
     </div>
