@@ -40,6 +40,7 @@ if(!isset($_SESSION['user_id'])) {
             margin-right: 10px;
             border-color: #cbcbcb;
             border-style: solid;
+            outline: none;
         }
         .notification:hover {
             background: grey;
@@ -81,6 +82,9 @@ if(!isset($_SESSION['user_id'])) {
             color: black;
             text-align: center;
             font-size: 20px;
+        }
+        .notification-msg{
+            margin: 10px;
         }
 
         .notification-msg:hover {
