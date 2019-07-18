@@ -3,9 +3,9 @@ session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
 <?php
-include 'searchbar.php';
 include "sidebar2.php";
 include "notification.php";
+include 'searchbar.php';
 ?>
 
     <html>
@@ -16,11 +16,13 @@ include "notification.php";
         <style>
 
             .all_files {
+                font-family: Avenir;
                 position: absolute;
                 margin-top: 70px;
                 margin-right: 10px;
                 left:300px;
                 width:50%;
+
 
             }
             tr {
@@ -28,10 +30,15 @@ include "notification.php";
                 text-align: center;
             }
             th {
-                width: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                width: 20px;
                 text-align: center;
             }
             td {
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-top:10px;
                 width: 30px;
                 text-align: center;
             }
@@ -51,11 +58,35 @@ include "notification.php";
                     width: 70%;
                 }
             }
+            .trash {
+                height: 25px;
+                width: 25px;
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+            .star {
+                height: 25px;
+                width: 25px;
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+            .downloadicon {
+                height: 25px;
+                width: 25px;
+                margin-top: 10px;
+                margin-right: 10px;
+                margin-left: 10px;
+            }
+
+
         </style>
     </head>
     <body>
 
     <div class="all_files">
+        <br>
         <h2> Meine Favoriten: </h2>
         <br>
 
@@ -64,6 +95,9 @@ include "notification.php";
                 <th> Name </th>
                 <th> Hochgeladen</th>
                 <th> Dateiart</th>
+                <th> Runterladen </th>
+                <th> Löschen </th>
+                <th> Favorisieren </th>
             </tr>
 
 <?php
@@ -81,6 +115,9 @@ if($statement->execute()) {
                     <td> $filename </td>
                     <td>$upload_date</td>
                     <td>$mimetype</td>
+                    <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
+                    <td> <a class='link-id' href='delete_file.php?del=$fileid'><img class=trash src='muell.png'></a></td>
+                    <td><a class='link-id' href='favorite_do.php?fav=$fileid'><img class=star src='star2.png'></a></td></tr>
                </tr>";
     }
 }

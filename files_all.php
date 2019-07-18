@@ -19,18 +19,17 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
     <style>
+
         .container{
-            height: 400px;
-            width: 1200px;
             overflow-y: scroll;
+            font-family: Avenir;
         }
         #files_table {
             position: absolute;
-            margin-top: 50px;
+            margin-top: 70px;
             margin-right: 10px;
             left:300px;
             width:50%;
-            height: 50%;
             overflow-y: scroll;
         }
         #tr_files {
@@ -38,10 +37,16 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             text-align: center;
         }
         #th_files {
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 1px solid #cbcbcb;
             width: 10px;
             text-align: center;
         }
         #td_files {
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 10px;
             width: 30px;
             text-align: center;
         }
@@ -67,14 +72,23 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         .trash {
             height: 25px;
             width: 25px;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
         }
         .star {
             height: 25px;
             width: 25px;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
         }
         .downloadicon {
             height: 25px;
             width: 25px;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -85,7 +99,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 <div class="container">
 
     <!-- Tabelle: In der über eine SQL-Anfrage alle Dokumente angezeigt werden, die der Nutzer hochgeladen hat -->
-
+<br>
     <table id="files_table">
         <tr id="tr_files">
             <th id="th_files"> Name </th>
@@ -123,4 +137,3 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 </div>
 </body>
 </html>
-
