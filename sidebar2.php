@@ -1,7 +1,6 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
 ?>
 
 <!DOCTYPE html>
@@ -10,17 +9,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-
             font-family: 'Poppins', sans-serif;
         }
-
-
         @media screen and (max-width: 600px) {
             .sidenav {
                 display: none;
             }
         }
-
         .sidenav {
             height: 100%;
             width: 250px;
@@ -31,9 +26,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             background-color: #F3F4F4;
             overflow-x: hidden;
             padding-top: 60px;
-
         }
-
         .sidenav a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
@@ -41,12 +34,10 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             color: grey;
             display: block;
         }
-
         .sidenav a:hover {
             color: black;
             text-decoration: inherit;
         }
-
         .hamburger-button {
             display: block;
             font-size:30px;
@@ -54,14 +45,12 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             position: absolute;
             z-index: 10;
         }
-
         .profile-usertitle-name {
             font-size: 35px;
             padding-left: 30px;
             align-items: center;
             color: lightpink;
         }
-
         img {
             max-width: 200px;
             height: 50px;
@@ -69,7 +58,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             margin-right: 30px;
             margin-bottom: 40px;
         }
-
         #button {
             background-color: darkgray;
             font-size: medium;
@@ -83,11 +71,9 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             float: right;
             margin-right: 40px;
         }
-
         #rosa_hover a:hover{
             background-color: lightpink;
         }
-
     </style>
 </head>
 <body>
@@ -103,26 +89,26 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         $datensatz = array($_SESSION["user_id"]);
         $statement->execute($datensatz);
         if ($row = $statement->fetch()) {
-
             echo "Hallo ", $row["firstName"]." ";
         }
         ?>
     </div>
     <div id="rosa_hover">
 
-            <a href="index.php">Meine Dateien</a>
-            <a href="#">Neuste</a>
-            <a href="favorite.php">Favoriten</a>
-            <a href="show_message.php">Meine Nachrichten</a>
-            <a href="showfolder.php">Meine Ordner</a>
-            <a href="logout.php">Logout</a>
-<br>
-    <a id="button" href="fileupload.php">Neue Datei hochladen</a>
-</div>
+        <a href="index.php">Meine Dateien</a>
+        <a href="recent.php">Neuste</a>
+        <a href="favorite.php">Favoriten</a>
+        <a href="sharedfiles.php">Freigabe</a>
+        <a href="show_message.php">Meine Nachrichten</a>
+        <a href="showfolder.php">Meine Ordner</a>
+        <a href="logout.php">Logout</a>
+        <br>
+        <a id="button" href="fileupload.php">Neue Datei hochladen</a>
+    </div>
 </div>
 
 
-<span style="font-size:30px;cursor:pointer" class="hamburger-button">&#9776;</span>
+<span style="font-size:30px;cursor:pointer"  class="hamburger-button">&#9776;</span>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(){
@@ -130,7 +116,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             $('#mySidenav').toggle();
         })
     })
-
 </script>
 
 </body>
