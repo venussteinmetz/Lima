@@ -1,9 +1,7 @@
-
 <?php
 include 'sidebar2.php';
 include "searchbar.php";
 include "notification.php";
-
 ?>
 <html>
 <head>
@@ -19,9 +17,11 @@ include "notification.php";
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
+           color: black;
         }
         #file:hover {
             background-color: lightcoral;
+            text-decoration: none;
         }
 
     </style>
