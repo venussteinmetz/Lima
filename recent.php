@@ -6,6 +6,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
+include 'profilepicture.php';
 ?>
 
 <html>
@@ -96,7 +97,7 @@ include 'searchbar.php';
             <th id="th_files"> Name </th>
             <th id="th_files"> Hochgeladen</th>
             <th id="th_files"> Dateiart</th>
-            <th id="th_files"> Runterladen</th>
+            <th id="th_files"> Herunterladen</th>
             <th id="th_files">Löschen</th>
             <th id="th_files"> Favorisieren </th>
         </tr>
