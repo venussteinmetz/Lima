@@ -32,13 +32,11 @@ include 'profilepicture.php';
             background-color: lightcoral;
             text-decoration: none;
         }
-
     </style>
 </head>
 <body>
 <div id="upload-output">
-<?php
-
+    <?php
     $namearray = explode(".", $_FILES["uploadfile"]["name"]);
     $fileName = $_FILES["uploadfile"]["name"];
     $mimetype=$_FILES["uploadfile"]["type"];
@@ -47,40 +45,37 @@ include 'profilepicture.php';
     $owner=$_SESSION['user_id'];
     $favorite = "0";
     $only_name = $namearray[0];
+    $statement = $pdo->prepare("SELECT * FROM file WHERE filename = :filename AND owner = :owner");
+    $statement -> bindParam(':filename',$only_name );
+    $statement -> bindParam(':owner',$owner );
+    $statement->execute();
+    $result = $statement->rowCount();
 
+    if ($result > 0) {
+        echo "Dieser Dateiname existiert bereits<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+        die();
 
-            $statement = $pdo->prepare("SELECT * FROM file WHERE filename = $only_name AND owner = $owner");
-            $statement->execute();
-            $result = $statement->rowCount();
-            if ($result > 0) {
-                echo "Dieser Dateiname existiert bereits<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
-                die();
-            }
-
-if (isset($namearray[2])){
-    echo "Ungültiger Dateiname, bitte keine Punkte im Dateiname<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
-    die();
-}
-
-if($_FILES["uploadfile"]["name"]=="")
-{
-    echo "Es wurde keine Datei ausgewählt<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
-    die();
-}
-
-
-if ($_FILES["uploadfile"]["size"] > 25000000) {
-    echo"Datei zu groß<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
-    die();
-}
-if(!$error) {
-    if ($namearray[1] == "jpg" OR $namearray[1] == "png" OR $namearray[1] == "PNG" OR $namearray[1] == "JPG" OR $namearray[1] == "jpeg" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "PDF" OR $namearray[1] == "docx" OR $namearray[1] == "DOCX" OR $namearray[1] == "doc" OR $namearray[1] == "DOC" OR $namearray[1] == "php" OR $namearray[1] == "PHP" OR $namearray[1] == "html" OR $namearray[1] == "HTML" OR $namearray[1] == "css" OR $namearray[1] == "CSS" OR $namearray[1] == "xlsx" OR $namearray[1] == "XLSX" OR $namearray[1] == "xls" OR $namearray[1] == "XLS" OR $namearray[1] == "ppt" OR $namearray[1] == "PPT" OR $namearray[1] == "pptx" OR $namearray[1] == "PPTX" OR $namearray[1] == "txt" OR $namearray[1] == "TXT" OR $namearray[1] == "mp3" OR $namearray[1] == "MP3") {
-    } else {
-        echo "Dateiart nicht zugelassen<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+    }
+    if (isset($namearray[2])){
+        echo "Ungültiger Dateiname, bitte keine Punkte im Dateiname<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
         die();
     }
-}
-
+    if($_FILES["uploadfile"]["name"]=="")
+    {
+        echo "Es wurde keine Datei ausgewählt<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+        die();
+    }
+    if ($_FILES["uploadfile"]["size"] > 25000000) {
+        echo"Datei zu groß<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+        die();
+    }
+    if(!$error) {
+        if ($namearray[1] == "jpg" OR $namearray[1] == "png" OR $namearray[1] == "PNG" OR $namearray[1] == "JPG" OR $namearray[1] == "jpeg" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "PDF" OR $namearray[1] == "docx" OR $namearray[1] == "DOCX" OR $namearray[1] == "doc" OR $namearray[1] == "DOC" OR $namearray[1] == "php" OR $namearray[1] == "PHP" OR $namearray[1] == "html" OR $namearray[1] == "HTML" OR $namearray[1] == "css" OR $namearray[1] == "CSS" OR $namearray[1] == "xlsx" OR $namearray[1] == "XLSX" OR $namearray[1] == "xls" OR $namearray[1] == "XLS" OR $namearray[1] == "ppt" OR $namearray[1] == "PPT" OR $namearray[1] == "pptx" OR $namearray[1] == "PPTX" OR $namearray[1] == "txt" OR $namearray[1] == "TXT" OR $namearray[1] == "mp3" OR $namearray[1] == "MP3") {
+        } else {
+            echo "Dateiart nicht zugelassen<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+            die();
+        }
+    }
     $status = 0;
     $stmt = $pdo->prepare("INSERT INTO file (file_id, filename, filetype, filesize, owner, upload_date, access_rights, filepath, mimetype, favorite) VALUES('',:filename,:filetype,:filesize,$owner,CURRENT_TIMESTAMP (),:access_rights ,:filepath,:mimetype,0)");
     $stmt->bindParam('filename', $namearray[0]);
@@ -93,15 +88,11 @@ if(!$error) {
         echo "Dateiname: " . $_FILES["uploadfile"]["name"] . "<br>";
         echo "Upload erfolgreich<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
     }
-
-
-if (!move_uploaded_file($_FILES["uploadfile"]["tmp_name"], "/home/ab247/public_html/s19_lima/files/".$namearray[0].".".$owner.".".$namearray[1])) {
-    echo "Datei nicht hochgeladen<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
-    die();
-}
-
-?>
+    if (!move_uploaded_file($_FILES["uploadfile"]["tmp_name"], "/home/ab247/public_html/s19_lima/files/".$namearray[0].".".$owner.".".$namearray[1])) {
+        echo "Datei nicht hochgeladen<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
+        die();
+    }
+    ?>
 </div>
 </body>
 </html>
-
