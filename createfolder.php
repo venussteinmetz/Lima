@@ -15,12 +15,12 @@ include "notification.php";
             left:300px;
             position: absolute;
         }
-        button {
+        #file {
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
         }
-        button:hover {
+        #file:hover {
             background-color: lightcoral;
         }
 
@@ -30,7 +30,7 @@ include "notification.php";
 
 <form id="createfolder" action="createfolder_do.php" method="post">
     <input type="text" name="foldername" placeholder="Ordnername">
-    <button  type="submit">Ordner erstellen</button> <br>
+    <button id="file" type="submit">Ordner erstellen</button> <br>
 
 </body>
 
