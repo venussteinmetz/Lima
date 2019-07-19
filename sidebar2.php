@@ -9,7 +9,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Avenir;
         }
         @media screen and (max-width: 600px) {
             .sidenav {
@@ -42,7 +42,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             display: block;
             font-size:30px;
             cursor:pointer;
-            position: absolute;
+            position: fixed;
             z-index: 10;
         }
         .profile-usertitle-name {
