@@ -4,7 +4,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 ?>
 <?php
 include "sidebar2.php";
-include "notification.php";
+include "notifications.php";
 include 'searchbar.php';
 ?>
 
@@ -54,13 +54,7 @@ include 'searchbar.php';
                 width: 70%;
             }
         }
-        .trash {
-            height: 25px;
-            width: 25px;
-            margin-top: 10px;
-            margin-right: 10px;
-            margin-left: 10px;
-        }
+
         .star {
             height: 25px;
             width: 25px;
@@ -89,9 +83,8 @@ include 'searchbar.php';
             <th> Name </th>
             <th> Hochgeladen</th>
             <th> Dateiart</th>
-            <th> Runterladen </th>
-            <th> Löschen </th>
-            <th> Undo Favorite </th>
+            <th> Herunterladen</th>
+            <th> Entfavorisieren</th>
         </tr>
 
         <?php
@@ -110,7 +103,6 @@ include 'searchbar.php';
                     <td>$upload_date</td>
                     <td>$mimetype</td>
                     <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
-                    <td> <a class='link-id' href='delete_file.php?del=$fileid'><img class=trash src='muell.png'></a></td>
                     <td><a href='undofavorite.php?undofav=$fileid'><img class=star src='star.png'></a></td></tr>
                </tr>";
             }
