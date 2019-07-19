@@ -123,4 +123,3 @@ if($showForm):
 endif; //Endif von if($showForm)
 ?>
 </html>
-
