@@ -14,21 +14,18 @@ include "notification.php";
         position: absolute;
         top: 80px;
         left: 300px;
-
     }
     #longmail {
         width: 400px;
-
-
     }
-
-    button {
+    #write_button {
         width: 173px;
         border-radius: 4px;
         background-color: lightpink;
     }
-    button:hover {
+    #write_button:hover {
         background-color: lightcoral;
+        text-decoration: none;
     }
     @media screen and (min-width: 768px) and (max-width: 1024px) {
         #textfeld {
@@ -47,11 +44,10 @@ include "notification.php";
         <fieldset>
             <h2>Neue Nachricht schreiben</h2>
             <div id="messageschreiben">
-            <label>Empfänger: <input id="longmail" type="text" name="receiver"  /></label> <br>
-            <label>Betreff: <input id="longmail" type="text" name="subject" </label> <br>
-            <label>Nachricht: <br> <textarea name="content" cols="80" rows="20"></textarea></label> <br>
-
-                <button  type="submit">Nachricht senden</button> <br>
+                <label>Empfänger: <input id="longmail" type="text" name="receiver"  /></label> <br>
+                <label>Betreff: <input id="longmail" type="text" name="subject" </label> <br>
+                <label>Nachricht: <br> <textarea name="content" cols="80" rows="20"></textarea></label> <br>
+                <button id="write_button" type="submit">Nachricht senden</button> <br>
             </div>
         </fieldset>
     </form>
