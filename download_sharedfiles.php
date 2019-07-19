@@ -43,7 +43,7 @@ $statement->execute(array($string));
 
                     }
                     else{
-                        echo ("Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt. <br> Bitte fordern Sie einen neuen Link an.");
+                        echo ("Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt.");
                     }
 
                     ?>
