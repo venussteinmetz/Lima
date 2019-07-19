@@ -22,9 +22,7 @@ include "notification.php";
             position: absolute;
             left: 300px;
             top: 200;
-
         }
-
         .container {
             position: absolute;
             margin-top: 210px;
@@ -48,7 +46,6 @@ include "notification.php";
             top: 120px;
             left:300px;
         }
-
         .button {
             background-color: lightpink;
             border-radius:42px;
@@ -112,8 +109,9 @@ include "notification.php";
                     }
                     ?> </td>
                 <td>
-                    <a class="button" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
                     <a class="button" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
+                    <a class="button" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
+
                 </td>
             </tr>
             <?php
