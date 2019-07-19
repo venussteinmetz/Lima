@@ -37,16 +37,21 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             width: 10px;
             text-align: center;
         }
+        .back {
+            height: 25px;
+            width: 25px;
+        }
     </style>
 </head>
 <body>
 
-<div class="youshared">Diese Dateien wurden mit dir geteilt:</div>
+<div class="youshared">Dateien die du geteilt hast:</div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
         <th id="th_shared_files">  Datei </th>
         <th id="th_shared_files"> Freigegeben an</th>
+        <th id="th_shared_files"> Freigabe entziehen</th>
     </tr>
 
     <?php
@@ -71,6 +76,7 @@ $statement->execute();
             echo "<tr id='tr_shared_files'>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$sharedmail</td>
+                    <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='rückgängig.jpg'></a></td></tr></td>
                   </tr>
                  ";
         }
