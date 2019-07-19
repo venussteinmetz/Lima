@@ -19,6 +19,7 @@ include 'profilepicture.php';
             position: absolute;
             left: 350px;
             top: 100px;
+            font-size: 15px;
         }
         #upload {
             position: relative;
