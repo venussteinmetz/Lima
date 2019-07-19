@@ -12,13 +12,13 @@ include "notification.php";
             top: 80px;
             left: 300px;
         }
-        button {
+        #file {
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
             color: black;
         }
-        button:hover {
+        #file:hover {
             background-color: lightcoral;
         }
 
@@ -43,25 +43,25 @@ include "notification.php";
         $statement->execute(array('filename' => $only_name));
         $file = $statement->fetch();
         if ($file !== false) {
-            echo "Dieser Dateiname existiert bereits<br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+            echo "Dieser Dateiname existiert bereits<br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
             die();
         }
         if (isset($namearray[2])) {
-            echo("Ungültiger Dateiname, bitte keine Punkte im Dateiname.<br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>");
+            echo("Ungültiger Dateiname, bitte keine Punkte im Dateiname.<br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>");
             die();
         }
         if ($_FILES["uploadfile"]["name"] == "") {
-            echo "Keine Datei ausgewählt.<br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+            echo "Keine Datei ausgewählt.<br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
             die();
         }
         if ($_FILES["uploadfile"]["size"] > 25000000) {
-            echo "Datei zu groß.<br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+            echo "Datei zu groß.<br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
             die();
         }
         if (!$error) {
             if ($namearray[1] == "jpg" OR $namearray[1] == "png" OR $namearray[1] == "PNG" OR $namearray[1] == "JPG" OR $namearray[1] == "jpeg" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "gif" OR $namearray[1] == "pdf" OR $namearray[1] == "PDF" OR $namearray[1] == "docx" OR $namearray[1] == "DOCX" OR $namearray[1] == "doc" OR $namearray[1] == "DOC" OR $namearray[1] == "php" OR $namearray[1] == "PHP" OR $namearray[1] == "html" OR $namearray[1] == "HTML" OR $namearray[1] == "css" OR $namearray[1] == "CSS" OR $namearray[1] == "xlsx" OR $namearray[1] == "XLSX" OR $namearray[1] == "xls" OR $namearray[1] == "XLS" OR $namearray[1] == "ppt" OR $namearray[1] == "PPT" OR $namearray[1] == "pptx" OR $namearray[1] == "PPTX" OR $namearray[1] == "txt" OR $namearray[1] == "TXT" OR $namearray[1] == "mp3" OR $namearray[1] == "MP3") {
             } else {
-                echo "Dateiart nicht zugelassen.<br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+                echo "Dateiart nicht zugelassen.<br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
                 die();
             }
         }
@@ -76,12 +76,12 @@ include "notification.php";
         $stmt->execute();
         if ($stmt->execute()) {
             echo "Dateiname: " . $_FILES["uploadfile"]["name"] . "<br>";
-            echo "<h2>Upload war erfolgreich.</h2><br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+            echo "<h2>Upload war erfolgreich.</h2><br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
         }
     }
 
     if (!move_uploaded_file($_FILES["uploadfile"]["tmp_name"], "/home/ab247/public_html/s19_lima/files/".$namearray[0].".".$owner.".".$namearray[1])) {
-        echo "<h2>Datei nicht hochgeladen</h2> <br><br><a href=fileupload.php><button>Datein hochladen</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+        echo "<h2>Datei nicht hochgeladen</h2> <br><br><a href=fileupload.php><button id='file'>Datein hochladen</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
         die();
     }
     ?>
