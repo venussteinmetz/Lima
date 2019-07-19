@@ -2,7 +2,7 @@
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 include 'profilepicture.php';
-include 'notification.php';
+include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 ?>
