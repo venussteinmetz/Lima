@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <html>
 <head>
@@ -17,22 +16,47 @@
             position: absolute;
             left: 300px;
             margin-top:15px;
-
-
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            width: 100%;
         }
-
         .search-txt {
             height: 40px;
             border-radius: 40px;
             border-color: black;
-            width: 500px;
             padding: 10px;
+            width: 72%;
+        }
+        #search-btn {
+            margin-top: 0;
+            /*     order: 2; */
+            border-radius: 50%;
         }
 
-        #search-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        @media screen and (max-width: 900px) {
+            .search-box {
+                visibility: hidden;
+                flex-direction: row;
+                width: 40%;
+                min-width: 700px;
+            }
+            #search-btn {
+                margin-top: 0;
+                /*     order: 2; */
+            }
+
+            .search-txt {
+                width: 72%;
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            .search-box {
+                flex-direction: row;
+                width: 40%;
+            }
+
         }
     </style>
 </head>
