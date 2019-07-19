@@ -22,7 +22,7 @@ if(!isset($_SESSION['user_id'])) {
     <script>
         // Wenn man auf die Nachrichtenbox klickt, wird die Vorschau der ungelesenen Nachrichten ausgefahren, bzw. wieder eingefahren wenn man erneut draufklickt
         $(document).ready(function(){
-            $("button").click(function(){
+            $(".notification").click(function(){
                 $(".notify").toggle();
             });
         });
