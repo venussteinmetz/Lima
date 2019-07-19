@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
@@ -11,18 +10,19 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             font-family: Avenir;
         }
         .youshared {
+            overflow-y: scroll;
+            font-family: Avenir;
             position: absolute;
-            top: 170px;
-            left: 520px;
+            top: 270px;
+            left: 300px;
             padding-bottom: 10px;
         }
         #shared_files_table {
             position: absolute;
-            margin-top: 200px;
-            margin-right: 0px;
+            margin-top: 400px;
+            margin-right: 10px;
             left:300px;
             width:50%;
-            height: 100px;
             overflow-y: scroll;
         }
         #tr_shared_files {
@@ -30,11 +30,17 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             text-align: center;
         }
         #th_shared_files {
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 1px solid #cbcbcb;
             width: 10px;
             text-align: center;
         }
         #td_shared_files {
-            width: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 10px;
+            width: 30px;
             text-align: center;
         }
         .back {
@@ -45,7 +51,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 </head>
 <body>
 
-<div class="youshared">Dateien die du geteilt hast:</div>
+<div class="youshared"><h2>Dateien, die ich mit <b>internen</b> Nutzern geteilt habe:</h2></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
@@ -56,23 +62,19 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
     <?php
 $currentuser = $_SESSION["user_id"];
-
 $statement = $pdo->prepare("SELECT * FROM access WHERE owner_id = $currentuser");
 $statement->execute();
     while ($row = $statement->fetch()) {
         $shareduser = $row['user_id'];
         $fileid = $row['file_id'];
-
         $statement2 = $pdo->prepare("SELECT * FROM file WHERE file_id = $fileid");
         $statement2->execute();
     while($row2 = $statement2->fetch()) {
         $filename = $row2['filename'];
-
         $statement3 = $pdo->prepare("SELECT * FROM user WHERE userID = $shareduser");
         $statement3->execute();
         while($row3 = $statement3->fetch()) {
             $sharedmail = $row3['eMail'];
-
             echo "<tr id='tr_shared_files'>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$sharedmail</td>

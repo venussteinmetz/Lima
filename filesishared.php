@@ -10,27 +10,37 @@ include 'shared.php';
 <head>
     <title>My shared Files</title>
     <style>
-        #filesishared {
-            position: absolute;
-            margin-top: 100px;
-            margin-right: 0px;
-            left:300px;
-            width:50%;
-        }
+
+
         #sharedfiles {
+            color: black;
             position: absolute;
-            margin-top: 100px;
-            margin-right: 0px;
-            left:500px;
-            width:50%;
+            top: 120px;
+            left: 300px;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
         }
+
+        #sharedfiles:hover {
+            background-color: lightcoral;
+            text-decoration: none;
+        }
+
         #externalshare {
+            color: black;
             position: absolute;
-            margin-top: 100px;
-            margin-right: 0px;
-            left:300px;
-            width:50%;
+            top: 120px;
+            left: 500px;
+            width: 300px;
+            border-radius: 4px;
+            background-color: antiquewhite;
         }
+        #externalshare:hover {
+            background-color: lightgray;
+            text-decoration: none;
+        }
+
         html {
             font-family: Avenir;
         }
@@ -39,12 +49,14 @@ include 'shared.php';
 
 <body>
 
-<a id="filesishared" href="filesishared.php"><button>Dateien die du geteilt hast</button></a>
-<a id="sharedfiles" href="sharedfiles.php"><button>Dateien die mit mir geteilt wurden</button></a>
+<a href="sharedfiles.php">
+    <button id="sharedfiles"><b>Dateien, die mit mir geteilt wurden</b></button>
+</a>
 
 <br><br>
-<a id="externalshare" href="externalshare.php"><button>Dateien die mit externen Nutzern geteilt wurden </button></a>
-
+<a href="externalshare.php">
+    <button id="externalshare">Dateien, die ich mit <b>externen</b> Nutzern geteilt habe</button>
+</a>
 
 
 </body>

@@ -12,20 +12,21 @@ include 'searchbar.php';
     <head>
         <title>Lima</title>
         <style>
-            #back {
-                height: 25px;
-                width: 25px;
-                margin-top: 10px;
-                margin-right: 10px;
-                margin-left: 10px;
+
+            .shared{
+                overflow-y: scroll;
+                font-family: Avenir;
+                position: absolute;
+                top: 270px;
+                left: 300px;
+                padding-bottom: 10px;
             }
             #shared_files_table {
                 position: absolute;
-                margin-top: 200px;
-                margin-right: 0px;
-                left:300px;
-                width:50%;
-                height: 100px;
+                margin-top: 400px;
+                margin-right: 10px;
+                left: 300px;
+                width: 50%;
                 overflow-y: scroll;
             }
             #tr_shared_files {
@@ -33,45 +34,54 @@ include 'searchbar.php';
                 text-align: center;
             }
             #th_shared_files {
+                padding-left: 15px;
+                padding-right: 15px;
+                border-bottom: 1px solid #cbcbcb;
                 width: 10px;
                 text-align: center;
             }
             #td_shared_files {
-                width: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                margin-top: 10px;
+                width: 30px;
                 text-align: center;
             }
-            .shared{
-                position: absolute;
-                top: 170px;
-                left: 520px;
-                padding-bottom: 10px;
-            }
-            #filesishared {
-                position: absolute;
-                margin-top: 100px;
-                margin-right: 0px;
-                left:300px;
-                width:50%;
-            }
+
             #sharedfiles {
+                color: black;
                 position: absolute;
-                margin-top: 100px;
-                margin-right: 0px;
-                left:500px;
-                width:50%;
+                top: 120px;
+                left: 300px;
+                width: 173px;
+                border-radius: 4px;
+                background-color: lightpink;
             }
-            #externalshare {
+
+            #sharedfiles:hover {
+                background-color: lightcoral;
+                text-decoration: none;
+            }
+
+            #internalshare {
+                color: black;
                 position: absolute;
-                margin-top: 100px;
-                margin-right: 0px;
-                left:300px;
-                width:50%;
+                top: 120px;
+                left: 500px;
+                width: 300px;
+                border-radius: 4px;
+                background-color: antiquewhite;
             }
+            #internalshare:hover {
+                background-color: lightgray;
+                text-decoration: none;
+            }
+
         </style>
     </head>
 <body>
 
-<div class="shared">Dateien die du geteilt hast:</div>
+<div class="shared"><h2>Dateien, die ich mit <b>externen</b> Nutzern geteilt habe:</h2></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
@@ -81,39 +91,34 @@ include 'searchbar.php';
     </tr>
 
 <?php
-
 $currentuser = $_SESSION["user_id"];
-
 $statement = $pdo->prepare("SELECT * FROM sharing WHERE owner_id = $currentuser");
 $statement->execute();
 while ($row = $statement->fetch()) {
     $nonuser = $row['non_user'];
     $fileid = $row['file'];
-
-
     $statement1 = $pdo->prepare("SELECT * FROM file WHERE file_id = $fileid");
     $statement1->execute();
     while ($row1 = $statement1->fetch()) {
         $filename = $row1['filename'];
-
-
         echo "<tr id='tr_shared_files'>
 <td id='td_shared_files'>$filename</td>
 <td id='td_shared_files'>$nonuser</td>
 <td id='td_shared_files'><a href='undo_externalshare.php?non_user=$nonuser&fileid=$fileid'><img id=back src='rückgängig.jpg'></a></td>
 </tr>";
-
     }
 }
-
 ?>
 </table>
+<a href="sharedfiles.php">
+    <button id="sharedfiles">Dateien, die mit mir geteilt wurden</button>
+</a>
 
-<a id="filesishared" href="filesishared.php"><button>Dateien die du geteilt hast</button></a>
-<a id="sharedfiles" href="sharedfiles.php"><button>Dateien die mit mir geteilt wurden</button></a>
 <br><br>
+<a href="filesishared.php">
+    <button id="internalshare">Dateien, die ich mit <b>internen</b> Nutzern geteilt habe</button>
+</a>
 
-<a id="externalshare" href="externalshare.php"><button>Dateien die mit externen Nutzern geteilt wurden </button></a>
 
 </body>
     </html>

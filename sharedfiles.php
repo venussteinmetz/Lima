@@ -1,70 +1,83 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
 include 'profilepicture.php';
 include 'notification.php';
 include 'sidebar2.php';
 include 'searchbar.php';
-
 ?>
-    <html>
+<html>
 <head>
     <style>
-        html {
+        h2 {
             font-family: Avenir;
         }
         .sharedwithyou {
+            overflow-y: scroll;
+            font-family: Avenir;
             position: absolute;
-            top: 170px;
-            left: 520px;
+            top: 270px;
+            left: 300px;
             padding-bottom: 10px;
         }
         #shared_files_table {
             position: absolute;
-            margin-top: 200px;
-            margin-right: 0px;
+            margin-top: 400px;
+            margin-right: 10px;
             left:300px;
             width:50%;
-            height: 100px;
             overflow-y: scroll;
-            font-size: 20px;
-
         }
         #tr_shared_files {
             border-bottom: 1px solid #cbcbcb;
             text-align: center;
         }
         #th_shared_files {
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 1px solid #cbcbcb;
             width: 10px;
             text-align: center;
         }
         #td_shared_files {
-            width: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 10px;
+            width: 30px;
             text-align: center;
+        }
+
+        .link-id:link {
+            color: lightpink;
+            text-decoration: none;
+        }
+        .link-id:visited{
+            color: lightpink;
         }
         .downloadicon {
             height: 25px;
             width: 25px;
         }
         #filesishared {
+            color: black;
             position: absolute;
-            margin-top: 100px;
-            margin-right: 0px;
-            left:300px;
-            width:50%;
+            top: 120px;
+            left: 300px;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
         }
-        #sharedfiles {
-            position: absolute;
-            margin-top: 100px;
-            margin-right: 0px;
-            left:500px;
-            width:50%;
+
+        #filesishared:hover {
+            background-color: lightcoral;
+            text-decoration: none;
         }
+
     </style>
 </head>
 <body>
-<div class="sharedwithyou"><b>Dateien die mit dir geteilt wurden:</div>
+
+<div class="sharedwithyou"><h2>Dateien, die mit mir geteilt wurden:</h2><br><br></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
@@ -100,11 +113,10 @@ include 'searchbar.php';
     }
     ?>
 
-    <a id="filesishared" href="filesishared.php"><button>Dateien die du geteilt hast</button></a>
-    <a id="sharedfiles" href="sharedfiles.php"><button>Dateien die mit mir geteilt wurden</button></a>
+    <a href="filesishared.php"><button id="filesishared"><b>Dateien, die ich geteilt habe</b></button></a>
 
 
 
 </table>
 </body>
-    </html>
+</html>
