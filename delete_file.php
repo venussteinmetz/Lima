@@ -24,5 +24,5 @@ else
 {
     echo "Die Datei wurde gelöscht";
     unlink($directory."/".$filename.".".$owner.".".$filetype);
-    header("location:index.php");
+
 }
