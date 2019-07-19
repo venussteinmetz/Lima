@@ -1,5 +1,8 @@
 <?php
-include "sidebar2.php";
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notification.php';
 ?>
 <html>
 <head>
@@ -8,7 +11,6 @@ include "sidebar2.php";
     <script src="js/general.js"></script>
     <style>
         #ausgabe {
-            font-family: 'Poppins', sans-serif;
             font-size: medium;
             position: absolute;
             margin-top: 50px;
@@ -16,15 +18,36 @@ include "sidebar2.php";
             left:300px;
             width:50%;
         }
-        button {
-            position: relative;
-            top: 50%;
+        #favorite_do {
+            position: absolute;
+            top: 50px;
+        }
+        #favorite_button {
+            color: black;
+            position: absolute;
+            top: 100px;
+            left: 300px;
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
         }
-        button:hover {
+        #favorite_button:hover {
             background-color: lightcoral;
+            text-decoration: none;
+        }
+        #index_button {
+            color: black;
+            position: absolute;
+            top: 100px;
+            left: 600x;
+            width: 270px;
+            border-radius: 4px;
+            background-color: lightpink;
+
+        }
+        #index_button:hover {
+            background-color: lightcoral;
+            text-decoration: none;
         }
 
     </style>
@@ -47,7 +70,7 @@ if ($statement->execute()) {
 
 <div id="ausgabe">
     <?php
-    echo "Datei wurde erfolgreich favorisiert! <br><br><a href=favorite.php><button>Zu meinen Favoriten</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+    echo "<div id='favorite_do'>Datei wurde erfolgreich favorisiert! </div><br><br><a href=favorite.php><button id='favorite_button'>Zu meinen Favoriten</button></a> <a href=index.php><button id='index_button'>Zurück zur Startseite</button></a>";
     }
     ?>
 
