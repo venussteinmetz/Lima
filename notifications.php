@@ -33,7 +33,7 @@ if(!isset($_SESSION['user_id'])) {
             color: black;
             text-decoration: none;
             padding: 15px 26px;
-            position: absolute;
+            position: fixed;
             display: inline-block;
             margin-top: 10px;
             right: 10px;
@@ -46,9 +46,9 @@ if(!isset($_SESSION['user_id'])) {
             background: grey;
         }
         .notification .badge {
-            position: absolute;
-            top: -5px;
-            right: -10px;
+            position: fixed;
+            top: 5px;
+            right: 10px;
             padding: 5px 10px;
             border-radius: 50%;
             background: lightcoral;
@@ -57,7 +57,7 @@ if(!isset($_SESSION['user_id'])) {
         .notify {
             font-family: Avenir;
             display: none;
-            position: absolute;
+            position: fixed;
             top: 70px;
             background-color: white;
             border-width: 1px;
@@ -76,7 +76,7 @@ if(!isset($_SESSION['user_id'])) {
             background: lightgrey;
             width:290px;
             height:0.5px;
-            position: absolute;
+            position: fixed;
             top: 35px;
         }
         .notification-head {

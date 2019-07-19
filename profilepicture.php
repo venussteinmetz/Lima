@@ -17,13 +17,13 @@ if(!isset($_SESSION['user_id'])) {
 #change {
     font-size: 15px;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: -5px;
     right: 80px;
     display: none;
 }
 #image-pp {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 80px;
     display: inline-block;
