@@ -10,14 +10,15 @@ include "searchbar.php";
                 left: 300px;
                 top:90px;
             }
-            button {
+            #folderdel {
                 position: relative;
                 top: 50%;
                 width: 173px;
                 border-radius: 4px;
                 background-color: lightpink;
+                color: black;
             }
-            button:hover {
+            #folderdel:hover {
                 background-color: lightcoral;
             }
 
@@ -51,7 +52,7 @@ include "searchbar.php";
             $stmt2->execute();
         }
 
-        echo "Datei wurde aus dem Ordner gelöscht!<br><br><a href=showfolder.php><button>Zurück zu Ordner</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+        echo "Datei wurde aus dem Ordner gelöscht!<br><br><a href=showfolder.php><button id='folderdel' >Zurück zu Ordner</button></a> <a href=index.php><button id='folderdel'>Zurück zur Startseite</button></a>";
         ?>
 </div>
 </body>
