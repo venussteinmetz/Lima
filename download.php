@@ -9,26 +9,23 @@ $statement = $pdo->prepare("SELECT * FROM file WHERE file_id = ?");
 $statement->execute(array($file));
 while ($row = $statement->fetch()) {
 
-    $mimetype=$row["mimetype"];
+    $mimetype = $row["mimetype"];
     $filetype = $row["filetype"];
+
+
+    if (empty($_GET["fileid"])) {
+        echo " keine Datei angegeben";
+        die();
+    } else {
+        $filename = $_GET["filename"];
+    }
+    $filepath = $directory . "/" . $filename . "." . $owner . "." . $filetype;
+
+
+    header("Content-disposition: attachment; filename=$filename");
+    header("Content-type: $mimetype");
+    readfile($filepath);
 }
-
-
-if (empty($_GET["fileid"]))
-{
-    echo " keine Datei angegeben";
-    die();
-}
-else
-{
-    $filename = $_GET["filename"];
-}
-$filepath = $directory."/".$filename.".".$owner.".".$filetype;
-
-
-header("Content-disposition: attachment; filename=$filename");
-header("Content-type: $mimetype");
-readfile($filepath);
 
 ?>
 
