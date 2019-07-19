@@ -10,13 +10,9 @@ if(!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Das neueste kompilierte und minimierte CSS -->
+    <title>Lima</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- Optionales Theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
@@ -76,7 +72,7 @@ if(!isset($_SESSION['user_id'])) {
             background: lightgrey;
             width:290px;
             height:0.5px;
-            position: fixed;
+            position: absolute;
             top: 35px;
         }
         .notification-head {
