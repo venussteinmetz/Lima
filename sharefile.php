@@ -1,12 +1,19 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notifications.php';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Lima</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -31,9 +38,9 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         height: 40px;
         padding-left: 10px;
         color: grey;
-        font-family: 'Open Sans', sans-serif;
+        font-family: Avenir;
         font-size: 16px;
-        box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
+        box-shadow: 2px 2px 5px 1px;
         border-radius: 3px;
         outline: none;
     }
@@ -58,16 +65,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     }
 
 </style>
-
 </head>
-
 <body>
-<div id="content">
-    <div class="container">
         <div class="row-share">
             <form action="sharefile_do.php" method="post">
                 <div class="share-text"> Teile deine Datei mit anderen:<br></div>
-                <select class="files-share "name="file" value="">
+                <select class="files-share" name="file">
+                    <!--Ein Dropdown mit allen Dateien, die dem Nutzer gehören wird angezeigt, daraus kann der Nutzer die entsprechende Datei auswählen -->
                     <option value="">- Wähle die Datei zur Freigabe -
                         <?php
 
@@ -81,14 +85,11 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                         }
 
                             ?>
-
                 </select>
                 <p id="share2">Gib hier die E-Mail-Adresse des Nutzers ein:</p>
                 <input class="field-share" type="text" name="user_email" placeholder="E-Mail">
                 <input class="submit-share" type="submit" value="Datei freigeben">
             </form>
         </div>
-    </div>
-</div>
 </body>
 </html>
