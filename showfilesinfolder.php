@@ -9,19 +9,22 @@ $folderid = $_GET["folder_id"];
 <?php
 include "searchbar.php";
 include "sidebar2.php";
-include "notification.php";
+include "notifications.php";
 ?>
-    <html>
+<html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
     <style>
+
         #files {
             position: absolute;
             left: 300px;
             margin-top: 90px;
+
         }
+
         html  {
             font-family: Avenir;
         }
@@ -58,11 +61,11 @@ include "notification.php";
         }
         .button-add:hover {
             background-color:lightcoral;
-            color: black;
         }
         .trash {
             height: 25px;
             width: 25px;
+
         }
         .downloadicon {
             height: 25px;
@@ -71,6 +74,7 @@ include "notification.php";
             margin-right: 10px;
             margin-left: 10px;
         }
+
     </style>
 </head>
 <div>
@@ -82,7 +86,7 @@ include "notification.php";
             <th> Name </th>
             <th> Hochgeladen</th>
             <th> Dateiart</th>
-            <th> Runterladen</th>
+            <th> Herunterladen</th>
             <th colspan="2">Aus Ordner Löschen</th>
         </tr>
 
@@ -93,6 +97,7 @@ include "notification.php";
         $statement->execute(array($folderid));
         while ($row = $statement->fetch()) {
             if ($row["file_code"] == 0) {
+
             } else {
                 //Dieser Code wird ausgeführt, wenn der Ordner nicht leer ist. Dann werden die Dateien, die im Ordner gespeichert sind ausgegeben.
                 $statement2 = $pdo->prepare("SELECT * FROM fileinfolders WHERE folder_id = ?");
@@ -127,4 +132,4 @@ include "notification.php";
 
 
 </body>
-    </html><?php
+</html>
