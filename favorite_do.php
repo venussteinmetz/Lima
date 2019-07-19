@@ -2,7 +2,7 @@
 include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
-include 'notification.php';
+include 'notifications.php';
 ?>
 <html>
 <head>
