@@ -14,8 +14,8 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     $only_name = $namearray[0];
 
 
-            $statement = $pdo->prepare("SELECT * FROM file WHERE filename = :filename");
-            $statement->execute(array('filename' => $only_name));
+            $statement = $pdo->prepare("SELECT * FROM file WHERE filename = $only_name AND owner = $owner");
+            $statement->execute();
             $file = $statement->fetch();
             if ($file !== false) {
                 echo 'Dieser Dateiname existiert bereits';
