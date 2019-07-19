@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 include 'searchbar.php';
 include "sidebar2.php";
@@ -47,11 +51,11 @@ include 'profilepicture.php';
 
             $statement = $pdo->prepare("SELECT * FROM file WHERE filename = $only_name AND owner = $owner");
             $statement->execute();
-            $file = $statement->fetch();
-            if ($file !== false) {
+            $result = $statement->rowCount();
+            if ($result > 0) {
                 echo "Dieser Dateiname existiert bereits<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
                 die();
-        }
+            }
 
 if (isset($namearray[2])){
     echo "Ungültiger Dateiname, bitte keine Punkte im Dateiname<br><br><a href=fileupload.php><button id='upload'>Zurück zum Upload</button></a><a href=index.php><button id='upload'>Zurück zur Startseite</button></a>";
