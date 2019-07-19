@@ -104,7 +104,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             <th id="th_files"> Name </th>
             <th id="th_files"> Hochgeladen</th>
             <th id="th_files"> Dateiart</th>
-            <th id="th_files"> Download </th>
+            <th id="th_files"> Herunterladen</th>
             <th id="th_files">Löschen</th>
             <th id="th_files"> Favorisieren </th>
         </tr>
@@ -115,7 +115,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
         <?php
         $userID= $_SESSION["user_id"];
-        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY filename ASC");
+        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID AND favorite ='0' ORDER BY filename ASC");
         if($statement->execute()) {
             while ($row = $statement->fetch()) {
                 $fileid = $row['file_id'];
@@ -136,5 +136,3 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 </div>
 </body>
 </html>
-
-
