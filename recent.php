@@ -4,7 +4,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 ?>
 <?php
 include "sidebar2.php";
-include "notification.php";
+include "notifications.php";
 include 'searchbar.php';
 ?>
 
@@ -22,7 +22,6 @@ include 'searchbar.php';
             margin-right: 10px;
             left:300px;
             width:50%;
-
         }
         #tr_files {
             border-bottom: 1px solid #cbcbcb;
@@ -104,7 +103,7 @@ include 'searchbar.php';
 
         <?php
         $userID= $_SESSION["user_id"];
-        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY upload_date DESC");
+        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY upload_date DESC limit 5");
         if($statement->execute()) {
             while ($row = $statement->fetch()) {
                 $fileid=$row['file_id'];
