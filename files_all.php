@@ -115,7 +115,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 
         <?php
         $userID= $_SESSION["user_id"];
-        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID AND favorite ='0' ORDER BY filename ASC");
+        $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY filename ASC");
         if($statement->execute()) {
             while ($row = $statement->fetch()) {
                 $fileid = $row['file_id'];
