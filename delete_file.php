@@ -1,3 +1,37 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #file {
+            position: relative;
+            top: 50%;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+        }
+        #file:hover {
+            background-color: lightcoral;
+            text-decoration: none;
+        }
+        #delete {
+            position: absolute;
+            top: 80px;
+            left: 300px;
+            color: black;
+        }
+
+    </style>
+
+
+</head>
+
+
+<?php
+include "sidebar2.php";
+include "notifications.php";
+include 'searchbar.php';
+?>
+<div id="delete">
 <?php
 session_start();
 $directory = "/home/ab247/public_html/s19_lima/files";
@@ -10,19 +44,23 @@ while ($row = $statement->fetch()) {
     $mimetype=$row["mimetype"];
     $filetype = $row["filetype"];
     $filename = $row["filename"];
-}
+
 // Löschen der Datei aus der Datenbank
 $statement2 = $pdo->prepare("DELETE FROM file WHERE file_id = ?");
 $statement2->execute(array($fileid));
 //Löschen der Datei von dem Server
 if (empty($filename))
 {
-    echo " keine Datei angegeben";
+    echo " keine Datei angegeben <br><br><a href=index.php><button id='file'>Zu meinen Datein</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
     die();
 }
-else
-{
-    echo "Die Datei wurde gelöscht";
-    unlink($directory."/".$filename.".".$owner.".".$filetype);
-
+else {
+    echo "Die Datei wurde gelöscht <br><br><a href=index.php><button id='file'>Zu meinen Datein</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
+    unlink($directory . "/" . $filename . "." . $owner . "." . $filetype);
 }
+}
+?>
+</div>
+<body>
+</body>
+</html>
