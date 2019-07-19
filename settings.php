@@ -15,12 +15,13 @@ include 'profilepicture.php';
 
         #heading-pp {
             position: absolute;
-            top: 160px;
-            left: 600px;
+            top: 100px;
+            left: 300px;
         }
 
         html  {
             font-family: Avenir;
+            font-size: 15px;
 
         }
         #button-pp {
@@ -42,24 +43,24 @@ include 'profilepicture.php';
         #button-pp:hover {
             background-color: lightcoral;
         }
-#settings-pp {
-  position: relative;
-    top:200px;
-    left:600px;
+        #settings-pp {
+            position: relative;
+            top:150px;
+            left:300px;
 
 
 
-}
+        }
 
     </style>
 </head>
 <body>
 <div id="heading-pp" ><b>Lade dein neues Profilbild hoch</b></div>
 <div id="settings-pp">
-<form id="uploadpictureform" action="uploadpicture.php" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" id="uploadfile"><br>
-    <button id="button-pp" type="submit" value="Bild hochladen" name="submit">Bild hochladen</button>
-</form>
+    <form id="uploadpictureform" action="uploadpicture.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="uploadfile"><br>
+        <button id="button-pp" type="submit" value="Bild hochladen" name="submit">Bild hochladen</button>
+    </form>
 </div>
 
 
