@@ -18,15 +18,17 @@ include "sidebar2.php";
             left:300px;
             width:50%;
         }
-        button {
+        #file{
             position: relative;
             top: 50%;
             width: 173px;
             border-radius: 4px;
             background-color: lightpink;
+            color: black;
         }
-        button:hover {
+        #file:hover {
             background-color: lightcoral;
+            text-decoration: none;
         }
     </style>
 
@@ -54,6 +56,6 @@ $stmt = $pdo->prepare("INSERT INTO folders (folder_id, owner, folder_name, file_
 $stmt ->bindParam('foldername', $foldername);
 $stmt ->bindParam('filecode', $status);
 $stmt ->execute();
-echo "Ordner wurde erstellt!<br><br><a href=showfolder.php><button>Zu meinen Ordnern</button></a> <a href=index.php><button>Zurück zur Startseite</button></a>";
+echo "Ordner wurde erstellt!<br><br><a href=showfolder.php><button id='file'>Zu meinen Ordnern</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
 exit();
 ?>
