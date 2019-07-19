@@ -19,7 +19,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
     <style>
-
         .container{
             overflow-y: scroll;
             font-family: Avenir;
@@ -99,7 +98,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 <div class="container">
 
     <!-- Tabelle: In der über eine SQL-Anfrage alle Dokumente angezeigt werden, die der Nutzer hochgeladen hat -->
-<br>
+    <br>
     <table id="files_table">
         <tr id="tr_files">
             <th id="th_files"> Name </th>
