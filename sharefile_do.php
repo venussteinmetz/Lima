@@ -1,3 +1,9 @@
+<?php
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notification.php';
+?>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html>
@@ -10,23 +16,31 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="dashboard3style.css" rel="stylesheet">
     <style>
-        html {
-            position: absolute;
-            background-image: url("lima1.png");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+
         h3 {
             position: absolute;
             right: 30%;
         }
+        #shareoutput {
+            position: absolute;
+            top: 90px;
+            left: 300px;
+        }
+        #sharing {
+            position: relative;
+            top: 50%;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+            color: black;
+        }
+        #sharing:hover {
+            background-color: lightcoral;
+            text-decoration: none;
+        }
     </style>
+</head>
+<div id="shareoutput">
     <?php
     session_start();
     $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -73,9 +87,15 @@
         $statement3->bindParam(':user_id', $newuser);
         $statement3->bindParam(':owner_id', $owner_id );
         $statement3->execute();
-        echo "<h3> Deine Datei wurde erfolgreich geteilt :) </h3>";
+        echo "Deine Datei wurde erfolgreich geteilt.<br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         exit();
     }
+
+    if ($_POST["user_email"] == "") {
+        echo "Bitte gebe eine E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
+        die();
+    }
+
     if (empty($exists)){
         $owner_id = $_SESSION["user_id"];
         $randomcode = random_string();
@@ -98,7 +118,9 @@
             . $url_downloadcode;
         mail($user_email, $betreff, $text, $absender);
         //E-Mail versand an nicht registrierten Nutzer
-        echo "Freigabe erfolgreich";
+        echo "Freigabe erfolgreich<br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         exit();
     }
     ?>
+</div>
+</html>
