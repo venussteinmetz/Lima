@@ -14,7 +14,7 @@ include "notification.php";
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <style type="text/css">
         /*nur fuer Beispiel, um Hoehe des Containers zu simulieren*/
-        #nachricht {
+        #message {
             position: absolute;
             left: 300px;
             top:80px;
@@ -22,25 +22,26 @@ include "notification.php";
         h2 {
             position: absolute;
             left: 300px;
-            top:60px;
+            top:80px;
             margin-top: 10px;
-            margin-bottom: 10px;
+
         }
         #textarea {
             position: absolute;
             left: 300px;
-            top:80px;
+            top:120px;
             border: 1px;
             border-style: solid;
             padding: 10px;
             width: 400px;
             margin-top: 30px;
+
         }
         #answer_button {
             outline: none;
             position: absolute;
-            top: 110px;
-            right: 400px;
+            top: 85px;
+            left: 460px;
             background-color: lightpink;
             border-radius:42px;
             display:inline-block;
@@ -73,7 +74,7 @@ $message = $_GET["id"];
 <br>
 <h2>Deine Nachricht: </h2>
 <br>
-<table id="nachricht">
+<table id="message">
     <?php
     $statement = $pdo->prepare("SELECT * FROM message WHERE message_id = ?");
     $statement->execute(array($message));
