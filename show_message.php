@@ -21,17 +21,23 @@ include "notification.php";
             font-family: Avenir;
             position: absolute;
             left: 300px;
-            top: 200;
+            top: 200px;
         }
         .container {
             position: absolute;
             margin-top: 210px;
             left: 280px;
         }
+        .table table {
+            margin: 10px;
+
+
+        }
         tr {
             border-bottom: 1px solid #cbcbcb;
             text-align: center;
             width: 70px;
+
         }
         th {
             width: 20%;
@@ -40,24 +46,48 @@ include "notification.php";
         td {
             width: 20%;
             text-align: center;
+
         }
-        #button{
+        #buttonschreiben{
             position: absolute;
             top: 120px;
             left:300px;
         }
-        .button {
+        #buttonschreiben {
             background-color: lightpink;
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
-            color:#ffffff;
+            color:black;
             font-family:Arial;
             font-size:12px;
             padding:9px 13px;
             text-decoration:none;
             text-shadow:0px 1px 0px lightcoral;
+
         }
+        .button-folder {
+            background-color: lightpink;
+            border-radius:42px;
+            display:inline-block;
+            cursor:pointer;
+            color:black;
+            font-family:Avenir;
+            font-size:12px;
+            padding:9px 13px;
+
+            text-shadow:0px 1px 0px lightcoral;
+            margin-left: 20px;
+        }
+        .button-folder:hover {
+            background-color:lightcoral;
+            text-decoration:none;
+            color: black;
+        }
+        .button-folder:active {
+            position:relative;
+            top:1px;
+
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             .container {
                 width: 70%;
@@ -70,12 +100,12 @@ include "notification.php";
     </style>
 </head>
 <body>
-<a id="button" href="writemessage.php">Neue Nachricht schreiben:</a>
+<a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben:</a>
 <br>
 <h2>Meine Nachrichten:</h2>
 <br>
 <div class="container">
-    <table id="table table">
+    <table id="tabletable">
         <tr>
             <th>Nachricht von</th>
             <th>Gesendet um</th>
@@ -109,8 +139,8 @@ include "notification.php";
                     }
                     ?> </td>
                 <td>
-                    <a class="button" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
-                    <a class="button" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
+                    <a class="button-folder" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
+                    <a class="button-folder" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
 
                 </td>
             </tr>
