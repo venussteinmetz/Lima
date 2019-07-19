@@ -70,6 +70,7 @@ if(!isset($_SESSION['user_id'])) {
             width: auto;
             right: 10px;
             margin-right: 10px;
+            z-index: 10;
         }
         .hr {
             background: lightgrey;
