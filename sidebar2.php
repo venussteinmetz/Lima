@@ -62,6 +62,9 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             position: relative;
             left: 20px;
         }
+        #rosa_hover a:hover{
+            background-color: lightpink;
+        }
         #new_file {
             position: absolute;
             left: 20px;
@@ -129,11 +132,12 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         <a href="showfolder.php">Meine Ordner</a>
         <a href="logout.php">Logout</a>
         <br>
-        <div id="buttons">
+       
+
+    </div>
+    <div id="buttons">
         <a href="fileupload.php"><button id="new_file">Neue Datei hochladen</button></a>
         <a href="sharefile.php"><button id="sharefile">Datei freigeben</button></a>
-        </div>
-
     </div>
 </div>
 
