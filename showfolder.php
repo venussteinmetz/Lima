@@ -5,8 +5,8 @@ include 'sidebar2.php';
 include "searchbar.php";
 ?>
 <html>
-<head>
-    <style>
+        <head>
+        <style>
         html  {
             font-family: Avenir;
         }
@@ -25,6 +25,7 @@ include "searchbar.php";
         }
         .button-folder:hover {
             background-color:lightcoral;
+            color: black;
         }
         .button-folder:active {
             position:relative;
@@ -34,7 +35,6 @@ include "searchbar.php";
             position: absolute;
             margin-top: 80px;
             left: 300px;
-
             font-family: Avenir;
         }
         #folder {
@@ -53,11 +53,12 @@ include "searchbar.php";
             position: relative;
             left: 300px;
             top: 55px;
-
         }
         .button-create:hover {
             background-color:lightcoral;
+            color: black;
         }
+
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             #text{
                 width: 70%;
