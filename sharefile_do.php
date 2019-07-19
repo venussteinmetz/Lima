@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -76,11 +77,13 @@
         exit();
     }
     if (empty($exists)){
+        $owner_id = $_SESSION["user_id"];
         $randomcode = random_string();
-        $stmt2 = $pdo->prepare("INSERT INTO sharing (share_id, random_string, file, non_user) VALUES('',:randomstring,:file,:useremail)");
+        $stmt2 = $pdo->prepare("INSERT INTO sharing (share_id, random_string, file, non_user, owner_id) VALUES('',:randomstring,:file,:useremail,:owner_id)");
         $stmt2->bindParam(':randomstring', $randomcode);
         $stmt2->bindParam(':file', $file);
         $stmt2->bindParam(':useremail', $user_email);
+        $stmt2->bindParam(':owner_id', $owner_id);
         $stmt2->execute();
         $status = 1;
         $stmt4 = $pdo->prepare("UPDATE file SET access_rights=:access_rights WHERE file_id=:file_id");
@@ -90,7 +93,7 @@
         $absender = "From: Lima <info@lima.de>";
         $betreff = "Eine Lima-Datei wurde Ihnen freigegeben";
         $url_downloadcode = "https://mars.iuk.hdm-stuttgart.de/~ab247/s19_lima/download_sharedfiles.php?code=" . $randomcode;
-        $text = "Hallo," .
+        $text = "Hallo hier ist ihr Lima-Team," .
             "Ihnen wurde eine Datei auf Lima freigegeben. Klicken Sie auf den Link um sie herunterzuladen:"
             . $url_downloadcode;
         mail($user_email, $betreff, $text, $absender);
