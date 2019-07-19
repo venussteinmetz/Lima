@@ -20,6 +20,16 @@ include "notification.php";
             top:80px;
 
         }
+        #sendmessage {
+        
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+
+        }
+        #sendmessage:hover {
+            background-color: lightcoral;
+        }
 
 
     </style>
@@ -48,9 +58,9 @@ while ($row2 = $statement2->fetch()) {
             <legend>Auf Nachricht antworten</legend>
             <label>Empfänger: <input type="text" name="receiver" value="<?php echo $empfaenger; ?>"</label>
             <label>Betreff: <input type="text" name="subject" value="Re: <?php echo $row['message_subject']; ?>" /></label> <br>
-            <label>  <textarea name="content" cols="40" rows="10"></textarea></label>
+            <label>  <textarea name="content" cols="80" rows="20"></textarea></label>
             <br>
-            <input type="submit" name="formaction" value="Nachricht senden" />
+            <button id="sendmessage" type="submit">Nachricht senden</button> <br>
         </fieldset>
     </form>
     <?php } ?>
