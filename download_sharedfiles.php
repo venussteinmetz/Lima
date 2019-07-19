@@ -25,8 +25,8 @@ $statement->execute(array($string));
                         $statement2 = $pdo->prepare("SELECT * FROM file WHERE file_id = ?");
                         $statement2->execute(array($file));
                         while ($row2 = $statement2->fetch()) {
-                            echo "<a href='https://mars.iuk.hdm-stuttgart.de/~ab247/s19_lima/download.php?filename=";
-                            echo $row2['filename'].".".$row2['owner'].".".$row2['filetype'];
+                            echo "<a href='download.php?filename=";
+                            echo $row2['filename'];
                             echo("&fileid=");
                             echo($row2['file_id']."'>");
                             echo$row2['filename'].".".$row2['filetype'];
