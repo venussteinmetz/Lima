@@ -63,3 +63,4 @@ $stmt ->execute();
 echo "Ordner wurde erstellt!<br><br><a href=showfolder.php><button id='file'>Zu meinen Ordnern</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
 exit();
 ?>
+        
