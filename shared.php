@@ -13,14 +13,14 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             overflow-y: scroll;
             font-family: Avenir;
             position: absolute;
-            top: 170px;
+            top: 270px;
             left: 300px;
             padding-bottom: 10px;
-            min-width: 500px;
+            min-width: 1000px;
         }
         #shared_files_table {
             position: absolute;
-            margin-top: 250px;
+            margin-top: 400px;
             margin-right: 10px;
             left:300px;
             width:50%;
@@ -47,14 +47,12 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         .back {
             height: 25px;
             width: 25px;
-            margin-top: 15px;
-            right: 50px;
         }
     </style>
 </head>
 <body>
 
-<div class="youshared"><h2>Dateien, die ich mit <b>internen</b> Nutzern geteilt habe:</h2></div>
+<div><h2 class="youshared">Dateien, die ich mit <b>internen</b> Nutzern geteilt habe:</h2></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
@@ -81,7 +79,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 echo "<tr id='tr_shared_files'>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$sharedmail</td>
-                    <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='rückgängig.png'></a></td></tr></td>
+                    <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='rückgängig.jpg'></a></td></tr></td>
                   </tr>
                  ";
             }
