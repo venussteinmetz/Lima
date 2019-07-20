@@ -2,7 +2,7 @@
 include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
-include 'notification.php';
+include 'notifications.php';
 ?>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -16,7 +16,6 @@ include 'notification.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="dashboard3style.css" rel="stylesheet">
     <style>
-
         h3 {
             position: absolute;
             right: 30%;
@@ -90,11 +89,25 @@ include 'notification.php';
         echo "Deine Datei wurde erfolgreich geteilt.<br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         exit();
     }
-
     if ($_POST["user_email"] == "") {
         echo "Bitte gebe eine E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         die();
     }
+    $findemail="@";
+    $email = stripos($_POST ["user_email"], $findemail);
+
+    if($email == false){
+        echo "Bitte gebe eine richtige E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
+        die();
+    }
+    $finddot=".";
+    $email = stripos($_POST ["user_email"], $finddot);
+
+    if($email == false){
+        echo "Bitte gebe eine richtige E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
+        die();
+    }
+
 
     if (empty($exists)){
         $owner_id = $_SESSION["user_id"];
