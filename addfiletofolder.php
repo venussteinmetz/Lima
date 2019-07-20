@@ -8,13 +8,14 @@ $folderid = $_GET["folder_id"];
 <?php
 include "searchbar.php";
 include "sidebar2.php";
-include "notification.php";
+include "notifications.php";
+include "profilepicture.php";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lima</title>
+    <title></title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,11 +29,8 @@ include "notification.php";
             left: 300px;
             top:90px;
         }
-
-
         p {
             margin-top: 25px;
-
         }
         #submit-share {
             padding:5px 15px;
@@ -44,8 +42,6 @@ include "notification.php";
         #submit-share:hover {
             background-color: lightcoral;
         }
-
-
     </style>
 
 </head>
@@ -57,7 +53,7 @@ include "notification.php";
             <form action="addfiletofolder_do.php?foldername=<?php echo $foldername;?>&folder_id=<?php echo $folderid?>" method="post"><br><br>
                 Welche Datei möchtest du hinzufügen?<br>
                 <select  name="file" value="">
-                    <option value="">- Wähle die Datei -
+                    <option
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
                         $statement->execute(array($owner));
