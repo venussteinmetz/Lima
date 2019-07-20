@@ -5,7 +5,9 @@ include 'profilepicture.php';
 include 'notifications.php';
 ?>
 <html>
+    
 <head>
+    <title>Lima</title>
     <style>
         #undoshare {
             position: absolute;
