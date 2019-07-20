@@ -6,6 +6,7 @@ include "searchbar.php";
 ?>
 <html>
         <head>
+                 <title>Lima</title>
         <style>
         html  {
             font-family: Avenir;
