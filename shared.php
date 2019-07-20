@@ -13,14 +13,14 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             overflow-y: scroll;
             font-family: Avenir;
             position: absolute;
-            top: 270px;
+            top: 170px;
             left: 300px;
             padding-bottom: 10px;
             min-width: 1000px;
         }
         #shared_files_table {
             position: absolute;
-            margin-top: 400px;
+            margin-top: 250px;
             margin-right: 10px;
             left:300px;
             width:50%;
@@ -52,7 +52,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 </head>
 <body>
 
-<div><h2 class="youshared">Dateien, die ich mit <b>internen</b> Nutzern geteilt habe:</h2></div>
+<div class="youshared"><h2>Dateien, die ich mit <b>internen</b> Nutzern geteilt habe:</h2></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
