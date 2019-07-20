@@ -58,7 +58,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             margin-right: 30px;
             margin-bottom: 40px;
         }
-
         #rosa_hover a:hover{
             background-color: lightpink;
         }
@@ -96,7 +95,6 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             margin-right: 40px;
             width: 187px;
         }
-
         #sharefile:hover {
             background-color: lightpink;
             text-decoration: none;
@@ -116,7 +114,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         $datensatz = array($_SESSION["user_id"]);
         $statement->execute($datensatz);
         if ($row = $statement->fetch()) {
-            echo "Hallo ", $row["firstName"]." ";
+            echo $row["firstName"]." ";
         }
         ?>
     </div>
