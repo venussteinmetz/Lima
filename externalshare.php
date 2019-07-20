@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -74,6 +73,12 @@ include 'searchbar.php';
             background-color: lightgray;
             text-decoration: none;
         }
+        #back {
+             width: 25px;
+             height: 25px;
+             margin-top: 15px;
+            right: 50px;
+         }
     </style>
 </head>
 <body>
@@ -101,7 +106,7 @@ include 'searchbar.php';
             echo "<tr id='tr_shared_files'>
 <td id='td_shared_files'>$filename</td>
 <td id='td_shared_files'>$nonuser</td>
-<td id='td_shared_files'><a href='undo_externalshare.php?non_user=$nonuser&fileid=$fileid'><img id=back src='rückgängig.jpg'></a></td>
+<td id='td_shared_files'><a href='undo_externalshare.php?non_user=$nonuser&fileid=$fileid'><img id=back src='rückgängig.png'></a></td>
 </tr>";
         }
     }
