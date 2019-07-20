@@ -16,13 +16,14 @@ include 'searchbar.php';
             overflow-y: scroll;
             font-family: Avenir;
             position: absolute;
-            top: 270px;
+            top: 170px;
             left: 300px;
             padding-bottom: 10px;
+            min-width: 500px;
         }
         #shared_files_table {
             position: absolute;
-            margin-top: 400px;
+            margin-top: 250px;
             margin-right: 10px;
             left:300px;
             width:50%;
@@ -46,7 +47,6 @@ include 'searchbar.php';
             width: 30px;
             text-align: center;
         }
-
         .link-id:link {
             color: lightpink;
             text-decoration: none;
@@ -67,12 +67,10 @@ include 'searchbar.php';
             border-radius: 4px;
             background-color: lightpink;
         }
-
         #filesishared:hover {
             background-color: lightcoral;
             text-decoration: none;
         }
-
     </style>
 </head>
 <body>
