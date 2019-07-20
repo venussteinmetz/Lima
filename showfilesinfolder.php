@@ -7,10 +7,9 @@ $folderid = $_GET["folder_id"];
 ?>
 
 <?php
-include 'sidebar2.php';
 include "searchbar.php";
-include 'profilepicture.php';
-include 'notifications.php';
+include "sidebar2.php";
+include "notifications.php";
 ?>
 <html>
 <head>
@@ -93,8 +92,7 @@ include 'notifications.php';
         $statement = $pdo->prepare("SELECT * FROM folders WHERE folder_id = ?");
         $statement->execute(array($folderid));
         while ($row = $statement->fetch()) {
-            if ($row["file_code"] == 0) {
-            } else {
+            if ($row["file_code"] !== 0) {
                 //Dieser Code wird ausgeführt, wenn der Ordner nicht leer ist. Dann werden die Dateien, die im Ordner gespeichert sind ausgegeben.
                 $statement2 = $pdo->prepare("SELECT * FROM fileinfolders WHERE folder_id = ?");
                 $statement2->execute(array($folderid));
@@ -113,8 +111,8 @@ include 'notifications.php';
                             <td><?php echo $filename ?></td>
                             <td><?php echo$upload_date ?></td>
                             <td><?php echo$mimetype ?></td>
-                            <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
-                            <td> <a class='link-id' href='deletefilefromfolder.php?del=$fileid'><img class=trash src='muell.png'></a></td>
+                            <td> <a class='link-id' href='download.php?fileid=<?php echo $fileid; ?>&filename=<?php echo $filename; ?>'><img class=downloadicon src='download1.png'></a></td>
+                            <td> <a class='link-id' href='deletefilefromfolder.php?fileid=<?php echo $fileid; ?>&folderid=<?php echo $folderid?>'><img class=trash src='muell.png'></a></td>
                         </tr>
 
                         <?php
