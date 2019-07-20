@@ -1,6 +1,13 @@
 <?php
 include "searchbar.php";
 include "sidebar2.php";
+include "profilepicture.php";
+include "notifications.php";
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <html>
 <head>
