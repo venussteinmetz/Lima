@@ -1,7 +1,9 @@
 <?php
-include 'searchbar.php';
-include "sidebar2.php";
-include "notification.php";
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notifications.php';
+
 ?>
 
 
@@ -87,6 +89,5 @@ if(!$error) {
 </div>
 "<br><br> <a href=index.php><button id="index_button">Zurück zur Startseite</button></a>
 <br><br> <a href=writemessage.php><button id="writemessage_button">Neue Nachricht schreiben</button></a>"
-<br> <a href=""
 
 </body>

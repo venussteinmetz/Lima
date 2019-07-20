@@ -1,14 +1,13 @@
 <?php
 session_start();
-?>
-<?php
-include 'searchbar.php';
-include "sidebar2.php";
-include "notification.php";
-?>
 
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notifications.php';
+?>
+
 <style>
     #textfeld {
         position: absolute;
