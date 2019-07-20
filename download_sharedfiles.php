@@ -13,13 +13,18 @@
         top: 50%;
         right:400px;
     }
+    #extern_share {
+        font-family: Avenir;
+        position: absolute;
+        top: 50%;
+        left:550px;
+    }
 
 </style>
 
 </head>
 
 <body>
-<div id="external_share">
 <?php
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 
@@ -34,7 +39,7 @@ $statement->execute(array($string));
 
                     }
                     if ($check !="") {
-                        echo "Ihnen wurde diese Datei freigegeben:<br><br>";
+                        echo "<div id='extern_share'>Ihnen wurde diese Datei freigegeben:<br><br>";
 
                         $statement2 = $pdo->prepare("SELECT * FROM file WHERE file_id = ?");
                         $statement2->execute(array($file));
@@ -51,17 +56,16 @@ $statement->execute(array($string));
                             $statement3 = $pdo->prepare("SELECT * FROM user WHERE userID = ?");
                             $statement3->execute(array($owner));
                             while ($row3 = $statement3->fetch()) {
-                                echo $row3['firstName']." ".$row3['lastName']."<br><br>";
+                                echo $row3['firstName']." ".$row3['lastName']."<br><br></div>";
                             }
                         }
 
                     }
                     else{
-                        echo "Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt.";
+                        echo "<div id='external_share'> Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt.</div>";
                     }
 
                     ?>
 
-</div>
 </body>
 </html>
