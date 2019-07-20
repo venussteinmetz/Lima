@@ -2,45 +2,43 @@
 session_start()
 ?>
 <?php
-include 'searchbar.php';
 include "sidebar2.php";
 include "notifications.php";
+include 'searchbar.php';
+include 'profilepicture.php';
 ?>
 
-    <!DOCTYPE html>
-    <html lang="de">
+<!DOCTYPE html>
+<html lang="de">
 <head>
     <title>Nachrichten</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-
-
     <style>
-        h2{
+        #message {
             font-family: Avenir;
             position: absolute;
             left: 300px;
             top: 200px;
+            min-width: 500px;
         }
-        .container {
+        #container {
             position: absolute;
             margin-top: 210px;
             left: 280px;
         }
-        .table table {
+        #tabletable {
             margin: 10px;
+            margin-top: 30px;
         }
-        tr {
+        #tr_message {
             border-bottom: 1px solid #cbcbcb;
             text-align: center;
             width: 70px;
         }
-        th {
+        #th_message {
             width: 20%;
             text-align: center;
         }
-        td {
+        #td_message {
             width: 20%;
             text-align: center;
         }
@@ -60,6 +58,11 @@ include "notifications.php";
             padding:9px 13px;
             text-decoration:none;
             text-shadow:0px 1px 0px lightcoral;
+        }
+        #buttonschreiben:hover{
+            background-color:lightcoral;
+            text-decoration:none;
+            color: black;
         }
         .button-folder {
             background-color: lightpink;
@@ -81,30 +84,21 @@ include "notifications.php";
         .button-folder:active {
             position:relative;
             top:1px;
-        @media screen and (min-width: 768px) and (max-width: 1024px) {
-            .container {
-                width: 70%;
-            }
-            @media screen and (min-width: 569px) and (max-width: 767px) {
-                .container{
-                    width: 70%;
-                }
-            }
     </style>
 </head>
 <body>
-<a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben:</a>
+<a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben</a>
 <br>
-<h2>Meine Nachrichten:</h2>
+<div id="message"><h2>Meine Nachrichten:</h2></div>
 <br>
-<div class="container">
+<div id="container">
     <table id="tabletable">
-        <tr>
-            <th>Nachricht von</th>
-            <th>Gesendet um</th>
-            <th>Betreff</th>
-            <th>Status</th>
-            <th>Diese Nachricht</th>
+        <tr id="tr_message">
+            <th id="th_message">Nachricht von</th>
+            <th id="th_message">Gesendet um</th>
+            <th id="th_message">Betreff</th>
+            <th id="th_message">Status</th>
+            <th id="th_message">Diese Nachricht</th>
         </tr>
         <?php
         session_start();
@@ -121,20 +115,19 @@ include "notifications.php";
             }
             ?>
             <tr>
-                <td><?php echo $sender; ?></td>
-                <td> <?php echo $row ['message_date']; ?> </td>
-                <td><?php echo $row['message_subject']; ?></td>
-                <td><?php
+                <td id="td_message"><?php echo $sender; ?></td>
+                <td id="td_message"> <?php echo $row ['message_date']; ?> </td>
+                <td id="td_message"><?php echo $row['message_subject']; ?></td>
+                <td id="td_message"><?php
                     if (is_null($row['message_read'])) {
                         echo 'Noch nicht gelesen';
                     } else {
                         echo "Gelesen";
                     }
                     ?> </td>
-                <td>
+                <td id="td_message">
                     <a class="button-folder" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
                     <a class="button-folder" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
-
                 </td>
             </tr>
             <?php
@@ -142,4 +135,4 @@ include "notifications.php";
         ?>
 </div>
 </body>
-    </html><?php
+</html>
