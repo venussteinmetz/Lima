@@ -1,6 +1,18 @@
+<?php
+include "searchbar.php";
+include "sidebar2.php";
+include "profilepicture.php";
+include "notifications.php";
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+?>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lima</title>
     <style>
         #file {
             position: relative;
@@ -26,11 +38,7 @@
 </head>
 
 
-<?php
-include "sidebar2.php";
-include "notifications.php";
-include 'searchbar.php';
-?>
+
 <div id="delete">
 <?php
 session_start();
