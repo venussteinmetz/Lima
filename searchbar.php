@@ -27,13 +27,13 @@
             border-color: black;
             padding: 10px;
             width: 72%;
+            outline: none;
         }
-        #search-button {
+        #search-btn {
             margin-top: 0;
             /*     order: 2; */
             border-radius: 50%;
         }
-
         @media screen and (max-width: 900px) {
             .search-box {
                 visibility: hidden;
@@ -41,22 +41,19 @@
                 width: 40%;
                 min-width: 700px;
             }
-            #search-button {
+            #search-btn {
                 margin-top: 0;
                 /*     order: 2; */
             }
-
             .search-txt {
                 width: 72%;
             }
         }
-
         @media screen and (min-width: 700px) {
             .search-box {
                 flex-direction: row;
                 width: 40%;
             }
-
         }
     </style>
 </head>
@@ -64,10 +61,11 @@
 <body>
 <form class="search-box" action="search.php" method="post">
     <input class="search-txt" type="text" name="submit-search" placeholder="Suche nach Datei">
-    <button id="search-button" type="submit" class="btn btn-default">
+    <button id="search-btn" type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span>
     </button>
 </form>
 
 </body>
 </html>
+
