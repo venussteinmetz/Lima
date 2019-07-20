@@ -2,6 +2,10 @@
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 $id = $_SESSION['user_id'];
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 
 function random_string()
 {
@@ -36,7 +40,7 @@ if (isset($_POST['submit'])) {
 
     $randomcode = random_string();
     if(in_array($fileActualExt, $allowed)) {  //es wird überprüft ob der hochgeladene Dateityp erlaubt ist
-            if($fileSize < 1000000000) { //die Dateigröße darf nicht größer als 1000000 sein
+            if($fileSize < 25000000) { //die Dateigröße darf nicht größer als 25000000 sein
                 $fileNameNew = $randomcode . "." . $fileActualExt;
                 $fileDestination = "/home/ab247/public_html/s19_lima/pp/" . $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
