@@ -4,28 +4,21 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 $owner = $_SESSION["user_id"];
 $foldername = $_GET["folder_name"];
 $folderid = $_GET["folder_id"];
-if(!isset($_SESSION['user_id'])) {
-    header("location: login.php");
-    die();
-}
 ?>
 <?php
+include 'sidebar2.php';
 include "searchbar.php";
-include "sidebar2.php";
-include "notifications.php";
-include "profilepicture.php";
+include 'profilepicture.php';
+include 'notifications.php';
+
+?>
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lima</title>
+    <title></title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="dashboard3style.css" rel="stylesheet">
 
     <style>
         .row {
@@ -57,7 +50,7 @@ include "profilepicture.php";
             <form action="addfiletofolder_do.php?foldername=<?php echo $foldername;?>&folder_id=<?php echo $folderid?>" method="post"><br><br>
                 Welche Datei möchtest du hinzufügen?<br>
                 <select  name="file" value="">
-                    <option
+                    <option value="">- Wähle die Datei -
                         <?php
                         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
                         $statement->execute(array($owner));
