@@ -7,9 +7,10 @@ $folderid = $_GET["folder_id"];
 ?>
 
 <?php
+include 'sidebar2.php';
 include "searchbar.php";
-include "sidebar2.php";
-include "notifications.php";
+include 'profilepicture.php';
+include 'notifications.php';
 ?>
 <html>
 <head>
@@ -43,21 +44,22 @@ include "notifications.php";
             background: #F5F5F5;
         }
         .button-add {
-            background-color: grey;
+            color: black;
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
-            color:#ffffff;
+            background-color:lightpink;
             font-family:Avenir;
             font-size:12px;
             padding:9px 13px;
-            text-decoration:none;
             position: absolute;
             left: 900px;
             top: 55px;
         }
         .button-add:hover {
+            color: black;
             background-color:lightcoral;
+            text-decoration: none;
         }
         .trash {
             height: 25px;
@@ -111,8 +113,8 @@ include "notifications.php";
                             <td><?php echo $filename ?></td>
                             <td><?php echo$upload_date ?></td>
                             <td><?php echo$mimetype ?></td>
-                            <td> <a class='link-id' href='download.php?fileid=<?php echo $fileid; ?>&filename=<?php echo $filename; ?>'><img class=downloadicon src='download1.png'></a></td>
-                            <td> <a class='link-id' href='deletefilefromfolder.php?fileid=<?php echo $fileid; ?>&folderid=<?php echo $folderid?>'><img class=trash src='muell.png'></a></td>
+                            <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
+                            <td> <a class='link-id' href='deletefilefromfolder.php?del=$fileid'><img class=trash src='muell.png'></a></td>
                         </tr>
 
                         <?php
