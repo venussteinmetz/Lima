@@ -58,10 +58,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             margin-right: 30px;
             margin-bottom: 40px;
         }
-        #buttons {
-            position: relative;
-            left: 20px;
-        }
+
         #rosa_hover a:hover{
             background-color: lightpink;
         }
@@ -85,7 +82,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         }
         #sharefile {
             position: absolute;
-            top: 70px;
+            top: 600px;
             left: 20px;
             background-color: darkgray;
             font-size: medium;
@@ -97,6 +94,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             text-decoration:none;
             float: right;
             margin-right: 40px;
+            width: 187px;
         }
 
         #sharefile:hover {
@@ -132,7 +130,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         <a href="showfolder.php">Meine Ordner</a>
         <a href="logout.php">Logout</a>
         <br>
-       
+
 
     </div>
     <div id="buttons">
