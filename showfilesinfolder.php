@@ -17,14 +17,11 @@ include "notifications.php";
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
     <style>
-
         #files {
             position: absolute;
             left: 300px;
             margin-top: 90px;
-
         }
-
         html  {
             font-family: Avenir;
         }
@@ -65,7 +62,6 @@ include "notifications.php";
         .trash {
             height: 25px;
             width: 25px;
-
         }
         .downloadicon {
             height: 25px;
@@ -74,7 +70,6 @@ include "notifications.php";
             margin-right: 10px;
             margin-left: 10px;
         }
-
     </style>
 </head>
 <div>
@@ -97,7 +92,6 @@ include "notifications.php";
         $statement->execute(array($folderid));
         while ($row = $statement->fetch()) {
             if ($row["file_code"] == 0) {
-
             } else {
                 //Dieser Code wird ausgeführt, wenn der Ordner nicht leer ist. Dann werden die Dateien, die im Ordner gespeichert sind ausgegeben.
                 $statement2 = $pdo->prepare("SELECT * FROM fileinfolders WHERE folder_id = ?");
@@ -117,8 +111,8 @@ include "notifications.php";
                             <td><?php echo $filename ?></td>
                             <td><?php echo$upload_date ?></td>
                             <td><?php echo$mimetype ?></td>
-                            <td> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td>
-                            <td> <a class='link-id' href='deletefilefromfolder.php?del=$fileid'><img class=trash src='muell.png'></a></td>
+                            <td> <a class='link-id' href='download.php?fileid=<?php echo $fileid; ?>&filename=<?php echo $filename; ?>'><img class=downloadicon src='download1.png'></a></td>
+                            <td> <a class='link-id' href='deletefilefromfolder.php?fileid=<?php echo $fileid; ?>&folderid=<?php echo $folderid?>'><img class=trash src='muell.png'></a></td>
                         </tr>
 
                         <?php
