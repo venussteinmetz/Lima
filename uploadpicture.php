@@ -1,4 +1,35 @@
 <?php
+include "searchbar.php";
+include "sidebar2.php";
+include "profilepicture.php";
+include "notifications.php";
+?>
+<html>
+<head>
+    <title>Lima</title>
+    <style>
+        #upload {
+            position: absolute;
+            top: 90px;
+            left: 300px;
+        }
+        #up {
+            position: relative;
+            top: 50%;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+            color: black;
+        }
+        #up:hover {
+            background-color: lightcoral;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<div id="upload">
+<?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 $id = $_SESSION['user_id'];
@@ -40,31 +71,36 @@ if (isset($_POST['submit'])) {
 
     $randomcode = random_string();
     if(in_array($fileActualExt, $allowed)) {  //es wird überprüft ob der hochgeladene Dateityp erlaubt ist
-            if($fileSize < 25000000) { //die Dateigröße darf nicht größer als 25000000 sein
-                $fileNameNew = $randomcode . "." . $fileActualExt;
-                $fileDestination = "/home/ab247/public_html/s19_lima/pp/" . $fileNameNew;
-                move_uploaded_file($fileTmpName, $fileDestination);
+        if($fileSize < 25000000) { //die Dateigröße darf nicht größer als 25000000 sein
+            $fileNameNew = $randomcode . "." . $fileActualExt;
+            $fileDestination = "/home/ab247/public_html/s19_lima/pp/" . $fileNameNew;
+            move_uploaded_file($fileTmpName, $fileDestination);
 
-                $imgstatusnew = 0;
-                $statement3 = $pdo->prepare("UPDATE profileimg SET imgstatus=:imgstatus WHERE userid=:id");
-                $statement3->bindParam(':imgstatus', $imgstatusnew );
-                $statement3->bindParam(':id', $id);
-                $statement3->execute();
+            $imgstatusnew = 0;
+            $statement3 = $pdo->prepare("UPDATE profileimg SET imgstatus=:imgstatus WHERE userid=:id");
+            $statement3->bindParam(':imgstatus', $imgstatusnew );
+            $statement3->bindParam(':id', $id);
+            $statement3->execute();
 
-                $statement4 = $pdo->prepare("UPDATE profileimg SET imgpath=:imgpath WHERE userid=:id");
-                $statement4->bindParam(':imgpath', $fileNameNew);
-                $statement4->bindParam(':id', $id);
-                $statement4->execute();
+            $statement4 = $pdo->prepare("UPDATE profileimg SET imgpath=:imgpath WHERE userid=:id");
+            $statement4->bindParam(':imgpath', $fileNameNew);
+            $statement4->bindParam(':id', $id);
+            $statement4->execute();
+            echo "Datei erfolgreich hochgeladen <br><br><a href=settings.php><button id='up'>Zurück zum Profilbild hochladen</button></a> <a href=index.php><button id='up'>Zurück zur Startseite</button></a>";
 
-                    header("Location: index.php");
-                } else {
-                    echo "Datei ist zu groß";
-                }
+        } else {
+            echo "Datei ist zu groß <br><br><a href=settings.php><button id='up'>Zurück zum Profilbild hochladen</button></a> <a href=index.php><button id='up'>Zurück zur Startseite</button></a>";
+        }
 
-} else {
-        echo "Datei-Typ ist nicht erlaubt. Bitte jpg, jpeg, png oder pdf verwenden!";
+    } else {
+        echo "Datei-Typ ist nicht erlaubt. Bitte jpg, jpeg, png oder pdf verwenden! <br><br><a href=settings.php><button id='up'>Zurück zum Profilbild hochladen</button></a> <a href=index.php><button id='up'>Zurück zur Startseite</button></a>";
     }
 }
 
 ?>
+</div>
+<body>
+
+</body>
+</html>
 
