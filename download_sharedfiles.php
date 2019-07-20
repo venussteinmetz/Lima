@@ -3,9 +3,23 @@
 <head>
     <title>Lima</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    html {
+        background-image: url("Hintergrund.png");
+    }
+    #external_share {
+        font-family: Avenir;
+        position: absolute;
+        top: 50%;
+        right:400px;
+    }
+
+</style>
+
 </head>
 
 <body>
+<div id="external_share">
 <?php
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 
@@ -43,11 +57,11 @@ $statement->execute(array($string));
 
                     }
                     else{
-                        echo ("Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt.");
+                        echo "Ihre Download-Freigabe ist erloschen oder der Besitzer hat Ihnen den Download verwehrt.";
                     }
 
                     ?>
 
-
+</div>
 </body>
 </html>
