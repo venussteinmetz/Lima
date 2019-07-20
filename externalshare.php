@@ -19,8 +19,9 @@ include 'searchbar.php';
             top: 170px;
             left: 300px;
             padding-bottom: 10px;
-            min-width: 500px;
+            min-width: 1000px;
         }
+
         #shared_files_table {
             position: absolute;
             margin-top: 250px;
@@ -74,16 +75,16 @@ include 'searchbar.php';
             text-decoration: none;
         }
         #back {
-             width: 25px;
-             height: 25px;
-             margin-top: 15px;
+            width: 25px;
+            height: 25px;
+            margin-top: 15px;
             right: 50px;
-         }
+        }
     </style>
 </head>
 <body>
 
-<div class="shared"><h2>Dateien, die ich mit <b>externen</b> Nutzern geteilt habe:</h2></div>
+<div><h2 class="shared">Dateien, die ich mit <b>externen</b> Nutzern geteilt habe:</h2></div>
 
 <table id="shared_files_table">
     <tr id="tr_shared_files">
