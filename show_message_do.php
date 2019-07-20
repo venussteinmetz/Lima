@@ -111,7 +111,7 @@ $message = $_GET["id"];
 
 
     <p>
-        <a id="answer_button" href="answer_message.php?id=<?php echo $message; ?>">Auf diese Nachricht antworten</a>
+        <a id="answer_button" href="answer_message.php?id=<?php echo $message; ?>">Antworten</a>
         <?php
         $date = date('Y-m-d H:i:s');
         $statement4 = $pdo->prepare("UPDATE message SET message_read=:message_read WHERE message_id=:id");
