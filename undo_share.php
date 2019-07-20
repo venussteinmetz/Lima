@@ -46,7 +46,7 @@ while ($row2 = $statement2->fetch()) {
     $accessid = $row2["access_id"];
     $statement = $pdo->prepare("DELETE FROM access WHERE access_id = ?");
     $statement->execute(array($accessid));
-    echo "Die Freigabe wurde gelöscht<br><br><a href=sharedfiles.php><button id='undo'>Zurück zum geteilte Datein </button></a> <a href=index.php><button id='undo'>Zurück zur Startseite</button></a>";
+    echo "Die Freigabe wurde gelöscht<br><br><a href=sharedfiles.php><button id='undo'>Zurück zu geteilte Datein </button></a> <a href=index.php><button id='undo'>Zurück zur Startseite</button></a>";
     $statement3 = $pdo->prepare("SELECT * FROM access WHERE file_id = ?");
     $statement3->execute(array($fileid));
     $result = $statement3->rowCount();
