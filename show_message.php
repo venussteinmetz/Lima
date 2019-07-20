@@ -18,7 +18,7 @@ include 'profilepicture.php';
             position: absolute;
             left: 300px;
             top: 200px;
-            font-size: 30px;
+            min-width: 500px;
         }
         #container {
             position: absolute;
@@ -27,6 +27,7 @@ include 'profilepicture.php';
         }
         #tabletable {
             margin: 10px;
+            margin-top: 30px;
         }
         #tr_message {
             border-bottom: 1px solid #cbcbcb;
@@ -88,7 +89,7 @@ include 'profilepicture.php';
 <body>
 <a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben</a>
 <br>
-<div id="message">Meine Nachrichten:</div>
+<div id="message"><h2>Meine Nachrichten:</h2></div>
 <br>
 <div id="container">
     <table id="tabletable">
