@@ -1,4 +1,36 @@
 <?php
+include 'sidebar2.php';
+include "searchbar.php";
+include 'profilepicture.php';
+include 'notifications.php';
+?>
+<html>
+<head>
+    <style>
+        #undoshare {
+            position: absolute;
+            top: 80px;
+            left: 300px;
+
+        }
+        #undo {
+            position: relative;
+            top: 50%;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+            color: black;
+        }
+        #undo:hover {
+            background-color: lightcoral;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<div id="undoshare">
+<?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 $usertodelete=$_GET["usertodelete"];
@@ -12,7 +44,7 @@ while ($row2 = $statement2->fetch()) {
     $accessid = $row2["access_id"];
     $statement = $pdo->prepare("DELETE FROM access WHERE access_id = ?");
     $statement->execute(array($accessid));
-    echo "Die Freigabe wurde gelöscht";
+    echo "Die Freigabe wurde gelöscht<br><br><a href=sharedfiles.php><button id='undo'>Zurück zum geteilte Datein </button></a> <a href=index.php><button id='undo'>Zurück zur Startseite</button></a>";
     $statement3 = $pdo->prepare("SELECT * FROM access WHERE file_id = ?");
     $statement3->execute(array($fileid));
     $result = $statement3->rowCount();
@@ -29,3 +61,8 @@ while ($row2 = $statement2->fetch()) {
     }
 }
 ?>
+</div>
+<body>
+
+</body>
+</html>
