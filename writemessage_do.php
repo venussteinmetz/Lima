@@ -38,21 +38,18 @@ include "profilepicture.php";
             top: 200px;
             left: 270px;
         }
-        #nouser_button1 {
-            color: black;
+        #nouser_button {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 173px;
             border-radius: 4px;
             background-color: lightpink;
-            position: relative;
-            top: 10px;
-            right: 40px;
+            color: black;
         }
-        #nouser_button2 {
-            color: black;
-            border-radius: 4px;
-            background-color: lightpink;
-            position: relative;
-            top: 10px;
-            right: 100px;
+        #nouser_button:hover {
+            background-color: lightcoral;
+            text-decoration:none;
         }
     </style>
 
@@ -84,8 +81,8 @@ include "profilepicture.php";
         if (empty($receiver)) {
             $error = true;
             echo "Der Empfänger existiert nicht.
-            <br><br> <a href=index.php><button id='nouser_button1'>Zurück zur Startseite</button></a>
-            <br><br> <a href=writemessage.php><button id='nouser_button2'>Neue Nachricht schreiben</button></a>";
+            <br><br>
+            <br><br> <a href=writemessage.php><button id='nouser_button'>Neue Nachricht schreiben</button></a>";
             die();
         } else  {
             $stmt = $pdo->prepare("INSERT INTO message (message_id, sender, receiver, message_date, message_read, message_subject, content) VALUES('',:sender,:receiver, CURRENT_TIMESTAMP (), NULL , :message_subject, :content)");
@@ -95,8 +92,6 @@ include "profilepicture.php";
             $stmt->bindParam(':content', $_POST['content']);
             $stmt->execute();
             echo "Nachricht wurde erfolgreich versendet!";
-
-
             $stmt1 = $pdo->prepare("SELECT * FROM notification WHERE user_id = ?");
             $stmt1->execute(array($receiver));
             $result = $stmt1->rowCount();
