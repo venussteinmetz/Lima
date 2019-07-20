@@ -1,6 +1,6 @@
 <?php
 include 'profilepicture.php';
-include 'notification.php';
+include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 include 'shared.php';
@@ -8,7 +8,7 @@ include 'shared.php';
 
 <html>
 <head>
-    <title>My shared Files</title>
+    <title>Lima</title>
     <style>
 
 
