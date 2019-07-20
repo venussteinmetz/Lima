@@ -47,6 +47,8 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         .back {
             height: 25px;
             width: 25px;
+            margin-top: 15px;
+            right: 50px;
         }
     </style>
 </head>
@@ -79,7 +81,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                 echo "<tr id='tr_shared_files'>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$sharedmail</td>
-                    <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='rückgängig.jpg'></a></td></tr></td>
+                    <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='rückgängig.png'></a></td></tr></td>
                   </tr>
                  ";
             }
