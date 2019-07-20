@@ -1,7 +1,8 @@
 <?php
 include 'searchbar.php';
 include "sidebar2.php";
-include "notification.php";
+include "notifications.php";
+include "profilepicture.php";
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -24,7 +25,6 @@ include "notification.php";
             left: 300px;
             top:80px;
             margin-top: 10px;
-
         }
         #textarea {
             position: absolute;
@@ -35,7 +35,6 @@ include "notification.php";
             padding: 10px;
             width: 400px;
             margin-top: 30px;
-
         }
         #answer_button {
             outline: none;
