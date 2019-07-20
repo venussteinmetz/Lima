@@ -5,9 +5,9 @@ include 'sidebar2.php';
 include "searchbar.php";
 ?>
 <html>
-        <head>
-                 <title>Lima</title>
-        <style>
+<head>
+    <title>Lima</title>
+    <style>
         html  {
             font-family: Avenir;
         }
@@ -16,15 +16,14 @@ include "searchbar.php";
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
-            color:#ffffff;
+            color:black;
             font-family:Avenir;
             font-size:12px;
             padding:9px 13px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px lightcoral;
             margin-left: 20px;
         }
         .button-folder:hover {
+            text-decoration: none;
             background-color:lightcoral;
             color: black;
         }
@@ -46,20 +45,19 @@ include "searchbar.php";
             border-radius:42px;
             display:inline-block;
             cursor:pointer;
-            color:#ffffff;
+            color:black;
             font-family:Avenir;
             font-size:12px;
             padding:9px 13px;
-            text-decoration:none;
             position: relative;
             left: 300px;
             top: 55px;
         }
         .button-create:hover {
-            background-color:lightcoral;
+            text-decoration: none;
+            background-color:lightpink;
             color: black;
         }
-
         @media screen and (min-width: 768px) and (max-width: 1024px) {
             #text{
                 width: 70%;
