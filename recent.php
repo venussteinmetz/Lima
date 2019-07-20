@@ -12,8 +12,6 @@ include 'profilepicture.php';
 <html>
 <head>
     <title>Lima</title>
-    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-    <script src="js/general.js"></script>
 
     <style>
         .container{
@@ -22,7 +20,7 @@ include 'profilepicture.php';
             margin-top: 70px;
             margin-right: 10px;
             left:300px;
-            width:50%;
+            min-width: 500px;
         }
         #tr_files {
             border-bottom: 1px solid #cbcbcb;
