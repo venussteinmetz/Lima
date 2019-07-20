@@ -18,6 +18,7 @@ include 'profilepicture.php';
             position: absolute;
             left: 300px;
             top: 200px;
+            font-size: 30px;
         }
         #container {
             position: absolute;
@@ -85,7 +86,7 @@ include 'profilepicture.php';
     </style>
 </head>
 <body>
-<a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben:</a>
+<a id="buttonschreiben" href="writemessage.php">Neue Nachricht schreiben</a>
 <br>
 <div id="message">Meine Nachrichten:</div>
 <br>
@@ -126,7 +127,6 @@ include 'profilepicture.php';
                 <td id="td_message">
                     <a class="button-folder" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
                     <a class="button-folder" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
-
                 </td>
             </tr>
             <?php
