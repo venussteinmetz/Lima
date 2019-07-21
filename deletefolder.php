@@ -2,6 +2,11 @@
 include 'sidebar2.php';
 include "searchbar.php";
 include "notification.php";
+include "profilpicture.php";
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <html>
 <head>
@@ -30,6 +35,7 @@ include "notification.php";
 <body>
 <div id="geloescht">
     <?php
+    //Ordner wird aus der Datenbank gelöscht
     session_start();
     $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
     $folderid= $_GET["folder_id"];
