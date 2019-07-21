@@ -4,7 +4,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 include 'sidebar2.php';
 include "searchbar.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <style>
