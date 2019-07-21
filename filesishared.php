@@ -4,10 +4,18 @@ include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 include 'shared.php';
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Styling der Dokumenten innerhalb einer Tabelle und der Buttons. 
+Styling der Links durch Pseudoklassen.-->
     <style>
         #sharedfiles {
             color: black;
@@ -40,6 +48,7 @@ include 'shared.php';
         }
     </style>
 </head>
+<!-- Einbindung der Geteilten Dokumente und die die mit dem Nutzer geteilt wurden. -->
 <body>
 <a href="sharedfiles.php"><button id="sharedfiles"><b>Dateien, die mit mir geteilt wurden</b></button></a>
 <br><br>
