@@ -1,7 +1,12 @@
 <?php
-session_start()
-?>
-<?php
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+       
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
@@ -11,7 +16,7 @@ include 'profilepicture.php';
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>Nachrichten</title>
+    <title>Lima</title>
     <style>
         #message {
             font-family: Avenir;
@@ -100,11 +105,9 @@ include 'profilepicture.php';
             <th id="th_message">Status</th>
             <th id="th_message">Diese Nachricht</th>
         </tr>
+       
         <?php
-        session_start();
-        $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-        ?>
-        <?php
+        //Die Nachrichten werden dem Nutzer angezeigt und nach dem Datum (Neuste zuerst) geordnet. 
         $statement = $pdo->prepare("SELECT * FROM message WHERE receiver = ? ORDER BY message_date DESC");
         $statement->execute(array($_SESSION['user_id']));
         while ($row = $statement->fetch()) {
@@ -126,6 +129,7 @@ include 'profilepicture.php';
                     }
                     ?> </td>
                 <td id="td_message">
+                    <!-- Der Nutzer kann die Nachricht löschen oder öffnen, und wird dafür auf die entsprechende Seite weitergeleitet-->
                     <a class="button-folder" href="show_message_do.php?id=<?php echo $row['message_id']; ?>">Öffnen</a>
                     <a class="button-folder" href="delete_message.php?id=<?php echo $row['message_id']; ?>">Löschen</a>
                 </td>
