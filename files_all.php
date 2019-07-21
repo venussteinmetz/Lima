@@ -11,10 +11,10 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!-- Styling des Containers um die Tabelle, der Tabelle, des table heads/ table row/ table data
-    Styling der Links durch Pseudoklassen 
-    Responsiveness durch Media Queries 
-    Styling der icons in der Tabelle -->
+    <!-- Styling des Containers um die Tabelle, der Tabelle, des table heads/ table row/ table data.
+    Styling der Links durch Pseudoklassen. 
+    Responsiveness durch Media Queries.
+    Styling der icons in der Tabelle. -->
     <style>
         .container{
             overflow-y: scroll;
