@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<head>
+    <title>Lima</title>
+</head>
+<body>
 <?php
 $pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset' => 'utf8'));
 
@@ -66,3 +71,5 @@ if(isset($_GET['send'])) {
 
     <input type="submit" value="Passwort speichern">
 </form>
+</body>
+</html>
