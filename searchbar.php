@@ -1,7 +1,6 @@
-<?php
-?>
-<html>
+<!DOCTYPE html>
 <head>
+    <title>Lima</title>
     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -57,7 +56,6 @@
         }
     </style>
 </head>
-
 <body>
 <form class="search-box" action="search.php" method="post">
     <input class="search-txt" type="text" name="submit-search" placeholder="Suche nach Datei">
@@ -68,4 +66,3 @@
 
 </body>
 </html>
-
