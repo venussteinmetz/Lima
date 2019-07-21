@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include 'sidebar2.php';
@@ -7,12 +6,9 @@ include 'notifications.php';
 include 'profilepicture.php';
 ?>
 <!DOCTYPE html>
-<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Bild Upload</title>
+    <title>Lima</title>
     <style>
-
         #heading-pp {
             position: absolute;
             top: 100px;
@@ -47,11 +43,7 @@ include 'profilepicture.php';
             position: relative;
             top:150px;
             left:300px;
-
-
-
         }
-
     </style>
 </head>
 <body>
@@ -62,7 +54,5 @@ include 'profilepicture.php';
         <button id="button-pp" type="submit" value="Bild hochladen" name="submit">Bild hochladen</button>
     </form>
 </div>
-
-
 </body>
 </html>
