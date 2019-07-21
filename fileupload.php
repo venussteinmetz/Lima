@@ -7,7 +7,7 @@ include "notification.php";
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Datei Upload</title>
+    <title>Lima</title>
     <style>
         #hochladenform {
             position: absolute;
