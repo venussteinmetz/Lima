@@ -5,10 +5,18 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 include "sidebar2.php";
 include 'notifications.php';
 include 'searchbar.php';
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <html>
 <head>
     <title>Lima</title>
+    <!-- Styling der Ergebnis-Tabelle. 
+    Styling der Links durch Pseudoklassen.
+    Styling der Icons.-->
     <style>
         h1 {
             font-family: Avenir ;
@@ -78,6 +86,9 @@ include 'searchbar.php';
             <th id=\"th_files\">Löschen</th>
             <th id=\"th_files\"> Favorisieren </th>
         </tr>";
+         /* SQL-Anfrage: Es wird alles rausgegeben, was dem Nutzer gehört. Das was der Nutzer in die Suchleiste eingibt,
+         wird in der Variable $search gespeichert und mit den Ergebnissen der Tabelle verglichen. Wenn etwas übereinstimmt
+         wird das Ergebnis innerhalb der Tabelle ausgegeben. */
         $statement = $pdo->prepare ("SELECT * FROM file WHERE owner=$userID AND filename LIKE '%$search%'");
         if ($statement->execute()){
             while ($row = $statement->fetch()) {
