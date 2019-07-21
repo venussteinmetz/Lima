@@ -12,6 +12,8 @@ include 'profilepicture.php';
 include 'notifications.php';
 ?>
 
+<!DOCTYPE html>
+<head>
 <style>
     #textfeld {
         position: absolute;
