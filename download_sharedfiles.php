@@ -1,9 +1,10 @@
+<?php
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Der Hintergrund wird festgelegt.
-    Styling der Darstellung der Dokumente und der Nachricht falls das nicht möglich ist. -->
 <style>
     html {
         background-image: url("Hintergrund.png");
@@ -24,11 +25,7 @@
 </head>
 <body>
 <?php
-$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
-/* Der Sharing-Code wird an an die Variable $String übergeben und dann mit den Inhalten der Datenbank verglichen. 
-Wenn der Code existiert, wird die Datei ausgegeben und wenn nicht bekommt der Nutzer eine Nachricht, dass er keinen Zugriff hat.*/ 
-    
+//In der GET-Variable ist der individuelle Code, der für die Freigabe der Datei gedacht ist, gespeichert.
 $string = $_GET["code"];
 $statement = $pdo->prepare("SELECT * FROM sharing WHERE random_string = ?");
 $statement->execute(array($string));
@@ -39,7 +36,8 @@ $statement->execute(array($string));
                     }
                     if ($check !="") {
                         echo "<div id='extern_share'>Ihnen wurde diese Datei freigegeben:<br><br>";
-
+                        
+                        //Die Informationen werden in den GET-Variablen für die URL gespeichert. Bei Klick auf den Link wird der Download der Datei ausgeführt.
                         $statement2 = $pdo->prepare("SELECT * FROM file WHERE file_id = ?");
                         $statement2->execute(array($file));
                         while ($row2 = $statement2->fetch()) {
