@@ -23,7 +23,8 @@ include "profilepicture.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="dashboard3style.css" rel="stylesheet">
-
+<!-- Styling <div>
+Styling der Links mit Pseudoklassen.-->
     <style>
         .row {
             position: absolute;
@@ -54,6 +55,7 @@ include "profilepicture.php";
                 <select  name="file" value="">
                     <option
                     <?php
+    /* SQL-Anfrage: Alle Dokumente die dem Nutzer gehören werden zur Auswahl angezeigt.  */
                     $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
                     $statement->execute(array($owner));
                     while ($row = $statement->fetch()) {
