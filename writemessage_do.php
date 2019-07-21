@@ -1,9 +1,8 @@
 <?php
-include 'sidebar2.php';
-include "searchbar.php";
-include 'profilepicture.php';
-include 'notifications.php';
-
+include 'searchbar.php';
+include "sidebar2.php";
+include "notifications.php";
+include "profilepicture.php";
 ?>
 
 
@@ -12,7 +11,6 @@ include 'notifications.php';
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-
         #writemessage_button {
             color: black;
             border-radius: 4px;
@@ -21,7 +19,6 @@ include 'notifications.php';
             top: 350px;
             left: 270px;
         }
-
         #index_button {
             color: black;
             border-radius: 4px;
@@ -36,11 +33,23 @@ include 'notifications.php';
         #writemessage_button:hover {
             background-color: lightcoral;
         }
-
         #writemessage {
             position: absolute;
             top: 200px;
             left: 270px;
+        }
+        #nouser_button {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            width: 173px;
+            border-radius: 4px;
+            background-color: lightpink;
+            color: black;
+        }
+        #nouser_button:hover {
+            background-color: lightcoral;
+            text-decoration:none;
         }
     </style>
 
@@ -49,8 +58,6 @@ include 'notifications.php';
     <?php
     session_start();
     $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
-
     $sender = $_SESSION['user_id'];
     if ($_POST['receiver'] == "") {
         $error = true;
@@ -65,7 +72,6 @@ include 'notifications.php';
         echo "Bitte geben Sie eine Nachricht ein.<br><br>";
     };
     "<br><br> <a href=index.php><button>Zurück zur Startseite</button></a>";
-
     if(!$error) {
         $statement = $pdo->prepare("SELECT * FROM user WHERE eMail = ?");
         $statement->execute(array($_POST['receiver']));
@@ -74,7 +80,10 @@ include 'notifications.php';
         }
         if (empty($receiver)) {
             $error = true;
-            echo "Der Empfänger existiert nicht";
+            echo "Der Empfänger existiert nicht.
+            <br><br>
+            <br><br> <a href=writemessage.php><button id='nouser_button'>Neue Nachricht schreiben</button></a>";
+            die();
         } else  {
             $stmt = $pdo->prepare("INSERT INTO message (message_id, sender, receiver, message_date, message_read, message_subject, content) VALUES('',:sender,:receiver, CURRENT_TIMESTAMP (), NULL , :message_subject, :content)");
             $stmt->bindParam(':sender', $sender);
@@ -83,11 +92,30 @@ include 'notifications.php';
             $stmt->bindParam(':content', $_POST['content']);
             $stmt->execute();
             echo "Nachricht wurde erfolgreich versendet!";
+            $stmt1 = $pdo->prepare("SELECT * FROM notification WHERE user_id = ?");
+            $stmt1->execute(array($receiver));
+            $result = $stmt1->rowCount();
+            if ($result > 0) {
+                while ($ro = $stmt1->fetch()) {
+                    $number = $ro["number_count"];
+                    $numbernew = $number + 1;
+                    $stmt3 = $pdo->prepare("UPDATE notification SET number_count=:number_count WHERE user_id=:user_id");
+                    $stmt3->bindParam(':number_count', $numbernew);
+                    $stmt3->bindParam(':user_id', $receiver);
+                    $stmt3->execute();
+                }
+            } else {
+                $number = 1;
+                $statement4 = $pdo->prepare("INSERT INTO notification (number_count, user_id) VALUES (?, ?)");
+                $statement4->execute(array($number, $receiver));
+            }
         }
     }
     ?>
+
 </div>
-"<br><br> <a href=index.php><button id="index_button">Zurück zur Startseite</button></a>
-<br><br> <a href=writemessage.php><button id="writemessage_button">Neue Nachricht schreiben</button></a>"
+<br><br> <a href=index.php><button id="index_button">Zurück zur Startseite</button></a>
+<br><br> <a href=writemessage.php><button id="writemessage_button">Neue Nachricht schreiben</button></a>
 
 </body>
+</html>
