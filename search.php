@@ -1,14 +1,14 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-?>
-<?php
+
 include "sidebar2.php";
 include 'notifications.php';
 include 'searchbar.php';
 ?>
 <html>
 <head>
+    <title>Lima</title>
     <style>
         h1 {
             font-family: Avenir ;
@@ -63,11 +63,8 @@ include 'searchbar.php';
         }
     </style>
 </head>
-
 <body>
-
 <div id="ergebnis">
-
     <?php
     $userID =$_SESSION["user_id"];
     $search =$_POST['submit-search'];
@@ -109,3 +106,4 @@ include 'searchbar.php';
     ?>
 </div>
 </body>
+</html>
