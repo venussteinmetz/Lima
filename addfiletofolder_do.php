@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id'])) {
     die();
 }
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
@@ -89,7 +89,5 @@ if(!isset($_SESSION['user_id'])) {
     }
     ?>
 </div>
-
-
 </body>
 </html>
