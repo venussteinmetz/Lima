@@ -4,8 +4,7 @@ include "searchbar.php";
 include 'profilepicture.php';
 include 'notifications.php';
 ?>
-<html>
-    
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <style>
@@ -28,9 +27,8 @@ include 'notifications.php';
             text-decoration: none;
         }
     </style>
-
 </head>
-
+</body>
 <div id="undoshare">
 <?php
 session_start();
@@ -64,7 +62,5 @@ while ($row2 = $statement2->fetch()) {
 }
 ?>
 </div>
-<body>
-
 </body>
 </html>
