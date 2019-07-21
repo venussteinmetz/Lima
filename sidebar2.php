@@ -6,6 +6,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Lima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
@@ -147,6 +148,5 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         })
     })
 </script>
-
 </body>
 </html>
