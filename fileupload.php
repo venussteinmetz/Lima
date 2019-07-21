@@ -2,6 +2,11 @@
 include 'searchbar.php';
 include "sidebar2.php";
 include "notification.php";
+include "profilepicture.php";
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -27,6 +32,7 @@ include "notification.php";
         }
     </style>
 </head>
+<!-- Auswahlfunktion der Datei -->
 <body>
 <div id="hochladenform">
 <h1>Datei hochladen</h1>
