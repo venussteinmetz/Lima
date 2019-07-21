@@ -3,6 +3,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <meta charset="utf-8">
     <title>Lima</title>
+    <!-- Hier wird der Style definiert.
+Zuerst wird das gesamte html-tag gestylt mit einem Bild. 
+Der Hauptteil ist das Html-Formular. 
+Unter Angaben wird die Position bestimmt die, die PHP Satements ausgeben. -->
     <style>
         html {
             background-image: url("lima1.png");
@@ -35,9 +39,10 @@
         button:hover {
             background-color: lightcoral;
         }
+     
         .angaben {
             background-color: transparent;
-            position: absolute;
+            position: absolute; 
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
@@ -52,6 +57,7 @@
         }
     </style>
 </head>
+
 <body>
 <div class="angaben">
     <?php
@@ -61,7 +67,7 @@
     require "password_hash.php";
     $error= false;
 
-
+//Überprüfung was passiert wenn nichts eingegben ist. 
     if(isset($_GET['login'])) {
 
         if (empty($_POST['password'])) {
@@ -72,6 +78,7 @@
             $error = true;
             echo "Bitte geben Sie eine E-Mail an.";
         }
+        
         if (!$error) {
             $statement = $pdo->prepare('SELECT * FROM user WHERE eMail = ?');
             $datensatz = array($_POST["eMail"]);
@@ -80,6 +87,7 @@
                 $pass = $row ["password"];
                 $user = $row ["userID"];
             }
+         //Überprüft ob Passwort und Hash zusammenpassen
             $x = password_verify($_POST["password"], $pass);
             if ($x == true) {
                 $_SESSION ["user_id"] = $user;
@@ -91,12 +99,14 @@
     }
     ?>
 </div>
+    <!-- HTML-Formular für das Login -->
     <div class="hauptteil">
         <form action="login.php?login=1" method="post">
             <input type="text" name="eMail" maxlength="100" placeholder="E-Mail"><br>
             <input type="password" name="password" placeholder="Passwort"> <br>
             <button  type="submit">Anmelden</button> <br>
         </form>
+        <!-- Verlinkung durch Buttons auf Registriern und Passwort vergessen -->
         <div class="registrieren">
             <a href="password_forgot.php">Passwort vergessen?<br></a>
             <a href="register.php">Registrieren</a>
