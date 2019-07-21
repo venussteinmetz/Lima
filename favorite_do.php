@@ -4,7 +4,7 @@ include "searchbar.php";
 include 'profilepicture.php';
 include 'notifications.php';
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
@@ -43,19 +43,14 @@ include 'notifications.php';
             width: 270px;
             border-radius: 4px;
             background-color: lightpink;
-
         }
         #index_button:hover {
             background-color: lightcoral;
             text-decoration: none;
         }
-
     </style>
-
 </head>
 <body>
-
-
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -66,14 +61,11 @@ $statement->bindParam(':favorite', $status);
 $statement->bindParam(':file_id', $fav);
 if ($statement->execute()) {
 ?>
-
-
 <div id="ausgabe">
     <?php
     echo "<div id='favorite_do'>Datei wurde erfolgreich favorisiert! </div><br><br><a href=favorite.php><button id='favorite_button'>Zu meinen Favoriten</button></a> <a href=index.php><button id='index_button'>Zurück zur Startseite</button></a>";
     }
     ?>
-
 </div>
 </body>
 </html>
