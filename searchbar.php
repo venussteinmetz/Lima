@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
-    <!-- Das neueste kompilierte und minimierte CSS -->
+     <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- Optionales Theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Das neueste kompilierte und minimierte JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
+    <!-- Searchbar ist responsive und verschwindet durch @media screen, visibility: hidden, bei max-width:900px -->
     <style>
         .search-box {
             position: absolute;
@@ -57,8 +54,10 @@
     </style>
 </head>
 <body>
+    <!-- Suche erfolgt über Formulareingabe. Man wird weitergeleitet zu search.php --> 
 <form class="search-box" action="search.php" method="post">
     <input class="search-txt" type="text" name="submit-search" placeholder="Suche nach Datei">
+    <!--Suchbutton mit Lupe --> 
     <button id="search-btn" type="submit" class="btn btn-default">
         <span class="glyphicon glyphicon-search"></span>
     </button>
