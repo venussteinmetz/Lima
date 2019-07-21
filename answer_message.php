@@ -1,4 +1,12 @@
 <?php
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
@@ -31,8 +39,6 @@ include 'notifications.php';
 
 
     <?php
-    session_start();
-    $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
     $message = $_GET["id"];
     $statement = $pdo->prepare("SELECT * FROM message WHERE message_id = ?");
     $statement->execute(array($message));
@@ -48,6 +54,8 @@ include 'notifications.php';
     <form action="writemessage_do.php" method="post">
         <fieldset>
             <legend>Auf Nachricht antworten</legend>
+            
+            <!--Beim Antworten auf die Nachricht sind Betreff und Empfänger bereits im Formulat ausgefüllt-->
             <label>Empfänger: <input type="text" name="receiver" value="<?php echo $empfaenger; ?>"</label>
             <label>Betreff: <input type="text" name="subject" value="Re: <?php echo $row['message_subject']; ?>" /></label> <br>
             <label>  <textarea name="content" cols="80" rows="20"></textarea></label>
