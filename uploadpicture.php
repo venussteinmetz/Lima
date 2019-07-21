@@ -1,12 +1,16 @@
 <?php
-include "searchbar.php";
-include "sidebar2.php";
-include "profilepicture.php";
-include "notifications.php";
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
 if(!isset($_SESSION['user_id'])) {
     header("location: login.php");
     die();
 }
+
+include "searchbar.php";
+include "sidebar2.php";
+include "profilepicture.php";
+include "notifications.php";
 ?>
 <!DOCTYPE html>
 <head>
@@ -35,8 +39,6 @@ if(!isset($_SESSION['user_id'])) {
 <body>
 <div id="upload">
 <?php
-session_start();
-$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 $id = $_SESSION['user_id'];
 if(!isset($_SESSION['user_id'])) {
     header("location: login.php");
@@ -81,6 +83,7 @@ if (isset($_POST['submit'])) {
             $fileDestination = "/home/ab247/public_html/s19_lima/pp/" . $fileNameNew;
             move_uploaded_file($fileTmpName, $fileDestination);
 
+            //Sobald ein neues Profilbild hochgeladen wird, wird in der Tabelle profileimg der Image-Status von 1 auf 0 gesetzt. Und der Image-Path wird aktualisiert.
             $imgstatusnew = 0;
             $statement3 = $pdo->prepare("UPDATE profileimg SET imgstatus=:imgstatus WHERE userid=:id");
             $statement3->bindParam(':imgstatus', $imgstatusnew );
