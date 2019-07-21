@@ -46,6 +46,9 @@ if(!isset($_SESSION['user_id'])) {
             while ($imgrow = $imgstatement->fetch()) {
                 $image = $imgrow["imgpath"];
                 echo "<div>";
+                /*Es wird überprüft, ob der Status 0 oder 1 ist. 
+                Wenn der Status 0 ist, bedeutet das, dass das Bild vom Nutzer geändert wurde und dafür wird das hochgeladene Bild angezeigt.
+                Wenn der Status 1 ist, bedeutet das, dass das Bild noch nicht geändert wurde und dafür wird ein "Placeholder" Bild angezeigt.*/
                 if($imgrow["imgstatus"] == 0) {
                     echo '<a href="settings.php">
                             <img id="image-pp" src="pp/'.$image.'">
