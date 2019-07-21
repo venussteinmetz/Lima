@@ -13,13 +13,10 @@ include "notification.php";
             position: absolute;
             left: 300px;
             top: 80px;
-
         }
-
         h1 {
             align-items: center;
             font-size: 30px;
-
         }
         #file {
             width: 173px;
@@ -34,7 +31,6 @@ include "notification.php";
 <body>
 <div id="hochladenform">
 <h1>Datei hochladen</h1>
-
 <form action="uploaddo.php" method="post" enctype="multipart/form-data">
     Datei auswählen:
     <input type="file" name="uploadfile" id="uploadfile"><br>
