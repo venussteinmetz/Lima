@@ -1,3 +1,9 @@
+<?php 
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
@@ -9,6 +15,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 $owner = $_SESSION["user_id"];
 
 echo "Du hast folgende Dateien freigegeben:"."<br>"."<br>";
+    // Es werden alle Dateien angezeigt, die dem Nutzer gehören.  
 $statement = $pdo->prepare("SELECT * FROM file WHERE owner = ?");
 $statement->execute(array($owner));
 while ($row = $statement->fetch()) {
@@ -25,7 +32,7 @@ while ($row = $statement->fetch()) {
         $sharedfiles = $row2["filename"];
         echo $sharedfiles . "<br>";
 
-
+// Es werden alle Dateien angezeigt, die in der Datenbank 'Sharing' bei der die file id die gleiche ist
         $statement5 = $pdo->prepare("SELECT * FROM sharing WHERE file = ?");
         $statement5->execute(array($fileid));
         while ($ro = $statement5->fetch()) {
@@ -39,7 +46,7 @@ while ($row = $statement->fetch()) {
             }
         }
 
-
+// Es werden alle Dateien angezeigt, die in der Datenbank 'access' die gleiche file id haben.
         $statement0 = $pdo->prepare("SELECT * FROM access WHERE file_id = ?");
         $statement0->execute(array($fileid));
         while ($row0 = $statement0->fetch()) {
@@ -54,7 +61,7 @@ while ($row = $statement->fetch()) {
                 <th>Einstellung</th>
             </tr>
             <tr>
-
+// Es werden alle Nutzer angezeigt, die in der Datenbank 'user' die user id haben. 
         <?php
             $statement3 = $pdo->prepare("SELECT * FROM user WHERE userID = ?");
             $statement3->execute(array($sharedwith));
