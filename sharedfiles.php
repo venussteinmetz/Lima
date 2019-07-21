@@ -6,9 +6,8 @@ include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 ?>
-<!DOCTYPE html>
+<html>
 <head>
-    <title>Lima</title>
     <style>
         h2 {
             font-family: Avenir;
@@ -47,19 +46,16 @@ include 'searchbar.php';
             margin-top: 10px;
             width: 30px;
             text-align: center;
+
         }
-        .link-id:link {
-            color: lightpink;
-            text-decoration: none;
-        }
-        .link-id:visited{
-            color: lightpink;
-        }
+
         .downloadicon {
             height: 25px;
             width: 25px;
-            position: absolute;
-            left: 80%;
+            position: relative;
+            left: -30%;
+            margin-top: 10px;
+
         }
         #filesishared {
             color: black;
@@ -77,6 +73,7 @@ include 'searchbar.php';
     </style>
 </head>
 <body>
+
 <div class="sharedwithyou"><h2>Dateien, die mit mir geteilt wurden:</h2><br><br></div>
 
 <table id="shared_files_table">
@@ -85,6 +82,10 @@ include 'searchbar.php';
         <th id="th_shared_files"> Freigegeben von </th>
         <th id="th_shared_files"> Download </th>
     </tr>
+
+
+
+
     <?php
     $currentuser=$_SESSION["user_id"];
     $statement = $pdo->prepare("SELECT * FROM access WHERE user_id = ?");
@@ -103,13 +104,15 @@ include 'searchbar.php';
                 echo "<tr>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$ownerfile</td>
-                    <td id='td_shared_files'> <a class='link-id' href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td></tr>";
+                    <td id='td_shared_files'> <a href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td></tr>";
             }
         }
     }
     ?>
 
     <a href="filesishared.php"><button id="filesishared"><b>Dateien, die ich geteilt habe</b></button></a>
+
+
 
 </table>
 </body>
