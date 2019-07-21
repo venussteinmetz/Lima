@@ -19,8 +19,8 @@ $message = $_GET["id"];
 <html lang="de">
 <head>
 
-    <title>Bootstrap</title>
-    <style type="text/css">
+    <title>Lima</title>
+    <style>
         #message {
             position: absolute;
             left: 300px;
