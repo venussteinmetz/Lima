@@ -1,4 +1,12 @@
 <?php
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+    
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
@@ -6,7 +14,8 @@ include 'profilepicture.php';
 ?>
 
 <html>
-<body>
+<head>
+<title>Lima</title>
 <style>
     .ausgabe {
         position: absolute;
@@ -26,16 +35,14 @@ include 'profilepicture.php';
         background-color: lightcoral;
     }
 </style>
-</body>
-</html>
-
+</head>
+<body>
 <div class="ausgabe">
     <?php
-    session_start();
-    $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
     $message = $_GET["id"];
     $user_id = $_SESSION['user_id'];
 
+    //Wenn eine ungelesene Nachricht gelöscht wird, wird die Notifications-Anzeige um 1 weniger. 
     $statement2 = $pdo->prepare("SELECT * FROM message WHERE message_id = ?");
     $statement2->execute(array($message));
     while($row2 = $statement2->fetch()) {
@@ -54,6 +61,7 @@ include 'profilepicture.php';
             }
         }
     }
+    //Löschen der Nachricht aus der Datenbank 
     $statement = $pdo->prepare("DELETE FROM message WHERE message_id = ?");
     $statement->execute(array($message));
 
@@ -65,4 +73,6 @@ include 'profilepicture.php';
     ?>
 
 </div>
+</body>
+</html>
 
