@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<head>
+    <title>Lima</title>
+</head>
+<body>
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -72,4 +77,5 @@ while ($row = $statement->fetch()) {
 }
 
 ?>
-
+</body>
+</html>
