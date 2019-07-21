@@ -2,8 +2,7 @@
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 ?>
-
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <meta name="viewport" content="width=device-width">
@@ -92,11 +91,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     </style>
 </head>
 <body>
-
-
-
 <div class="container">
-
     <!-- Tabelle: In der über eine SQL-Anfrage alle Dokumente angezeigt werden, die der Nutzer hochgeladen hat -->
     <br>
     <table id="files_table">
@@ -108,11 +103,9 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
             <th id="th_files">Löschen</th>
             <th id="th_files"> Favorisieren </th>
         </tr>
-
         <!-- SQL-Anfrage: Alle Dokumente in der 'file' Datenbank die die gleiche User ID hat, wie der Nutzer der gerade Online ist.
              Die Inhalte der Datenbank werden in Variablen gespeichert und in der Tabelle ausgegeben.
          -->
-
         <?php
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY filename ASC");
