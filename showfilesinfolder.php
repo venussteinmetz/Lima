@@ -4,14 +4,12 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
 $owner=$_SESSION["user_id"];
 $foldername = $_GET["folder_name"];
 $folderid = $_GET["folder_id"];
-?>
 
-<?php
 include "searchbar.php";
 include "sidebar2.php";
 include "notifications.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
@@ -123,7 +121,5 @@ include "notifications.php";
         ?>
     </table>
 </div>
-
-
 </body>
 </html>
