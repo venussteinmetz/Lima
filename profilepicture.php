@@ -6,14 +6,10 @@ if(!isset($_SESSION['user_id'])) {
     die();
 }
 ?>
-
 <!DOCTYPE html>
-<html>
 <head>
-
-
+    <title>Lima</title>
     <style>
-
 #change {
     font-size: 15px;
     align-items: center;
@@ -32,12 +28,9 @@ if(!isset($_SESSION['user_id'])) {
     border-radius: 50%;
 
 }
-
 </style>
 </head>
 <body>
-
-
     <div class="profile-userpic">
         <?php
         $statement = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
@@ -69,5 +62,3 @@ if(!isset($_SESSION['user_id'])) {
   <a id="change" href="settings.php">Profilbild ändern</a>
 </body>
 </html>
-
-
