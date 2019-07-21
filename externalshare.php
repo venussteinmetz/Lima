@@ -1,14 +1,13 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-?>
-<?php
+
 include 'profilepicture.php';
 include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <style>
@@ -21,7 +20,6 @@ include 'searchbar.php';
             padding-bottom: 10px;
             min-width: 1000px;
         }
-
         #shared_files_table {
             position: absolute;
             margin-top: 250px;
@@ -83,9 +81,7 @@ include 'searchbar.php';
     </style>
 </head>
 <body>
-
 <div><h2 class="shared">Dateien, die ich mit <b>externen</b> Nutzern geteilt habe:</h2></div>
-
 <table id="shared_files_table">
     <tr id="tr_shared_files">
         <th id="th_shared_files">  Datei </th>
@@ -116,12 +112,7 @@ include 'searchbar.php';
 <a href="sharedfiles.php">
     <button id="sharedfiles">Dateien, die mit mir geteilt wurden</button>
 </a>
-
 <br><br>
-<a href="filesishared.php">
-    <button id="internalshare">Dateien, die ich mit <b>internen</b> Nutzern geteilt habe</button>
-</a>
-
-
+<a href="filesishared.php"><button id="internalshare">Dateien, die ich mit <b>internen</b> Nutzern geteilt habe</button></a>
 </body>
 </html>
