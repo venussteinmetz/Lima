@@ -9,6 +9,7 @@ if(!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Profilimg wird gestyled. Scrollt nicht mit dem Viewport mit.  -->
     <style>
 #change {
     font-size: 15px;
@@ -33,6 +34,7 @@ if(!isset($_SESSION['user_id'])) {
 <body>
     <div class="profile-userpic">
         <?php
+        //Datenbankabfrage user und img
         $statement = $pdo->prepare('SELECT * FROM user WHERE userID = ?');
         $datensatz = array($_SESSION["user_id"]);
         $statement->execute($datensatz);
