@@ -15,6 +15,7 @@ include 'searchbar.php';
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Tabelle wird gestyled -->
     <style>
         .shared{
             overflow-y: scroll;
