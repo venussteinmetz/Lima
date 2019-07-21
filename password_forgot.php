@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Im Hintergrund wird das Hintergrundbild responsive angezeigt, durch Buttons mit hover kann man seine E-Mail angegeben -->  
     <style>
         html {
             background-image: url("Hintergrund.jpg");
@@ -56,16 +57,18 @@ function random_string() {
         $bytes = random_bytes(16, MCRYPT_DEV_URANDOM);
         $str = bin2hex($bytes);
     } else {
-        //Bitte euer_geheim_string durch einen zufälligen String mit >12 Zeichen austauschen
         $str = md5(uniqid('geheim', true));
     }
     return $str;
 }
+    
 $showForm = true;
+    //Überprüfe, ob eine E-Mail angegeben wurde 
 if(isset($_GET['send']) ) {
     if(!isset($_POST['email']) || empty($_POST['email'])) {
         $error = "<b>Bitte eine E-Mail-Adresse eintragen</b>";
     } else {
+        // Überprüfe, ob die E-Mail einem registrierten Nutzer zugeordnet werden kann 
         $statement = $pdo->prepare("SELECT * FROM user WHERE eMail = ?");
         $result = $statement->execute(array($_POST['email']));
         $user = $statement->fetch();
@@ -75,11 +78,13 @@ if(isset($_GET['send']) ) {
             //Überprüfe, ob der User schon einen Passwortcode hat oder ob dieser abgelaufen ist
             $passwortcode = random_string();
             $date = date("Y-m-d H:i:s");
+            //aktualisisere Datenbank um neues Passwort zu erstellen 
             $stmt2 = $pdo->prepare("UPDATE user SET passwortcode=:passwortcode, passwortcode_time =:passwortcode_time WHERE userID=:userID");
             $stmt2->bindParam(':passwortcode', $passwortcode);
             $stmt2->bindParam(':passwortcode_time', $date);
             $stmt2->bindParam(':userID', $user["userID"]);
             $stmt2->execute();
+            //E-Mail, um dem Nutzer mitzuteilen, dass das Passwort verändert wurde 
             $empfaenger = $user['eMail'];
             $betreff = "Neues Passwort für deinen Account auf Lima";
             $from = "From: Lima <sophia19steinhauer@gmail.com>";
@@ -96,6 +101,7 @@ dein Lima-Team';
         }
     }
 }
+    // --?--
 if($showForm):
     ?>
 
@@ -107,16 +113,17 @@ if($showForm):
         echo $error;
     }
     ?>
-
+    <!-- Formular um E-Mail einzugeben-->
     <form action="?send=1" method="post">
 
         <input type="email" name="email"  placeholder="E-Mail"><br>
         <button  type="submit">Neues Passwort</button>
+        <!-- man kann wieder zum Login zurück --> 
         <a href="login.php">Login</a>
     </form>
 </div>
 <?php
-endif; //Endif von if($showForm)
+endif; //Ende von if($showForm)
 ?>
 </body>
 </html>
