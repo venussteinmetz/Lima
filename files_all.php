@@ -1,6 +1,12 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <head>
