@@ -4,7 +4,6 @@ include "sidebar2.php";
 include "notification.php";
 ?>
 <!DOCTYPE html>
-<html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>Lima</title>
