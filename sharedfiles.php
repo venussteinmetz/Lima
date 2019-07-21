@@ -1,6 +1,12 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include 'profilepicture.php';
 include 'notifications.php';
 include 'sidebar2.php';
@@ -87,6 +93,7 @@ include 'searchbar.php';
 
 
     <?php
+    //Es werden Dateien angezeigt, die mit dem Nutzer geteilt wurden. 
     $currentuser=$_SESSION["user_id"];
     $statement = $pdo->prepare("SELECT * FROM access WHERE user_id = ?");
     $statement->execute(array($currentuser));
@@ -104,7 +111,7 @@ include 'searchbar.php';
                 echo "<tr>
                     <td id='td_shared_files'>$filename</td>
                     <td id='td_shared_files'>$ownerfile</td>
-                    <td id='td_shared_files'> <a href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td></tr>";
+                    <td id='td_shared_files'> <a href='download.php?fileid=$fileid&filename=$filename'><img class=downloadicon src='download1.png'></a></td></tr>"; //Bei Klick auf das Icon, kann der Nutzer die Datei herunterladen.
             }
         }
     }
