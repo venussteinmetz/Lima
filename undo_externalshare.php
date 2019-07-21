@@ -27,9 +27,8 @@ include 'notifications.php';
             text-decoration: none;
         }
     </style>
-
 </head>
-
+    <body>
 <div id="undoshare">
 <?php
 session_start();
@@ -69,3 +68,5 @@ while ($row2 = $statement2->fetch()) {
     }
 }
 ?>
+    </body>
+        </html>
