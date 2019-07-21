@@ -1,10 +1,8 @@
 <!doctype html>
-<html lang="de">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-
     <meta charset="utf-8">
+    <title>Lima</title>
     <style>
         html {
             background-image: url("lima1.png");
@@ -53,8 +51,6 @@
             width: 500px;
         }
     </style>
-
-
 </head>
 <body>
 <div class="angaben">
@@ -96,28 +92,16 @@
     ?>
 </div>
     <div class="hauptteil">
-
-
-
         <form action="login.php?login=1" method="post">
-
-
             <input type="text" name="eMail" maxlength="100" placeholder="E-Mail"><br>
             <input type="password" name="password" placeholder="Passwort"> <br>
             <button  type="submit">Anmelden</button> <br>
-
-
         </form>
         <div class="registrieren">
             <a href="password_forgot.php">Passwort vergessen?<br></a>
             <a href="register.php">Registrieren</a>
         </div>
-
-
     </div>
-
-
+    </div>
     </body>
-</div>
-
 </html>
