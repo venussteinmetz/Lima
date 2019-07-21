@@ -3,12 +3,18 @@ include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
 include 'notifications.php';
+//sicherheit
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    <!-- Button und Ausgabetext wird gestylt -->
     <style>
         #ausgabe {
             font-size: medium;
@@ -52,6 +58,8 @@ include 'notifications.php';
 </head>
 <body>
 <?php
+    
+    //Datenbank wird upgedated indem file zu favorisierter file wird.
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 $status=1;
