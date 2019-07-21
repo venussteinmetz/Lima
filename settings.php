@@ -4,10 +4,15 @@ include 'sidebar2.php';
 include 'searchbar.php';
 include 'notifications.php';
 include 'profilepicture.php';
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Auswahlmöglichkeit des Bildes und sytle des Buttons -->
     <style>
         #heading-pp {
             position: absolute;
@@ -46,6 +51,7 @@ include 'profilepicture.php';
         }
     </style>
 </head>
+<!-- Neues Profilbild hochladen  -->
 <body>
 <div id="heading-pp" ><b>Lade dein neues Profilbild hoch</b></div>
 <div id="settings-pp">
