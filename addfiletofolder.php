@@ -8,16 +8,13 @@ if(!isset($_SESSION['user_id'])) {
     header("location: login.php");
     die();
 }
-?>
-<?php
+
 include "searchbar.php";
 include "sidebar2.php";
 include "notifications.php";
 include "profilepicture.php";
 ?>
-
 <!DOCTYPE html>
-<html>
 <head>
     <title>Lima</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
@@ -47,9 +44,7 @@ include "profilepicture.php";
             background-color: lightcoral;
         }
     </style>
-
 </head>
-
 <body>
 <div id="content">
     <div class="container">
