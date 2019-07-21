@@ -107,7 +107,7 @@ include 'profilepicture.php';
         </tr>
        
         <?php
-        //Die Nachrichten werden dem Nutzer angezeigt und nach dem Datum (Neuste zuerst) geordnet. 
+        //Die Nachrichten werden in einer Vorschau dem Nutzer angezeigt und nach dem Datum (Neuste zuerst) geordnet. Es wird nicht der Nachrichtentext gezeigt, sondern nur der Betreff. Erst durch Klick auf den "Öffnen" Button kann der Nutzer die gesamte Nachricht lesen.  
         $statement = $pdo->prepare("SELECT * FROM message WHERE receiver = ? ORDER BY message_date DESC");
         $statement->execute(array($_SESSION['user_id']));
         while ($row = $statement->fetch()) {
