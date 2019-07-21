@@ -14,6 +14,7 @@ if(!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Durch Jquery wird eine Vorschua der Nachrichten ausgefahren --> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
         // Wenn man auf die Nachrichtenbox klickt, wird die Vorschau der ungelesenen Nachrichten ausgefahren, bzw. wieder eingefahren wenn man erneut draufklickt
@@ -23,6 +24,7 @@ if(!isset($_SESSION['user_id'])) {
             });
         });
     </script>
+    <!-- Im Style wird die Position des Notificationbuttons über position:fixed rechts oben festgelegt --> 
     <style>
         .notification {
             background-color: white;
@@ -132,6 +134,7 @@ if(!isset($_SESSION['user_id'])) {
             while ($row = $statement->fetch()) {
                 $message_subject=$row['message_subject'];
                 $message_id = $row["message_id"]; ?>
+        <!-- Klick man auf eine Nachricht, wird man zur Anzeige der Nachricht weitergeleitet --> 
     <div class="notification-msg">
                 <a class="notification-link" href="show_message_do.php?id=<?php echo $message_id;?>">Betreff: <?php echo $message_subject;?></a><br>
     </div>
