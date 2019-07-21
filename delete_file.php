@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id'])) {
     die();
 }
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lima</title>
@@ -31,14 +31,9 @@ if(!isset($_SESSION['user_id'])) {
             left: 300px;
             color: black;
         }
-
     </style>
-
-
 </head>
-
-
-
+<body>
 <div id="delete">
 <?php
 session_start();
@@ -69,6 +64,5 @@ else {
 }
 ?>
 </div>
-<body>
 </body>
 </html>
