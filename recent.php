@@ -1,3 +1,6 @@
+<!-- Fortsetzen der vorhandenen Session.
+Verbindung wird zur Datenbank aufgebaut. 
+Einbindung der Sidbar, der Notifications, der Searbar und des Profilbildes.-->
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -10,6 +13,10 @@ include 'profilepicture.php';
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Styling des Containers um die Tabelle und der Tabelle und ihrer Bestandteile.
+    Styling der Links durch Pseudoklassen. 
+    Responsiveness durch Media Queries.
+    Styling der icons in der Tabelle.-->
     <style>
         .container{
             font-family: Avenir;
@@ -80,6 +87,7 @@ include 'profilepicture.php';
     </style>
 </head>
 <body>
+<!-- Innerhalb eines Containers ist eine Tabelle die, die hochgeladenen Dateien anzeigt. -->
 <div class="container">
     <br>
     <h2> Meine neusten Dateien: </h2>
@@ -93,6 +101,8 @@ include 'profilepicture.php';
             <th id="th_files">Löschen</th>
             <th id="th_files"> Favorisieren </th>
         </tr>
+        <!-- SQL-Anfrage: Mit der Anfrage, werden alle Dokumente angefragt, die dem Nutzer gehören. 
+        Diese werden so ausgegeben, dass das neuste oben steht und das nur die letzten 5 angezeigt werden. -->
         <?php
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY upload_date DESC limit 5");
@@ -102,6 +112,8 @@ include 'profilepicture.php';
                 $filename=$row['filename'];
                 $upload_date=$row['upload_date'];
                 $mimetype=$row['mimetype'];
+                /* Die Funktionen Runterladen, Favorisieren und Löschen, werden eingebunden und die gebrauchen 
+                Informationen über den URL übergeben. */
                 echo  "<tr>
                     <td id='td_files'> $filename </td>
                     <td id='td_files'>$upload_date</td>
