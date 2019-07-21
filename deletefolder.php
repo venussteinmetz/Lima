@@ -5,6 +5,7 @@ include "notification.php";
 ?>
 <html>
 <head>
+    <title>Lima</title>
     <style>
         #geloescht {
             position: absolute;
@@ -27,8 +28,6 @@ include "notification.php";
     </style>
 </head>
 <body>
-
-
 <div id="geloescht">
     <?php
     session_start();
@@ -40,6 +39,5 @@ include "notification.php";
     echo "Ordner wurde gelöscht!<br><br><a href=showfolder.php><button id='file'>Zurück zu Ordner</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
     ?>
 </div>
-
 </body>
 </html>
