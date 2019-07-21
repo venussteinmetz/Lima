@@ -1,18 +1,15 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-?>
-<?php
+
 include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
 include 'profilepicture.php';
 ?>
-
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
-
     <style>
         .container{
             font-family: Avenir;
@@ -81,15 +78,12 @@ include 'profilepicture.php';
             margin-left: 10px;
         }
     </style>
-
 </head>
 <body>
-
 <div class="container">
     <br>
     <h2> Meine neusten Dateien: </h2>
     <br>
-
     <table id="files_table">
         <tr id="tr_files">
             <th id="th_files"> Name </th>
@@ -99,7 +93,6 @@ include 'profilepicture.php';
             <th id="th_files">Löschen</th>
             <th id="th_files"> Favorisieren </th>
         </tr>
-
         <?php
         $userID= $_SESSION["user_id"];
         $statement = $pdo->prepare("SELECT * FROM file WHERE owner = $userID ORDER BY upload_date DESC limit 5");
@@ -122,6 +115,5 @@ include 'profilepicture.php';
         ?>
     </table>
 </div>
-
 </body>
 </html>
