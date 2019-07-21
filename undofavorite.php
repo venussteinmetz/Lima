@@ -3,8 +3,9 @@ include 'searchbar.php';
 include "sidebar2.php";
 include "notifications.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
+    <title>Lima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         #undofav {
@@ -24,10 +25,9 @@ include "notifications.php";
             background-color: lightcoral;
             text-decoration: none;
         }
-
-
     </style>
 </head>
+<body>
 <div id="undofav">
 <?php
 
@@ -49,7 +49,5 @@ if ($statement->execute()) {
 
 ?>
 </div>
-<body>
-
 </body>
 </html>
