@@ -6,12 +6,20 @@ include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
 include 'profilepicture.php';
+//Sicherheit
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    <!-- Tabelle wird gestylt
+Responsiv durch Media Queries.
+Style der Icons-->
     <style>
         .all_files {
             font-family: Avenir;
@@ -74,6 +82,7 @@ include 'profilepicture.php';
     <br>
     <h2> Meine Favoriten: </h2>
     <br>
+    <!-- Tabellen Kopf  -->
     <table id="files">
         <tr>
             <th> Name </th>
@@ -83,6 +92,7 @@ include 'profilepicture.php';
             <th> Entfavorisieren</th>
         </tr>
         <?php
+        //Überprüfung welche Daten welcher Nutzer favorisiert hat
         $userID= $_SESSION["user_id"];
         $status= 1;
         $statement = $pdo -> prepare ("SELECT * FROM file WHERE owner = $userID AND favorite = $status");
