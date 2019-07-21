@@ -4,8 +4,9 @@ include "searchbar.php";
 include "notifications.php";
 include "profilepicture.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
+    <title>Lima</title>
     <style>
         #geloescht {
             position: absolute;
@@ -26,8 +27,6 @@ include "profilepicture.php";
     </style>
 </head>
 <body>
-
-
 <div id="geloescht">
     <?php
     session_start();
