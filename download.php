@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<head>
+    <title>Lima</title>
+</head>
+<body>
 <?php
 session_start();
 $directory = "/home/ab247/public_html/s19_lima/files";
@@ -28,4 +33,5 @@ while ($row = $statement->fetch()) {
 }
 
 ?>
-
+</body>
+</html>
