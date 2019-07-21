@@ -1,6 +1,7 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
 if(!isset($_SESSION['user_id'])) {
     header("location: login.php");
     die();
@@ -11,6 +12,7 @@ include "searchbar.php";
 include 'profilepicture.php';
 include 'notifications.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +73,7 @@ include 'notifications.php';
     <form action="sharefile_do.php" method="post">
         <div class="share-text"> Teile deine Datei mit anderen:<br></div>
         <select class="files-share" name="file">
-            <!--Ein Dropdown mit allen Dateien, die dem Nutzer gehören wird angezeigt, daraus kann der Nutzer die entsprechende Datei auswählen -->s
+            <!--Ein Dropdown mit allen Dateien, die dem Nutzer gehören wird angezeigt, daraus kann der Nutzer die entsprechende Datei auswählen, die er teilen möchte -->
                 <?php
 
                 $owner = $_SESSION["user_id"];
@@ -80,7 +82,7 @@ include 'notifications.php';
                 while ($row = $statement->fetch()) {
                     $file = $row["filename"];
                     $file_id = $row["file_id"];
-                    echo "<option value=\"" . trim($file) . "\">" . $file . "\n";
+                   echo '<option value="' . trim($file) . '">' . $file . '</option>';
                 }
 
                 ?>
