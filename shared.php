@@ -1,6 +1,11 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <html>
 <head>
@@ -64,6 +69,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     </tr>
 
     <?php
+    //Es werden die Dateien angezeigt, die von dem Nutzer mit internen Nutzern (also Personen, die einen Account bei Lima haben) geteilt wurden
     $currentuser = $_SESSION["user_id"];
     $statement = $pdo->prepare("SELECT * FROM access WHERE owner_id = $currentuser");
     $statement->execute();
@@ -83,7 +89,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
                     <td id='td_shared_files'>$sharedmail</td>
                     <td id='td_shared_files'><a href='undo_share.php?usertodelete=$shareduser&fileid=$fileid' ><img class=back src='1.png'></a></td></tr></td>
                   </tr>
-                 ";
+                 ";//Bei Klick auf das Icon, kann der Nutzer das Teilen rückgängig machen. Undo_share.php wird ausgeführt.
             }
         }
     }
