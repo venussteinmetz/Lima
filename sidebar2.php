@@ -125,7 +125,7 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
         <a href="recent.php">Neuste</a>
         <a href="favorite.php">Favoriten</a>
         <a href="sharedfiles.php">Freigabe</a>
-        <a href="show_message.php">Meine Nachrichten</a>
+        <a href="show_message.php">Nachrichten</a>
         <a href="showfolder.php">Meine Ordner</a>
         <a href="logout.php">Logout</a>
         <br>
