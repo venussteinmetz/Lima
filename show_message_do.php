@@ -1,8 +1,19 @@
 <?php
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include 'searchbar.php';
 include "sidebar2.php";
 include "notifications.php";
 include "profilepicture.php";
+
+$user = $_SESSION["user_id"];
+$message = $_GET["id"];
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -56,13 +67,6 @@ include "profilepicture.php";
     </style>
 </head>
 
-
-<?php
-session_start();
-$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-$user = $_SESSION["user_id"];
-$message = $_GET["id"];
-?>
 <body>
 
 <br>
@@ -70,6 +74,8 @@ $message = $_GET["id"];
 <br>
 <table id="message">
     <?php
+
+    //Es wird die gesamte Nachricht angezeigt. Wenn die Nachricht zum ersten Mal geöffnet wird, wird auch die Notification-Nummer wieder um 1 abgezogen. 
     $statement = $pdo->prepare("SELECT * FROM message WHERE message_id = ?");
     $statement->execute(array($message));
     while ($row = $statement->fetch()) {
@@ -111,8 +117,10 @@ $message = $_GET["id"];
 
 
     <p>
+        <!-- Der Nutzer kann direkt auf diese Nachricht antworten durch Klick auf den Button -->
         <a id="answer_button" href="answer_message.php?id=<?php echo $message; ?>">Antworten</a>
         <?php
+        //Der Zeitpunkt von message_read wird auf die aktuelle Zeit gesetzt. 
         $date = date('Y-m-d H:i:s');
         $statement4 = $pdo->prepare("UPDATE message SET message_read=:message_read WHERE message_id=:id");
         $statement4->bindParam(':message_read', $date);
