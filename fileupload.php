@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_id'])) {
 <form action="uploaddo.php" method="post" enctype="multipart/form-data">
     Datei auswählen:
     <input type="file" name="uploadfile" id="uploadfile"><br>
-    <button id="file" type="submit" name="action">Upload</button> <a
+    <button id="file" type="submit" name="action">Upload</button> 
 </form>
 </div>
 </body>
