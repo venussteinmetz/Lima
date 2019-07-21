@@ -1,5 +1,6 @@
-<html>
+<!DOCTYPE html>
 <head>
+    <title>Lima</title>
     <style>
         html {
             background-image: url("Hintergrund.jpg");
@@ -38,14 +39,9 @@
             width: 173px;
             height: 30px;
         }
-
     </style>
-
 </head>
 <body>
-
-</body>
-
 <div class="all">
 <?php
 $pdo = new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset' => 'utf8'));
@@ -122,4 +118,5 @@ if($showForm):
 <?php
 endif; //Endif von if($showForm)
 ?>
+</body>
 </html>
