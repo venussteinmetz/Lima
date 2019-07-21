@@ -57,6 +57,8 @@ include 'searchbar.php';
         .downloadicon {
             height: 25px;
             width: 25px;
+            position: absolute;
+            left: 80%;
         }
         #filesishared {
             color: black;
