@@ -1,4 +1,12 @@
 <?php
+session_start();
+$pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
+    
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
@@ -40,8 +48,6 @@ include 'notifications.php';
 <body>
 <div id="shareoutput">
     <?php
-    session_start();
-    $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
     $user_email=$_POST["user_email"];
     $file_name=$_POST["file"];
     $statement0 = $pdo->prepare("SELECT * FROM file WHERE filename = ?");
@@ -49,6 +55,7 @@ include 'notifications.php';
     while ($row0 = $statement0->fetch()) {
         $file = $row0["file_id"];
     }
+    //Die Funktion dient dem Generieren einer zufälligen Zeichenfolge. 
     function random_string() {
         if(function_exists('random_bytes')) {
             $bytes = random_bytes(16);
@@ -64,15 +71,15 @@ include 'notifications.php';
         }
         return $str;
     }
-    //Datenbankverbindung um den Nutzer ausfindig zu machen, für den die Datei Freigegeben werden soll
+    //Datenbankabfrage, um zu den richtigen Nutzer für den die Freigabe gedacht ist ausfindig zu machen 
     $statement = $pdo->prepare("SELECT * FROM user WHERE eMail = ?");
     $statement->execute(array($user_email));
     while ($row = $statement->fetch()) {
         $exists = $row['eMail'];
         $newuser = $row['userID'];
     }
-    //Abfrage ob der User in der Datenbank existiert
-    //der neu generierte Filecode wird in die Datenbank geschreiben
+    //Abfrage ob der Nutzer in der Datenbank existiert, wenn dies der Fall ist, wird die Tabelle file erneuert mit der neuen Zugangsberechtigung.
+    //Es wird zudem ein neuer Eintrag in der Tabelle access erstellt. 
     if ($exists != "") {
         $status = 1;
         $owner_id = $_SESSION["user_id"];
@@ -88,6 +95,7 @@ include 'notifications.php';
         echo "Deine Datei wurde erfolgreich geteilt.<br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         exit();
     }
+    //If-Abfragen zur Überprüfung, ob eine E-Mail richtig bzw. überhaupt eingegeben wurde.
     if ($_POST["user_email"] == "") {
         echo "Bitte gebe eine E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         die();
@@ -106,8 +114,8 @@ include 'notifications.php';
         echo "Bitte gebe eine richtige E-Mail ein. <br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         die();
     }
-
-
+    
+    //Wenn der Nutzer nicht existiert wird folgender Code ausgeführt. Es wird ein neuer Eintrag in der Tabelle sharing erstellt und die Zugangsberechtigung in der Tabelle file aktualisiert.
     if (empty($exists)){
         $owner_id = $_SESSION["user_id"];
         $randomcode = random_string();
@@ -122,6 +130,8 @@ include 'notifications.php';
         $stmt4->bindParam(':access_rights', $status);
         $stmt4->bindParam(':file_id', $file);
         $stmt4->execute();
+        
+        //An nicht-registrierte Nutzer wird eine E-Mail versandt mit einem Link, der einen zur Seite download_sharedfiles.php weiterleitet. 
         $absender = "From: Lima <info@lima.de>";
         $betreff = "Eine Lima-Datei wurde Ihnen freigegeben";
         $url_downloadcode = "https://mars.iuk.hdm-stuttgart.de/~ab247/s19_lima/download_sharedfiles.php?code=" . $randomcode;
@@ -129,7 +139,7 @@ include 'notifications.php';
             "Ihnen wurde eine Datei auf Lima freigegeben. Klicken Sie auf den Link um sie herunterzuladen:"
             . $url_downloadcode;
         mail($user_email, $betreff, $text, $absender);
-        //E-Mail versand an nicht registrierten Nutzer
+
         echo "Freigabe erfolgreich<br><br><a href=sharefile.php><button id='sharing'>Zurück zum teilen</button></a> <a href=index.php><button id='sharing'>Zurück zur Startseite</button></a>";
         exit();
     }
