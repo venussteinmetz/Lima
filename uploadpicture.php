@@ -4,7 +4,7 @@ include "sidebar2.php";
 include "profilepicture.php";
 include "notifications.php";
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <style>
@@ -28,6 +28,7 @@ include "notifications.php";
 
     </style>
 </head>
+<body>
 <div id="upload">
 <?php
 session_start();
@@ -99,8 +100,5 @@ if (isset($_POST['submit'])) {
 
 ?>
 </div>
-<body>
-
 </body>
 </html>
-
