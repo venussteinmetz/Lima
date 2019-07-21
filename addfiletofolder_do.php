@@ -14,6 +14,8 @@ if(!isset($_SESSION['user_id'])) {
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
+    <!-- Styling <div> und der Buttons. 
+Styling der Links mit Pseudoklassen.-->
     <style>
         #ausgabe {
             font-family: Avenir;
@@ -53,6 +55,7 @@ if(!isset($_SESSION['user_id'])) {
 <a href=index.php><button id="index">Zurück zur Startseite</button></a>
 <div id="ausgabe">
     <?php
+    // SQL-Anfrage: Es werden alle Dokumente aus der Datenbank ausgegeben, die den gleichen Namen haben. 
     session_start();
     $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
     $owner = $_SESSION["user_id"];
@@ -72,6 +75,8 @@ if(!isset($_SESSION['user_id'])) {
                 die();
             }
         }
+        /*Wenn die Datei sich noch nicht in dem Ordner befindet wird sie durch die folgende SQL-Anfrage, in die Datenbank eingefügt
+        und die passenden Informationen werden mitgeliefert */ 
         $stmt = $pdo->prepare("INSERT INTO fileinfolders (fileinfolders_id, file_id, folder_id, owner) VALUES('',:file_id,:folder_id, :owner)");
         $stmt->bindParam(':file_id', $fileid);
         $stmt->bindParam(':folder_id', $folderid);
