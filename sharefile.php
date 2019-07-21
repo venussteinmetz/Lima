@@ -5,6 +5,7 @@ if(!isset($_SESSION['user_id'])) {
     header("location: login.php");
     die();
 }
+
 include 'sidebar2.php';
 include "searchbar.php";
 include 'profilepicture.php';
@@ -20,7 +21,6 @@ include 'notifications.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="dashboard3style.css" rel="stylesheet">
-
     <style>
         .row-share {
             display: flex;
