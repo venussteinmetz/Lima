@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
     <title>Lima</title>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
@@ -19,16 +18,11 @@
         top: 50%;
         left:550px;
     }
-
 </style>
-
 </head>
-
 <body>
 <?php
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-
-
 
 $string = $_GET["code"];
 $statement = $pdo->prepare("SELECT * FROM sharing WHERE random_string = ?");
@@ -66,6 +60,5 @@ $statement->execute(array($string));
                     }
 
                     ?>
-
 </body>
 </html>
