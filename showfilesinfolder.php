@@ -8,6 +8,7 @@ $folderid = $_GET["folder_id"];
 include "searchbar.php";
 include "sidebar2.php";
 include "notifications.php";
+include "profilepicture.php
 ?>
 <!DOCTYPE html>
 <head>
@@ -72,9 +73,9 @@ include "notifications.php";
     </style>
 </head>
 <div>
-
+        //Button um Dateien einem Ordner hinzuzufügen 
     <a class='button-add' href='addfiletofolder.php?folder_name=<?php echo $foldername;?>&folder_id=<?php echo $folderid;?>'>Datei hinzufügen</a>
-
+    //Tabelle, die Dateien im Ordner anzeigt 
     <table id="files">
         <tr>
             <th> Name </th>
