@@ -9,6 +9,12 @@ include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
 include 'profilepicture.php';
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 ?>
 <!DOCTYPE html>
 <head>
