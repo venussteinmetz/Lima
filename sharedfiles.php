@@ -6,8 +6,9 @@ include 'notifications.php';
 include 'sidebar2.php';
 include 'searchbar.php';
 ?>
-<html>
+<!DOCTYPE html>
 <head>
+    <title>Lima</title>
     <style>
         h2 {
             font-family: Avenir;
@@ -76,7 +77,6 @@ include 'searchbar.php';
     </style>
 </head>
 <body>
-
 <div class="sharedwithyou"><h2>Dateien, die mit mir geteilt wurden:</h2><br><br></div>
 
 <table id="shared_files_table">
@@ -85,10 +85,6 @@ include 'searchbar.php';
         <th id="th_shared_files"> Freigegeben von </th>
         <th id="th_shared_files"> Download </th>
     </tr>
-
-
-
-
     <?php
     $currentuser=$_SESSION["user_id"];
     $statement = $pdo->prepare("SELECT * FROM access WHERE user_id = ?");
@@ -114,8 +110,6 @@ include 'searchbar.php';
     ?>
 
     <a href="filesishared.php"><button id="filesishared"><b>Dateien, die ich geteilt habe</b></button></a>
-
-
 
 </table>
 </body>
