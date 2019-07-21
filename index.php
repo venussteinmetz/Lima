@@ -1,9 +1,15 @@
 <?php
+//Alle Seiten die auf der Startseite zu sehen sind
 include 'notifications.php';
 include 'search.php';
 include 'sidebar2.php';
 include 'files_all.php';
 include 'profilepicture.php';
+//Sicherheit
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
