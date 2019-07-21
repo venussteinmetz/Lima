@@ -1,15 +1,13 @@
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
-?>
-<?php
+
 include "sidebar2.php";
 include "notifications.php";
 include 'searchbar.php';
 include 'profilepicture.php';
 ?>
-
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
@@ -72,12 +70,10 @@ include 'profilepicture.php';
     </style>
 </head>
 <body>
-
 <div class="all_files">
     <br>
     <h2> Meine Favoriten: </h2>
     <br>
-
     <table id="files">
         <tr>
             <th> Name </th>
@@ -86,7 +82,6 @@ include 'profilepicture.php';
             <th> Herunterladen</th>
             <th> Entfavorisieren</th>
         </tr>
-
         <?php
         $userID= $_SESSION["user_id"];
         $status= 1;
