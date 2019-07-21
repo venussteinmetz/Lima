@@ -2,11 +2,17 @@
 include 'searchbar.php';
 include "sidebar2.php";
 include "notifications.php";
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Styling: Ausgabe - mit zwei Möglichkeiten.-->
     <style>
         #undofav {
             position: absolute;
@@ -31,6 +37,9 @@ include "notifications.php";
 <div id="undofav">
 <?php
 
+    /* SQL-Anfrage: Die zeile in der Datenbank in der steht ob das Dokument favorisiert ist oder nicht wird
+    umgeändert und der Status auf 0 gesetzt. */
+    
 session_start();
 
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
