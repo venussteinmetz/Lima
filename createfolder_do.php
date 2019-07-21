@@ -9,7 +9,7 @@ if(!isset($_SESSION['user_id'])) {
     die();
 }
 ?>
-<html>
+<!DOCTYPE html>
 <head>
     <title>Lima</title>
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
@@ -44,8 +44,8 @@ if(!isset($_SESSION['user_id'])) {
             text-decoration: none;
         }
     </style>
-
 </head>
+    <body>
 <?php
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
@@ -77,3 +77,5 @@ if ($_POST["foldername"] == "") {
     echo "Ordner wurde erfolgreich erstellt!<br><br><a href=showfolder.php><button id='file'>Zu meinen Ordnern</button></a> <a href=index.php><button id='file'>Zurück zur Startseite</button></a>";
     exit();
     ?>
+    </body>
+        </html>
