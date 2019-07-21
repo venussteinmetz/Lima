@@ -2,6 +2,11 @@
 session_start();
 $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 'eezaS8ye3t', array('charset'=>'utf8'));
 
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
+
 include 'profilepicture.php';
 include 'notifications.php';
 include 'sidebar2.php';
@@ -90,6 +95,7 @@ include 'searchbar.php';
     </tr>
 
     <?php
+    //Es werden alle Dateien angezeigt, die der Nutzer mit externen Personen (Personen, die keine registrierten Nutzer sind) geteilt hat
     $currentuser = $_SESSION["user_id"];
     $statement = $pdo->prepare("SELECT * FROM sharing WHERE owner_id = $currentuser");
     $statement->execute();
@@ -104,11 +110,12 @@ include 'searchbar.php';
 <td id='td_shared_files'>$filename</td>
 <td id='td_shared_files'>$nonuser</td>
 <td id='td_shared_files'><a href='undo_externalshare.php?non_user=$nonuser&fileid=$fileid'><img id=back src='rückgängig.png'></a></td>
-</tr>";
+</tr>"; //Wenn man auf das Icon klickt, wird undo_externalshare ausgeführt, was dazu führt, dass das Teilen rückgängig gemacht wird. In den GET-Variablen "non_user" und "fileid" werden die Informationen, die dafür benötigt werden, gespeichert.
         }
     }
     ?>
 </table>
+    <!--Diese Buttons führe den Nutzer zu den Dateien, die mit ihm/ihr geteilt wurden oder zu den Dateien, die der Nutzer mit anderen (internen) Nutzern geteilt hat-->
 <a href="sharedfiles.php">
     <button id="sharedfiles">Dateien, die mit mir geteilt wurden</button>
 </a>
