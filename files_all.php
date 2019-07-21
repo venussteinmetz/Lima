@@ -8,15 +8,13 @@ $pdo=new PDO('mysql:: host=mars.iuk.hdm-stuttgart.de; dbname=u-ab247', 'ab247', 
     <meta name="viewport" content="width=device-width">
     <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
     <script src="js/general.js"></script>
-    <!-- Das neueste kompilierte und minimierte CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- Optionales Theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Das neueste kompilierte und minimierte JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!--Die Tabelle wird innerhalb der HTML-Seite gestylt-->
+    <!-- Styling des Containers um die Tabelle, der Tabelle, des table heads/ table row/ table data
+    Styling der Links durch Pseudoklassen 
+    Responsiveness durch Media Queries 
+    Styling der icons in der Tabelle -->
     <style>
         .container{
             overflow-y: scroll;
