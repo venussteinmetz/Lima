@@ -3,10 +3,17 @@ include 'sidebar2.php';
 include "searchbar.php";
 include "notifications.php";
 include "profilepicture.php";
+
+if(!isset($_SESSION['user_id'])) {
+    header("location: login.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <head>
     <title>Lima</title>
+    <!-- Styling <div> und Buttons.
+Styling der Links mithilfe von Pseudoklassen.  -->
     <style>
         #geloescht {
             position: absolute;
